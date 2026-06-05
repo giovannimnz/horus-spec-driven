@@ -193,20 +193,40 @@ Ativados automaticamente ao usar o slash command correspondente. Roteamento inte
 
 ---
 
+## Estrutura `dist/`
+
+Cada CLI tem sua própria pasta em `dist/` com **tudo personalizado**:
+
+```
+dist/
+├── hermes/      skills + agents + horus-sdk-adapter + install.sh
+├── claude/      skills + agents + install.sh
+├── codex/       prompts (16) + agents + install.sh
+├── gemini/      commands (16 .toml) + agents + install.sh
+└── copilot/     prompts (16) + agents + install.sh
+```
+
+**Gerado por:** `node bin/builder.js --all`  
+**Total:** 93 arquivos, 5 pacotes independentes  
+
+---
+
 ## Instalação
 
 ```bash
 git clone --recurse-submodules https://github.com/giovannimnz/horus-spec-driven.git
 cd horus-spec-driven
 
-# Instalar para Hermes
-node bin/install.js install --runtime=hermes --global
+# Build + Install
+node bin/builder.js --all
+bash dist/hermes/install.sh      # Hermes Agent
+bash dist/claude/install.sh      # Claude Code
+bash dist/codex/install.sh       # Codex CLI
+bash dist/gemini/install.sh      # Gemini CLI
+bash dist/copilot/install.sh     # GitHub Copilot
 
-# Ou todos os runtimes detectados
-node bin/install.js install --all --global
-
-# Trocar idioma
-node bin/install.js language pt      # Português
+# Sync diário
+pm2 start ecosystem.daily-sync.cron.json
 node bin/install.js language en      # English
 
 # Sync diário

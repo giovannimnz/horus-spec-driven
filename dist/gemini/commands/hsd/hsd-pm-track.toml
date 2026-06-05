@@ -1,0 +1,23 @@
+name = "hsd-pm-track"
+description = "📋 Gerente de Projeto: track — progress, workstreams, thread, phase, workspace, graphify, stats, ns-project, ns-workflow, ns-manage"
+version = "5.0.0"
+author = "Horus Spec Driven"
+license = "MIT"
+locale = "pt"
+agent = "hsd-pm-agent"
+
+[metadata.hermes]
+tags = ["hsd", "pm", "hsd-pm-track"]
+category = "pm"
+
+# 📋 hsd-pm-track
+
+**Papel:** Gerente de Projeto  |  **Subcomando:** track
+
+> Mapeia de (gsd-core): progress, workstreams, thread, phase...
+
+**Uso:** `/hsd-pm-track [args]`
+
+---
+
+*Horus Spec Driven v5.0 — dist/gemini*

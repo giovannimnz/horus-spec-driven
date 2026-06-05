@@ -1,0 +1,23 @@
+name = "hsd-dev-define"
+description = "⚡ Desenvolvedor: define — discuss-phase, spec-phase, mvp-phase"
+version = "5.0.0"
+author = "Horus Spec Driven"
+license = "MIT"
+locale = "pt"
+agent = "hsd-dev-agent"
+
+[metadata.hermes]
+tags = ["hsd", "dev", "hsd-dev-define"]
+category = "dev"
+
+# ⚡ hsd-dev-define
+
+**Papel:** Desenvolvedor  |  **Subcomando:** define
+
+> Mapeia de (gsd-core): discuss-phase, spec-phase, mvp-phase...
+
+**Uso:** `/hsd-dev-define [args]`
+
+---
+
+*Horus Spec Driven v5.0 — dist/gemini*

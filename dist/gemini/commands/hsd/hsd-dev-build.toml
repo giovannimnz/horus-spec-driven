@@ -1,0 +1,23 @@
+name = "hsd-dev-build"
+description = "⚡ Desenvolvedor: build — execute-phase, autonomous, quick, fast"
+version = "5.0.0"
+author = "Horus Spec Driven"
+license = "MIT"
+locale = "pt"
+agent = "hsd-dev-agent"
+
+[metadata.hermes]
+tags = ["hsd", "dev", "hsd-dev-build"]
+category = "dev"
+
+# ⚡ hsd-dev-build
+
+**Papel:** Desenvolvedor  |  **Subcomando:** build
+
+> Mapeia de (gsd-core): execute-phase, autonomous, quick, fast...
+
+**Uso:** `/hsd-dev-build [args]`
+
+---
+
+*Horus Spec Driven v5.0 — dist/gemini*
