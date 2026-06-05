@@ -365,10 +365,10 @@ node ~/.hermes/skills/hsd/horus-sdk-adapter/index.cjs roadmap get-phase 1 --cwd 
     total += 1;
     info(`  adapter/: horus-sdk-adapter skill installed (${dryRun ? 'dry-run' : 'real'})`);
 
-    // Also install model-fs as a custom skill
-    const modelFsDir = path.join(resolveBaseDir(runtimeId, mode), 'skills', 'hsd', 'model-fs');
+    // Also install hsd-model-fs as a custom skill
+    const modelFsDir = path.join(resolveBaseDir(runtimeId, mode), 'skills', 'hsd', 'hsd-model-fs');
     const modelFsSkill = `---
-name: model-fs
+name: hsd-model-fs
 description: "Model Fast Switch — toggle between current and last used model"
 version: ${PKG_VERSION}
 author: "Horus Spec Driven"
@@ -381,7 +381,7 @@ metadata:
     category: "config"
 ---
 
-# 🔄 model-fs — Model Fast Switch
+# 🔄 hsd-model-fs — Model Fast Switch
 
 Toggle between the current model and the last used model.
 
@@ -414,7 +414,7 @@ echo "Switched: $CURRENT → $LAST"
       fs.writeFileSync(path.join(modelFsDir, 'SKILL.md'), modelFsSkill);
     }
     total += 1;
-    info(`  model-fs/: model-fs skill installed (${dryRun ? 'dry-run' : 'real'})`);
+    info(`  hsd-model-fs/: hsd-model-fs skill installed (${dryRun ? 'dry-run' : 'real'})`);
   }
 
   return { installed: total, skipped: 0 };
