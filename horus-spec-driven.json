@@ -3,10 +3,10 @@
   "version": "3.0.0",
   "description": "Multi-CLI wrapper for gsd-core with role-based unified commands",
   "locale": {
-    "code": "en",
+    "code": "pt",
     "available": [
       "en",
-      "pt-BR"
+      "pt"
     ]
   },
   "upstream_repo": "https://github.com/open-gsd/gsd-core",
@@ -76,6 +76,6 @@
     ],
     "mode": "global",
     "gsd_core_version": "latest",
-    "date": "2026-06-05T09:49:59.390Z"
+    "date": "2026-06-05T09:56:21.644Z"
   }
 }

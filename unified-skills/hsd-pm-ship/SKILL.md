@@ -1,10 +1,10 @@
 ---
 name: hsd-pm-ship
-description: "📋 Project Manager: ship — Manage HOW it gets built — plan, execute, track, ship"
+description: "📋 Project Manager: ship — Gerencia COMO será construído — planejar, executar, acompanhar, entregar"
 version: "3.0.0"
 author: "Horus Spec Driven"
 license: "MIT"
-locale: "en"
+locale: "pt"
 platforms:
   - hermes
   - claude-code
@@ -13,19 +13,21 @@ platforms:
   - copilot
 metadata:
   hermes:
-    tags: ["hsd", "pm", "unified", "en"]
+    tags: ["hsd", "pm", "unified", "pt"]
     category: "pm"
     subcommands: ["ship", "pr-branch", "complete-milestone", "milestone-summary", "undo", "update"]
 ---
 
 # 📋 hsd-pm-ship 
+_i18n: pt_
+
 
 **Role:** Project Manager  
 **Verb:** ship  
 **Maps from:** 6 upstream commands  
-**Description:** Manage HOW it gets built — plan, execute, track, ship
+**Description:** Gerencia COMO será construído — planejar, executar, acompanhar, entregar
 
-
+**Idioma:** Português (Brasil)
 
 ---
 
@@ -67,4 +69,4 @@ metadata:
 
 ---
 
-*Horus Spec Driven v3.0.0 — English*
+*Horus Spec Driven v3.0.0 — Português (Brasil)*

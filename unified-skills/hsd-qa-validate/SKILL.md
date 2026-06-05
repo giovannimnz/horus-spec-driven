@@ -1,10 +1,10 @@
 ---
 name: hsd-qa-validate
-description: "✅ QA: validate — Verify everything — validate, audit, review"
+description: "✅ QA: validate — Verifica tudo — validar, auditar, revisar"
 version: "3.0.0"
 author: "Horus Spec Driven"
 license: "MIT"
-locale: "en"
+locale: "pt"
 platforms:
   - hermes
   - claude-code
@@ -13,19 +13,21 @@ platforms:
   - copilot
 metadata:
   hermes:
-    tags: ["hsd", "qa", "unified", "en"]
+    tags: ["hsd", "qa", "unified", "pt"]
     category: "qa"
     subcommands: ["validate-phase", "verify-work", "health", "add-tests", "plan-checker"]
 ---
 
 # ✅ hsd-qa-validate 
+_i18n: pt_
+
 
 **Role:** QA  
 **Verb:** validate  
 **Maps from:** 5 upstream commands  
-**Description:** Verify everything — validate, audit, review
+**Description:** Verifica tudo — validar, auditar, revisar
 
-
+**Idioma:** Português (Brasil)
 
 ---
 
@@ -66,4 +68,4 @@ metadata:
 
 ---
 
-*Horus Spec Driven v3.0.0 — English*
+*Horus Spec Driven v3.0.0 — Português (Brasil)*

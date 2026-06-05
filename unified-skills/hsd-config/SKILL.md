@@ -1,40 +1,40 @@
 ---
 name: hsd-config
-description: "⚙️ Configuration — Configure Horus Spec Driven preferences, language, and models"
+description: "⚙️ Configuração — Configurar preferências, idioma e modelos do Horus Spec Driven"
 version: "3.0.0"
 author: "Horus Spec Driven"
 license: "MIT"
-locale: "en"
+locale: "pt"
 platforms:
   - hermes
 metadata:
   hermes:
-    tags: ["hsd", "config", "en"]
+    tags: ["hsd", "config", "pt"]
     category: "config"
 ---
 
 # ⚙️ hsd-config
 
 **Role:** System  
-**Description:** Configure Horus Spec Driven preferences, language, and models
+**Description:** Configurar preferências, idioma e modelos do Horus Spec Driven
 
 ---
 
 ## Language
 
-Switch between supported languages.
+Alterne entre idiomas suportados. As descrições dos skills são traduzidas automaticamente.
 
-**Current:** English (en)
-**Available:** en (English), pt-BR (Português)
+**Current:** Português (Brasil) (pt)
+**Available:** en (English), pt (Português)
 
-**Change language:**
+**Alterar idioma:**
 
 ```
 /hsd-config language <code>
 ```
 
-Skills are rebuilt and reinstalled on language change.
+Ao alterar o idioma, os skills serão reconstruídos e reinstalados automaticamente.
 
 ---
 
-*Horus Spec Driven v3.0.0 — English*
+*Horus Spec Driven v3.0.0 — Português (Brasil)*

@@ -1,10 +1,10 @@
 ---
 name: hsd-back-maintain
-description: "⚙️ Backend: maintain — Build the logic — debug, maintain, context"
+description: "⚙️ Backend: maintain — Constrói a lógica — debug, manutenção, contexto"
 version: "3.0.0"
 author: "Horus Spec Driven"
 license: "MIT"
-locale: "en"
+locale: "pt"
 platforms:
   - hermes
   - claude-code
@@ -13,19 +13,21 @@ platforms:
   - copilot
 metadata:
   hermes:
-    tags: ["hsd", "back", "unified", "en"]
+    tags: ["hsd", "back", "unified", "pt"]
     category: "back"
     subcommands: ["docs-update", "extract-learnings", "ingest-docs", "import", "cleanup"]
 ---
 
 # ⚙️ hsd-back-maintain 
+_i18n: pt_
+
 
 **Role:** Backend  
 **Verb:** maintain  
 **Maps from:** 5 upstream commands  
-**Description:** Build the logic — debug, maintain, context
+**Description:** Constrói a lógica — debug, manutenção, contexto
 
-
+**Idioma:** Português (Brasil)
 
 ---
 
@@ -66,4 +68,4 @@ metadata:
 
 ---
 
-*Horus Spec Driven v3.0.0 — English*
+*Horus Spec Driven v3.0.0 — Português (Brasil)*

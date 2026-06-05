@@ -37,7 +37,7 @@
 [![Codex](https://img.shields.io/badge/OpenAI-Codex-059669)](https://github.com/openai/codex)
 [![Gemini](https://img.shields.io/badge/Google-Gemini-ea580c)](https://deepmind.google/technologies/gemini/)
 [![Copilot](https://img.shields.io/badge/GitHub-Copilot-dc2626)](https://github.com/features/copilot)
-[![pt-BR](https://img.shields.io/badge/lang-pt--BR-green)](README.md)
+[![pt](https://img.shields.io/badge/lang-pt--BR-green)](README.md)
 [![en](https://img.shields.io/badge/lang-en-blue)](README-en.md)
 
 </div>
@@ -82,7 +82,7 @@ O Horus Spec Driven oferece **descrições localizadas** dos slash commands.
 | Idioma | Código | Status |
 |---|---|---|
 | English | `en` | ✅ Completo |
-| Português (Brasil) | `pt-BR` | ✅ Completo |
+| Português (Brasil) | `pt` | ✅ Completo |
 
 **Importante:** A localização afeta **apenas as descrições** dos comandos que aparecem para o usuário. Os artefatos do framework (`.planning/`, `ROADMAP.md`, `REQUIREMENTS.md`, `CONTEXT.md`, `PLAN.md`, logs, session notes) **permanecem em inglês** independentemente do idioma selecionado. Isso garante consistência entre projetos e evita confusão com documentos bilíngues.
 
@@ -93,7 +93,7 @@ O Horus Spec Driven oferece **descrições localizadas** dos slash commands.
 horus-spec-driven language
 
 # Alternar para português
-horus-spec-driven language pt-BR
+horus-spec-driven language pt
 
 # Voltar para inglês
 horus-spec-driven language en
@@ -204,7 +204,7 @@ horus-spec-driven/
 │       ├── layout.js               Layout de instalação kind-driven
 │       └── runtime-paths.js        Resolução de home por runtime
 ├── unified-skills/                 18 SKILL.md gerados com i18n
-├── locales/                        Arquivos de tradução (en, pt-BR)
+├── locales/                        Arquivos de tradução (en, pt)
 ├── runtimes/                       Especificações de layout por plataforma
 ├── docs/                           Documentação de arquitetura, rebrand, mapeamento
 ├── vendor/                         gsd-core (gitignored, baixado na instalação)

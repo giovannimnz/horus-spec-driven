@@ -1,10 +1,10 @@
 ---
 name: hsd-pm-plan
-description: "📋 Project Manager: plan — Manage HOW it gets built — plan, execute, track, ship"
+description: "📋 Project Manager: plan — Gerencia COMO será construído — planejar, executar, acompanhar, entregar"
 version: "3.0.0"
 author: "Horus Spec Driven"
 license: "MIT"
-locale: "en"
+locale: "pt"
 platforms:
   - hermes
   - claude-code
@@ -13,19 +13,21 @@ platforms:
   - copilot
 metadata:
   hermes:
-    tags: ["hsd", "pm", "unified", "en"]
+    tags: ["hsd", "pm", "unified", "pt"]
     category: "pm"
     subcommands: ["plan-phase", "ultraplan-phase", "ai-integration-phase", "planner"]
 ---
 
 # 📋 hsd-pm-plan 
+_i18n: pt_
+
 
 **Role:** Project Manager  
 **Verb:** plan  
 **Maps from:** 4 upstream commands  
-**Description:** Manage HOW it gets built — plan, execute, track, ship
+**Description:** Gerencia COMO será construído — planejar, executar, acompanhar, entregar
 
-
+**Idioma:** Português (Brasil)
 
 ---
 
@@ -65,4 +67,4 @@ metadata:
 
 ---
 
-*Horus Spec Driven v3.0.0 — English*
+*Horus Spec Driven v3.0.0 — Português (Brasil)*

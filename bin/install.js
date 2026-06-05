@@ -379,7 +379,7 @@ Usage:
   horus-spec-driven install [options]              Install rebadged gsd-core into runtimes
   horus-spec-driven sync   [options]              Pull latest gsd-core and re-install
   horus-spec-driven detect                          List detected runtimes on this host
-  horus-spec-driven language <code>                 Switch language (en, pt-BR)
+  horus-spec-driven language <code>                 Switch language (en, pt)
   horus-spec-driven wordlist                        Show rebrand map
   horus-spec-driven help                            Show this help
 
@@ -565,7 +565,7 @@ function cmdLanguage(localeTarget) {
       }
     }
     console.log(`\n  ${C.dim}Switch: horus-spec-driven language <code>${C.reset}`);
-    console.log(`  ${C.dim}Example: horus-spec-driven language pt-BR${C.reset}\n`);
+    console.log(`  ${C.dim}Example: horus-spec-driven language pt${C.reset}\n`);
     return Promise.resolve();
   }
 

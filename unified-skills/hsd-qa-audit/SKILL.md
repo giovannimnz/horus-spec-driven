@@ -1,10 +1,10 @@
 ---
 name: hsd-qa-audit
-description: "✅ QA: audit — Verify everything — validate, audit, review"
+description: "✅ QA: audit — Verifica tudo — validar, auditar, revisar"
 version: "3.0.0"
 author: "Horus Spec Driven"
 license: "MIT"
-locale: "en"
+locale: "pt"
 platforms:
   - hermes
   - claude-code
@@ -13,19 +13,21 @@ platforms:
   - copilot
 metadata:
   hermes:
-    tags: ["hsd", "qa", "unified", "en"]
+    tags: ["hsd", "qa", "unified", "pt"]
     category: "qa"
     subcommands: ["audit-fix", "audit-milestone", "audit-uat", "auditor"]
 ---
 
 # ✅ hsd-qa-audit 
+_i18n: pt_
+
 
 **Role:** QA  
 **Verb:** audit  
 **Maps from:** 4 upstream commands  
-**Description:** Verify everything — validate, audit, review
+**Description:** Verifica tudo — validar, auditar, revisar
 
-
+**Idioma:** Português (Brasil)
 
 ---
 
@@ -65,4 +67,4 @@ metadata:
 
 ---
 
-*Horus Spec Driven v3.0.0 — English*
+*Horus Spec Driven v3.0.0 — Português (Brasil)*

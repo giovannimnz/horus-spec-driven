@@ -1,10 +1,10 @@
 ---
 name: hsd-po-new
-description: "🎯 Product Owner: new — Define WHAT gets built — discovery, scope, requirements"
+description: "🎯 Product Owner: new — Define O QUE será construído — descoberta, escopo, requisitos"
 version: "3.0.0"
 author: "Horus Spec Driven"
 license: "MIT"
-locale: "en"
+locale: "pt"
 platforms:
   - hermes
   - claude-code
@@ -13,19 +13,21 @@ platforms:
   - copilot
 metadata:
   hermes:
-    tags: ["hsd", "po", "unified", "en"]
+    tags: ["hsd", "po", "unified", "pt"]
     category: "po"
     subcommands: ["new-project", "new-milestone"]
 ---
 
 # 🎯 hsd-po-new 
+_i18n: pt_
+
 
 **Role:** Product Owner  
 **Verb:** new  
 **Maps from:** 2 upstream commands  
-**Description:** Define WHAT gets built — discovery, scope, requirements
+**Description:** Define O QUE será construído — descoberta, escopo, requisitos
 
-
+**Idioma:** Português (Brasil)
 
 ---
 
@@ -63,4 +65,4 @@ metadata:
 
 ---
 
-*Horus Spec Driven v3.0.0 — English*
+*Horus Spec Driven v3.0.0 — Português (Brasil)*

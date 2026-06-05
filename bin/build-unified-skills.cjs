@@ -124,7 +124,7 @@ function buildSkill(un, cmds) {
 }
 
 function buildConfigSkill() {
-  const pt = localeCode === 'pt-BR';
+  const pt = localeCode === 'pt';
   const lang = pt ? {
     name: 'Configura\u00e7\u00e3o',
     desc: 'Configurar prefer\u00eancias, idioma e modelos do Horus Spec Driven',
@@ -151,7 +151,7 @@ function buildConfigSkill() {
     + (pt ? 'Alterne entre idiomas suportados. As descri\u00e7\u00f5es dos skills s\u00e3o traduzidas automaticamente.' : 'Switch between supported languages.')
     + '\n\n'
     + '**Current:** ' + localeData.locale.name + ' (' + localeCode + ')\n'
-    + '**Available:** en (English), pt-BR (Portugu\u00eas)\n\n'
+    + '**Available:** en (English), pt (Portugu\u00eas)\n\n'
     + '**' + lang.change + ':**\n\n```\n/hsd-config language <code>\n```\n\n'
     + (pt ? 'Ao alterar o idioma, os skills ser\u00e3o reconstru\u00eddos e reinstalados automaticamente.' : 'Skills are rebuilt and reinstalled on language change.')
     + '\n\n---\n\n'

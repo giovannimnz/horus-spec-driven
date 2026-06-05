@@ -38,7 +38,7 @@
 [![Gemini](https://img.shields.io/badge/Google-Gemini-ea580c)](https://deepmind.google/technologies/gemini/)
 [![Copilot](https://img.shields.io/badge/GitHub-Copilot-dc2626)](https://github.com/features/copilot)
 [![en](https://img.shields.io/badge/lang-en-blue)](README-en.md)
-[![pt-BR](https://img.shields.io/badge/lang-pt--BR-green)](README.md)
+[![pt](https://img.shields.io/badge/lang-pt--BR-green)](README.md)
 
 </div>
 
@@ -80,7 +80,7 @@ Horus Spec Driven offers **localized descriptions** for slash commands.
 | Language | Code | Status |
 |---|---|---|
 | English | `en` | ✅ Complete |
-| Português (Brasil) | `pt-BR` | ✅ Complete |
+| Português (Brasil) | `pt` | ✅ Complete |
 
 **Important:** Localization affects **only the descriptions** of commands shown to the user. All framework artifacts (`.planning/`, `ROADMAP.md`, `REQUIREMENTS.md`, `CONTEXT.md`, `PLAN.md`, logs, session notes) **remain in English** regardless of the selected language. This ensures consistency across projects and prevents bilingual confusion.
 
@@ -91,7 +91,7 @@ Horus Spec Driven offers **localized descriptions** for slash commands.
 horus-spec-driven language
 
 # Switch to Portuguese
-horus-spec-driven language pt-BR
+horus-spec-driven language pt
 
 # Switch back to English
 horus-spec-driven language en

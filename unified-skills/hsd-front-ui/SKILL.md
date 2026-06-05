@@ -1,10 +1,10 @@
 ---
 name: hsd-front-ui
-description: "🎨 Frontend: ui — Build the UI — design contracts, visual review"
+description: "🎨 Frontend: ui — Constrói a interface — contratos de design, revisão visual"
 version: "3.0.0"
 author: "Horus Spec Driven"
 license: "MIT"
-locale: "en"
+locale: "pt"
 platforms:
   - hermes
   - claude-code
@@ -13,19 +13,21 @@ platforms:
   - copilot
 metadata:
   hermes:
-    tags: ["hsd", "front", "unified", "en"]
+    tags: ["hsd", "front", "unified", "pt"]
     category: "front"
     subcommands: ["ui-phase", "ui-review"]
 ---
 
 # 🎨 hsd-front-ui 
+_i18n: pt_
+
 
 **Role:** Frontend  
 **Verb:** ui  
 **Maps from:** 2 upstream commands  
-**Description:** Build the UI — design contracts, visual review
+**Description:** Constrói a interface — contratos de design, revisão visual
 
-
+**Idioma:** Português (Brasil)
 
 ---
 
@@ -63,4 +65,4 @@ metadata:
 
 ---
 
-*Horus Spec Driven v3.0.0 — English*
+*Horus Spec Driven v3.0.0 — Português (Brasil)*

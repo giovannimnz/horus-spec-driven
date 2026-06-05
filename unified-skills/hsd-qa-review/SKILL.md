@@ -1,10 +1,10 @@
 ---
 name: hsd-qa-review
-description: "✅ QA: review — Verify everything — validate, audit, review"
+description: "✅ QA: review — Verifica tudo — validar, auditar, revisar"
 version: "3.0.0"
 author: "Horus Spec Driven"
 license: "MIT"
-locale: "en"
+locale: "pt"
 platforms:
   - hermes
   - claude-code
@@ -13,19 +13,21 @@ platforms:
   - copilot
 metadata:
   hermes:
-    tags: ["hsd", "qa", "unified", "en"]
+    tags: ["hsd", "qa", "unified", "pt"]
     category: "qa"
     subcommands: ["code-review", "eval-review", "review", "review-backlog", "plan-review-convergence", "ns-review", "secure-phase"]
 ---
 
 # ✅ hsd-qa-review 
+_i18n: pt_
+
 
 **Role:** QA  
 **Verb:** review  
 **Maps from:** 7 upstream commands  
-**Description:** Verify everything — validate, audit, review
+**Description:** Verifica tudo — validar, auditar, revisar
 
-
+**Idioma:** Português (Brasil)
 
 ---
 
@@ -68,4 +70,4 @@ metadata:
 
 ---
 
-*Horus Spec Driven v3.0.0 — English*
+*Horus Spec Driven v3.0.0 — Português (Brasil)*
