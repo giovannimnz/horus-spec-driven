@@ -31,7 +31,7 @@ const { convertClaudeMarkdown } = require('./content-converters/claude.js');
 const { convertGeminiMarkdown } = require('./content-converters/gemini.js');
 
 const { convertClaudeCommandToClaudeSkill } = require('./frontmatter-converters/claude.js');
-const { convertClaudeCommandToHermesSkill } = require('./frontmatter-converters/hermes.js');
+const { convertToHermesSkill } = require('./frontmatter-converters/hermes.js');
 const { convertClaudeCommandToCodexSkill } = require('./frontmatter-converters/codex.js');
 const { convertClaudeCommandToCopilotSkill } = require('./frontmatter-converters/copilot.js');
 const { convertClaudeCommandToGeminiCommand } = require('./frontmatter-converters/gemini.js');
@@ -77,7 +77,7 @@ const RUNTIME_LAYOUTS = {
           contentConverter: (cmdNames) => (content) =>
             convertHermesMarkdown(neutralizeAll(content), cmdNames),
           frontmatterConverter: (cmdNames, pkgVersion) => (content, skillName) =>
-            convertClaudeCommandToHermesSkill(content, skillName, cmdNames, pkgVersion),
+            convertToHermesSkill(content, skillName, cmdNames, pkgVersion),
         },
         {
           kind: 'agents',

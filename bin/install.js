@@ -188,14 +188,9 @@ function installKind(runtimeId, mode, kindSpec, wordlist, dryRun) {
       let content = fs.readFileSync(skillFile, 'utf8');
       // Apply content converter (Hermes-specific rewrites)
       content = contentConv(content);
-      // Frontmatter already has correct name, but apply converter for runtime fields
+      // Apply frontmatter converter to full content (handles --- delimiters internally)
       if (frontmatterConv) {
-        const fmEnd = content.indexOf('\n---', 4);
-        if (fmEnd !== -1) {
-          const oldFm = content.slice(4, fmEnd);
-          const newFm = frontmatterConv(newFullName, oldFm);
-          content = '---\n' + newFm + '\n---' + content.slice(fmEnd + 4);
-        }
+        content = frontmatterConv(content, newFullName);
       }
 
       const destFile = path.join(destSkillDir, 'SKILL.md');

@@ -2,8 +2,9 @@
 'use strict';
 
 /**
- * build-unified-skills.cjs — Gera os 17 SKILL.md unificados
- * a partir do wordlist e dos comandos originais do vendor.
+ * build-unified-skills.cjs v2 — Gera 17 SKILL.md unificados e ricos
+ * Cada skill contém: frontmatter YAML válido, descrição, tabela de subcomandos,
+ * exemplos de uso, e instruções de runtime.
  */
 
 const fs = require('fs');
@@ -16,87 +17,149 @@ const OUT_DIR = path.join(ROOT, 'unified-skills');
 
 const wordlist = JSON.parse(fs.readFileSync(WORDLIST_PATH, 'utf8'));
 
-// Group by unified name (dedup colon variants)
+const ROLE_INFO = {
+  po: { name: 'Product Owner', icon: '🎯', desc: 'Define WHAT gets built — discovery, scope, requirements' },
+  pm: { name: 'Project Manager', icon: '📋', desc: 'Manage HOW it gets built — plan, execute, track, ship' },
+  front: { name: 'Frontend', icon: '🎨', desc: 'Build the UI — design contracts, visual review' },
+  back: { name: 'Backend', icon: '⚙️', desc: 'Build the logic — debug, maintain, context' },
+  qa: { name: 'QA', icon: '✅', desc: 'Verify everything — validate, audit, review' },
+};
+
+// Group by unified name
 const groups = {};
 for (const [oldKey, newName] of Object.entries(wordlist)) {
   if (!oldKey.startsWith('gsd-')) continue;
   const oldName = oldKey.replace(/^gsd-/, '');
-  // Dedup: gsd:foo and gsd-foo are the same command
   if (!groups[newName]) groups[newName] = [];
   if (!groups[newName].includes(oldName)) {
     groups[newName].push(oldName);
   }
 }
 
-// Only keep valid slash commands: hsd-{role}-{verb} (3-part after hsd-)
+// Only valid roles
 const VALID_ROLES = ['po', 'pm', 'front', 'back', 'qa'];
-for (const [name, cmds] of Object.entries(groups)) {
+for (const [name] of Object.entries(groups)) {
   const parts = name.replace(/^hsd-/, '').split('-');
-  const role = parts[0];
-  if (!VALID_ROLES.includes(role)) {
-    delete groups[name];
-  }
+  if (!VALID_ROLES.includes(parts[0])) delete groups[name];
 }
+
+// Read original command descriptions from vendor
+function getCmdDesc(cmdName) {
+  const srcFile = path.join(VENDOR_CMDS, `${cmdName}.md`);
+  if (!fs.existsSync(srcFile)) return cmdName;
+  const src = fs.readFileSync(srcFile, 'utf8');
+  const m = src.match(/^description:\s*"?(.+?)"?\s*$/m);
+  return m ? m[1].replace(/"/g, '') : cmdName;
+}
+
+// Usage examples per role
+const EXAMPLES = {
+  'hsd-po-discover': '/hsd-po-discover explore "auth system design"',
+  'hsd-po-new': '/hsd-po-new project "my-app"',
+  'hsd-po-define': '/hsd-po-define discuss --phase 1',
+  'hsd-po-inbox': '/hsd-po-inbox',
+  'hsd-pm-plan': '/hsd-pm-plan phase 1',
+  'hsd-pm-exec': '/hsd-pm-exec run --phase 1',
+  'hsd-pm-track': '/hsd-pm-track progress',
+  'hsd-pm-config': '/hsd-pm-config set model_profile gpt-4',
+  'hsd-pm-ship': '/hsd-pm-ship release',
+  'hsd-pm-manage': '/hsd-pm-manage dashboard',
+  'hsd-front-ui': '/hsd-front-ui spec --phase 2',
+  'hsd-back-debug': '/hsd-back-debug trace --phase 1',
+  'hsd-back-maintain': '/hsd-back-maintain docs',
+  'hsd-back-context': '/hsd-back-context',
+  'hsd-qa-validate': '/hsd-qa-validate phase 1',
+  'hsd-qa-audit': '/hsd-qa-audit milestone M001',
+  'hsd-qa-review': '/hsd-qa-review code --phase 1',
+};
 
 function buildSkill(unifiedName, commands) {
   const role = unifiedName.replace(/^hsd-/, '').split('-')[0];
-  const roleNames = { po: 'Product Owner', pm: 'Project Manager', front: 'Frontend', back: 'Backend', qa: 'QA' };
+  const info = ROLE_INFO[role] || { name: role.toUpperCase(), icon: '📌', desc: '' };
+  const verbName = unifiedName.replace(/^hsd-/, '').replace(/^[a-z]+-/, '');
 
-  let skill = `---
+  // Build commands table
+  let cmdTable = '';
+  for (const cmd of commands) {
+    const desc = getCmdDesc(cmd);
+    cmdTable += `| \`${cmd}\` | ${desc} |\n`;
+  }
+
+  const example = EXAMPLES[unifiedName] || `/${unifiedName}`;
+
+  return `---
 name: ${unifiedName}
-description: "${roleNames[role] || roleUpper}: ${commands.slice(0, 3).join(', ')}..."
+description: "${info.icon} ${info.name}: ${verbName} — ${info.desc}"
 version: "3.0.0"
 author: "Horus Spec Driven"
 license: "MIT"
-platforms: [hermes, claude-code, codex, gemini, copilot]
+platforms:
+  - hermes
+  - claude-code
+  - codex
+  - gemini
+  - copilot
 metadata:
   hermes:
-    tags: [hsd, ${role}, unified]
-    category: ${role}
-    subcommands: [${commands.join(', ')}]
+    tags: ["hsd", "${role}", "unified"]
+    category: "${role}"
+    subcommands: [${commands.map(c => `"${c}"`).join(', ')}]
 ---
 
-# ${unifiedName}
+# ${info.icon} ${unifiedName}
 
-**Role:** ${roleNames[role] || roleUpper}
-**Maps from:** ${commands.length} upstream commands
+**Role:** ${info.name}  
+**Verb:** ${verbName}  
+**Maps from:** ${commands.length} upstream commands  
+**Description:** ${info.desc}
 
-</unified_command>
+---
+
+## Quick Example
+
+\`\`\`
+${example}
+\`\`\`
+
+---
+
 ## Subcommands
 
-| Subcommand | Description | Maps from |
-|------------|-------------|-----------|
-`;
+| Subcommand | Description |
+|------------|-------------|
+${cmdTable}
 
-  for (const cmd of commands) {
-    const srcFile = path.join(VENDOR_CMDS, `${cmd}.md`);
-    let desc = '—';
-    if (fs.existsSync(srcFile)) {
-      const src = fs.readFileSync(srcFile, 'utf8');
-      const nameMatch = src.match(/^name:\s*(.+)$/m);
-      const descMatch = src.match(/^description:\s*(.+)$/m);
-      desc = descMatch ? descMatch[1].replace(/"/g, '') : (nameMatch ? nameMatch[1] : '—');
-    }
-    skill += `| \`${cmd}\` | ${desc} | ${cmd} |\n`;
-  }
+---
 
-  skill += `
-</unified_command>
+## Usage
+
+\`\`\`
+/${unifiedName} <subcommand> [args]
+\`\`\`
+
+\`$ARGUMENTS[0]\` selects the subcommand. \`$ARGUMENTS[1..]\` are passed as arguments.
+
+---
+
+## Runtime Notes
 
 <horus_sdk_adapter runtime="hermes">
 
-## Runtime Instructions
+This skill uses the **horus-sdk-adapter** — a native Hermes reimplementation of gsd-tools.cjs.  
+All backend operations (state, config, roadmap, graphify, etc.) are handled by:
 
-This is a unified command. Use \`$ARGUMENTS[0]\` to determine the subcommand.
+\`node ~/.hermes/skills/hsd/horus-sdk-adapter/index.cjs <verb> [args] --cwd .\`
+
+**Graphify:** Code-aware knowledge graph via \`graphifyy.py\` (Python) with file-based fallback.  
+**Agent skills:** Use \`skill_view(name="hsd-<type>")\` to load sub-agents.  
+**Websearch:** Use \`web_search()\` — Hermes built-in with 4 backends.
 
 </horus_sdk_adapter>
 
 ---
 
-*Generated by Horus Spec Driven v3.0 — ${commands.length} commands unified*
+*Generated by Horus Spec Driven v3.0.0 — ${commands.length} upstream commands unified*
 `;
-
-  return skill;
 }
 
 if (!fs.existsSync(OUT_DIR)) fs.mkdirSync(OUT_DIR, { recursive: true });
