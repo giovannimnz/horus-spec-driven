@@ -101,7 +101,7 @@ function neutralizeAll(content) {
 /**
  * Rewrite `<available_agent_types>` blocks. The gsd-core upstream lists
  * 33 subagents (e.g. gsd-executor, gsd-planner) that the orchestrator
- * can spawn. In spec-horus, these are the rebadged shd- shq- shp- skills
+ * can spawn. In horus-spec-driven, these are the rebadged shd- shq- shp- skills
  * that ship as SKILL.md files. The orchestrator should use the runtime's
  * native delegation primitive (Task tool, delegate_task, etc.) to invoke
  * them.
@@ -115,7 +115,7 @@ function neutralizeAvailableAgentTypes(content) {
     `<available_skills>
 Spec-Horus rebadged skills (shd-*, shq-*, shp-*) are available. Invoke via
 your runtime's native delegation primitive (e.g. Task tool, delegate_task).
-Each skill ships as a SKILL.md file at the location configured by spec-horus.
+Each skill ships as a SKILL.md file at the location configured by horus-spec-driven.
 </available_skills>`
   );
 }

@@ -2,7 +2,7 @@
 'use strict';
 
 /**
- * spec-horus runtime paths registry
+ * horus-spec-driven runtime paths registry
  *
  * v2.1: paths are now CONSUMED BY the layout driver (bin/lib/layout.js).
  * This module just provides raw path resolution; the layout decides where

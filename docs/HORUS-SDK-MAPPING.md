@@ -1,10 +1,10 @@
 ---
 type: projeto-reference
-projeto: spec-horus
+projeto: horus-spec-driven
 data: 2026-06-05
 autor: filippo
 status: authoritative
-tags: [gsd, gsd-core, gsd-sdk, spec-horus, multi-runtime, adapter]
+tags: [gsd, gsd-core, gsd-sdk, horus-spec-driven, multi-runtime, adapter]
 ---
 
 # gsd-tools.cjs — Mapeamento Completo por Runtime
@@ -294,7 +294,7 @@ no body do SKILL.md. Exemplo:
 
 ```markdown
 <runtime_adapters>
-**gsd-tools calls in this skill (spec-horus native equivalents):**
+**gsd-tools calls in this skill (horus-spec-driven native equivalents):**
 
 | Call | Hermes | Claude | Codex | Gemini | Copilot |
 |---|---|---|---|---|---|
@@ -338,7 +338,7 @@ shd-stats as alternatives.
 
 ## ARQUIVO DE IMPLEMENTAÇÃO
 
-`bin/lib/horus-sdk-adapter/` — novo diretório no spec-horus:
+`bin/lib/horus-sdk-adapter/` — novo diretório no horus-spec-driven:
 
 ```
 bin/lib/horus-sdk-adapter/
@@ -360,7 +360,7 @@ bin/lib/horus-sdk-adapter/
 
 Para cada runtime, após o adapter ser aplicado:
 
-1. Instalar spec-horus: `node bin/install.js install --runtime=<rt> --global`
+1. Instalar horus-spec-driven: `node bin/install.js install --runtime=<rt> --global`
 2. Pegar um skill que referencia gsd-tools (ex: `shd-health`)
 3. Verificar que:
    - Zero referências a `gsd-tools` no body (substituídas por equivalentes

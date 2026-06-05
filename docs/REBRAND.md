@@ -33,7 +33,7 @@ Prioridade: **qa > params > dev**. Se um nome tem `validate` E `config`
 ## Mapeamento completo (gsd-core v1.3.1-dev)
 
 86+ comandos catalogados. Ver
-`vendor/rebrand-wordlist.json` após primeiro `spec-horus install` (ou
+`vendor/rebrand-wordlist.json` após primeiro `horus-spec-driven install` (ou
 rodar `node bin/install.js wordlist`).
 
 Exemplos:
@@ -111,7 +111,7 @@ Walk recursivo. Para cada arquivo:
 
 ## Customização de prefixos
 
-Quer usar `shx` ao invés de `shq`? Edite `spec-horus.json`:
+Quer usar `shx` ao invés de `shq`? Edite `horus-spec-driven.json`:
 
 ```json
 {
@@ -123,7 +123,7 @@ Quer usar `shx` ao invés de `shq`? Edite `spec-horus.json`:
 }
 ```
 
-Próximo `spec-horus install` aplica. (Nota: feature em roadmap —
+Próximo `horus-spec-driven install` aplica. (Nota: feature em roadmap —
 atualmente os prefixos são fixos em `bin/rebrand.js`.)
 
 ## Por que 3 categorias?
@@ -153,7 +153,7 @@ todas? Quem quer separação total.
      // ... resto da lógica
    }
    ```
-2. Adicione em `spec-horus.json`:
+2. Adicione em `horus-spec-driven.json`:
    ```json
    {
      "prefixes": { "dev": "shd", "qa": "shq", "params": "shp", "security": "shs" }

@@ -2,7 +2,7 @@
 'use strict';
 
 /**
- * spec-horus installer — kind-driven, converter-aware
+ * horus-spec-driven installer — kind-driven, converter-aware
  *
  * v2.1 design:
  *   1. Pull gsd-core vendor (git clone shallow)
@@ -17,13 +17,13 @@
  *         - Apply frontmatter converter (rebuild header for runtime format)
  *         - Apply layout prefix to filename
  *         - Write to runtime's destSubpath
- *   4. Save install state to spec-horus.json
+ *   4. Save install state to horus-spec-driven.json
  *
  * Output is runtime-specific. Each runtime gets format-correct files
  * that the runtime's loader can parse without further adaptation.
  *
  * The user's experience:
- *   spec-horus install --all --global
+ *   horus-spec-driven install --all --global
  *     → pull gsd-core (1-3s)
  *     → rebrand (instant)
  *     → install hermes (skills/hsd/<stem>/SKILL.md with version field)
@@ -45,7 +45,7 @@ const { getRuntimeLayout, listRuntimes, makeCmdNames } = require('./lib/layout.j
 
 const ROOT = path.resolve(__dirname, '..');
 const VENDOR_DIR = path.join(ROOT, 'vendor');
-const SPEC_HORUS_JSON = path.join(ROOT, 'spec-horus.json');
+const SPEC_HORUS_JSON = path.join(ROOT, 'horus-spec-driven.json');
 const PKG = require(path.join(ROOT, 'package.json'));
 const PKG_VERSION = PKG.version;
 
@@ -323,7 +323,7 @@ description: Hermes-native reimplementation of gsd-tools.cjs — supports state,
 version: ${PKG_VERSION}
 metadata:
   hermes:
-    tags: [gsd, sdk, adapter, spec-horus, hermes-native, gsd-tools]
+    tags: [gsd, sdk, adapter, horus-spec-driven, hermes-native, gsd-tools]
     related_skills: [shd-health, shd-config, shd-execute-phase, shd-plan-phase, shd-graphify]
 ---
 
@@ -378,14 +378,14 @@ node ~/.hermes/skills/hsd/horus-sdk-adapter/index.cjs roadmap get-phase 1 --cwd 
 
 function cmdHelp() {
   console.log(`
-spec-horus v${PKG_VERSION} — install Spec-Horus (rebadged gsd-core) into multiple AI coding CLIs.
+horus-spec-driven v${PKG_VERSION} — install Spec-Horus (rebadged gsd-core) into multiple AI coding CLIs.
 
 Usage:
-  spec-horus install [options]              Install rebadged gsd-core into runtimes
-  spec-horus sync   [options]              Pull latest gsd-core and re-install
-  spec-horus detect                          List detected runtimes on this host
-  spec-horus wordlist                        Show the gsd->shd/shq/shp rebrand map
-  spec-horus help                            Show this help
+  horus-spec-driven install [options]              Install rebadged gsd-core into runtimes
+  horus-spec-driven sync   [options]              Pull latest gsd-core and re-install
+  horus-spec-driven detect                          List detected runtimes on this host
+  horus-spec-driven wordlist                        Show the gsd->shd/shq/shp rebrand map
+  horus-spec-driven help                            Show this help
 
 install/sync options:
   --all                       Install into every detected runtime
@@ -418,7 +418,7 @@ function cmdDetect() {
 
 function cmdWordlist() {
   if (!fs.existsSync(path.join(VENDOR_DIR, 'gsd-core'))) {
-    err('vendor/gsd-core/ missing — run `spec-horus install` first');
+    err('vendor/gsd-core/ missing — run `horus-spec-driven install` first');
     process.exit(1);
   }
   const commandsDir = path.join(VENDOR_DIR, 'gsd-core', 'commands', 'gsd');
@@ -520,9 +520,9 @@ async function cmdInstall(opts) {
   }
 
   header('Done');
-  ok(`spec-horus v${PKG_VERSION} installed ${totalFiles} files across ${runtimes.length} runtime(s)`);
+  ok(`horus-spec-driven v${PKG_VERSION} installed ${totalFiles} files across ${runtimes.length} runtime(s)`);
   console.log(`\n  Rebrand wordlist: vendor/rebrand-wordlist.json`);
-  console.log(`  Config: spec-horus.json\n`);
+  console.log(`  Config: horus-spec-driven.json\n`);
 }
 
 async function cmdSync(opts) {

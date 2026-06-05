@@ -24,7 +24,7 @@
     "bin",
     "runtimes",
     "docs",
-    "spec-horus.json",
+    "horus-spec-driven.json",
     "README.md",
     "SETUP.md",
     "CHANGELOG.md",

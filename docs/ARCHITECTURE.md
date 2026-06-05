@@ -6,7 +6,7 @@ Design do wrapper, do rebrand, e do pipeline de install/sync.
 
 ```
 ┌──────────────────────────────────────────────────────────────────────┐
-│  spec-horus  (este repo, MIT)                                        │
+│  horus-spec-driven  (este repo, MIT)                                        │
 │                                                                      │
 │  bin/install.js ──┐                                                  │
 │  bin/sync.js ─────┤                                                  │
@@ -32,7 +32,7 @@ Design do wrapper, do rebrand, e do pipeline de install/sync.
 │                   ▼                                                  │
 │  ┌────────────────────────────────────────────────────────────┐      │
 │  │  Stage 4: Install per runtime                              │      │
-│  │    for each enabled runtime in spec-horus.json:            │      │
+│  │    for each enabled runtime in horus-spec-driven.json:            │      │
 │  │      resolve paths via runtimes/<id>.json                  │      │
 │  │      copy rebadged files to:                               │      │
 │  │        hermes:  ~/.hermes/skills/, ~/.hermes/agents/       │      │
@@ -45,7 +45,7 @@ Design do wrapper, do rebrand, e do pipeline de install/sync.
 │  bin/rebrand.js ─ engine de rebrand (puro)                          │
 │  bin/lib/runtime-paths.js — registry de paths por CLI               │
 │  bin/lib/cli-detect.js — detecção automática                        │
-│  spec-horus.json — config do usuário (runtimes, prefixos, version)  │
+│  horus-spec-driven.json — config do usuário (runtimes, prefixos, version)  │
 └──────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -54,7 +54,7 @@ Design do wrapper, do rebrand, e do pipeline de install/sync.
 Decisão consciente. Razões:
 
 1. **Compatibilidade automática** com upstream. Quando `open-gsd/gsd-core`
-   lança v1.4, `spec-horus sync` pega na hora. Sem PR, sem merge, sem
+   lança v1.4, `horus-spec-driven sync` pega na hora. Sem PR, sem merge, sem
    resolver conflitos de versionamento.
 2. **Zero duplicação de código**. Todos os 86+ comandos vivem no
    upstream; só mantemos o wrapper.
@@ -67,7 +67,7 @@ Decisão consciente. Razões:
 Tradeoff: dependemos do upstream não quebrar o layout
 (`commands/gsd/*.md`, `agents/gsd-*.md`, `skills/gsd-*/SKILL.md`). Se
 mudarem, o wrapper quebra e precisa de patch. Mitigação: `version` pin
-em `spec-horus.json`.
+em `horus-spec-driven.json`.
 
 ## Rebrand engine
 
@@ -113,7 +113,7 @@ Copilot `.prompt.md`) têm format adapter aplicado.
 
 ## Configuração do usuário
 
-`spec-horus.json` é a fonte de verdade. Defaults:
+`horus-spec-driven.json` é a fonte de verdade. Defaults:
 
 ```json
 {
@@ -136,19 +136,19 @@ trail).
 
 ```
 primeira vez:
-  spec-horus install
+  horus-spec-driven install
     → rm -rf vendor/
     → git clone --depth 1 open-gsd/gsd-core vendor/gsd-core
     → stage + rebrand + install
 
 sync subsequente:
-  spec-horus sync
+  horus-spec-driven sync
     → rm -rf vendor/
     → git clone --depth 1 open-gsd/gsd-core vendor/gsd-core
     → stage + rebrand + install
 
 upgrade específico:
-  spec-horus install --version=v1.3.0
+  horus-spec-driven install --version=v1.3.0
     → git clone --depth 1 --branch v1.3.0 open-gsd/gsd-core vendor/gsd-core
     → stage + rebrand + install
 ```
@@ -170,11 +170,11 @@ distribui. Cada install recria do zero (shallow clone é leve).
 
 - **Wrapper não pode patchar lógica do gsd-core upstream.** Se um
   comando tem bug, o fix tem que ir pro upstream primeiro.
-- **Rebrand é one-way.** Se você rodar `spec-horus install` duas vezes,
+- **Rebrand é one-way.** Se você rodar `horus-spec-driven install` duas vezes,
   o segundo install é no-op (nada renomeia, mas copia é safe).
 - **Gemini `.toml` conversion é manual.** O gsd-core upstream gera
   markdown; converter pra TOML é não-trivial (precisa parsear frontmatter,
-  extrair descrição, formatar). Workaround: o `spec-horus install` copia
+  extrair descrição, formatar). Workaround: o `horus-spec-driven install` copia
   como `.md` e warns sobre conversão manual. Roadmap: `bin/toml-convert.js`.
 - **Codex agent `.toml` conversion é manual.** Mesma situação. Roadmap:
   `bin/codex-agent-convert.js`.
@@ -185,11 +185,11 @@ distribui. Cada install recria do zero (shallow clone é leve).
 
 ## Roadmap
 
-- [ ] `spec-horus uninstall`
+- [ ] `horus-spec-driven uninstall`
 - [ ] TOML converter pra Gemini
 - [ ] `.toml` converter pra Codex agents
 - [ ] Suporte a Kilo, Cursor, Windsurf, OpenCode, Cline, Augment
 - [ ] Systemd user timer pra sync diário
 - [ ] CI pra validar rebrand (lint test)
-- [ ] Lockfile (`spec-horus.lock`) com sha256 do vendor
+- [ ] Lockfile (`horus-spec-driven.lock`) com sha256 do vendor
 - [ ] Webhook do GitHub pra notificar novos releases do upstream

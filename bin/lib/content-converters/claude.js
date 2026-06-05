@@ -7,7 +7,7 @@
  *
  * This is mostly a passthrough — gsd-core IS Claude-Code-native — but we
  * still apply:
- *   - `subagent_type: gsd-X` → `@agents/gsd-X.md#gsd-X` (neutralize for spec-horus
+ *   - `subagent_type: gsd-X` → `@agents/gsd-X.md#gsd-X` (neutralize for horus-spec-driven
  *     multi-runtime compatibility; Claude Code's Task tool still understands the
  *     original form, but the neutralized form works as a stable link)
  *   - `Claude Code` branding → keep
@@ -28,9 +28,9 @@ function convertClaudeMarkdown(content, cmdNames) {
   // Path rewrites: upstream gsd-core references its own install location
   // (`~/.claude/gsd-core/...` or `$HOME/.claude/gsd-core/...`). These
   // are PATHS to the upstream vendor dir, not the user's runtime config.
-  // In spec-horus, the vendor is at `vendor/gsd-core/` in the spec-horus
+  // In horus-spec-driven, the vendor is at `vendor/gsd-core/` in the horus-spec-driven
   // repo, not at `~/.claude/gsd-core/`. Rewrite to point at the rebadged
-  // skill that ships with spec-horus.
+  // skill that ships with horus-spec-driven.
   c = c.replace(/@?~\/\.claude\/gsd-core\/workflows\//g, '~/.claude/skills/');
   c = c.replace(/@?\$HOME\/\.claude\/gsd-core\/workflows\//g, '$HOME/.claude/skills/');
   c = c.replace(/@?~\/\.claude\/gsd-core\/references\//g, '~/.claude/skills/');
@@ -39,7 +39,7 @@ function convertClaudeMarkdown(content, cmdNames) {
   c = c.replace(/@?\$HOME\/\.claude\/gsd-core\/templates\//g, '$HOME/.claude/skills/');
   // Bare `~/.claude/gsd-core/...` (the gsd-tools binary path) — keep as a
   // vendor reference. Users who installed gsd-core upstream have this;
-  // spec-horus users will need to adjust if they want the gsd-tools CLI.
+  // horus-spec-driven users will need to adjust if they want the gsd-tools CLI.
 
   // Colon→hyphen
   c = transformContentToHyphen(c, cmdNames);

@@ -25,7 +25,7 @@
  * Tier selection is automatic and documented in output. The agent
  * receives concrete instructions for the detected tier.
  *
- * Mapping (gsd-core → spec-horus):
+ * Mapping (gsd-core → horus-spec-driven):
  *   graphify build          → scan .planning/, store in Tier 1/2/3
  *   graphify query <term>   → search by detected tier capabilities
  *   graphify status         → metadata about stored graph
@@ -101,7 +101,7 @@ function detectTier(cwd) {
   // Tier 2: PostgreSQL via postgres_fact_store
   // Tier 1: default — file-based (always available)
   if (process.env.HERMES_PG_ENABLED === '1') return 'pg';
-  // Check for graphifyy.py script (belongs to spec-horus, no pip install needed)
+  // Check for graphifyy.py script (belongs to horus-spec-driven, no pip install needed)
   const gyPath = graphifyyPath();
   if (fs.existsSync(gyPath)) {
     const py = ensurePython(cwd);

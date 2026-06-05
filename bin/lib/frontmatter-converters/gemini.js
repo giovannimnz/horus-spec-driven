@@ -3,7 +3,7 @@
 /**
  * Gemini CLI frontmatter converter (markdown → TOML)
  *
- * Ported from gsd-core upstream logic + extended for spec-horus.
+ * Ported from gsd-core upstream logic + extended for horus-spec-driven.
  *
  * Gemini commands are TOML, not markdown. Schema:
  *   [command]

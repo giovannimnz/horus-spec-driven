@@ -130,7 +130,7 @@ Every phase starts with a specification — `ROADMAP.md` → `REQUIREMENTS.md` �
 | **Claude Code** |   Complete | `~/.claude/skills/` | Content + frontmatter converters. Subagent neutralization. |
 | **OpenAI Codex** |   Complete | `~/.codex/prompts/` | Content converter (template vars, slash→skill). Frontmatter converter. |
 | **Google Gemini** |   Complete | `~/.gemini/commands/hsd/` | Content converter (TOML format). Frontmatter converter. |
-| **GitHub Copilot** |   Disabled | `.github/prompts/` | Content converter. Disabled by default — enable in `spec-horus.json`. |
+| **GitHub Copilot** |   Disabled | `.github/prompts/` | Content converter. Disabled by default — enable in `horus-spec-driven.json`. |
 
 ### Coming Soon
 
