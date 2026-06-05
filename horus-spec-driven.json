@@ -36,32 +36,32 @@
   },
   "unified": {
     "prefix": "hsd",
-    "reduction": "67 → 17 (75%)",
+    "reduction": "67 \u2192 17 (75%)",
     "roles": {
       "po": {
         "name": "Product Owner",
         "color": "#7c3aed",
-        "description": "Define WHAT — discovery, scope, requirements"
+        "description": "Define WHAT \u2014 discovery, scope, requirements"
       },
       "pm": {
         "name": "Project Manager",
         "color": "#2563eb",
-        "description": "Manage HOW — plan, execute, track, ship"
+        "description": "Manage HOW \u2014 plan, execute, track, ship"
       },
       "front": {
         "name": "Frontend",
         "color": "#059669",
-        "description": "Build UI — design, visual specs"
+        "description": "Build UI \u2014 design, visual specs"
       },
       "back": {
         "name": "Backend",
         "color": "#ea580c",
-        "description": "Build Logic — debug, maintain, context"
+        "description": "Build Logic \u2014 debug, maintain, context"
       },
       "qa": {
         "name": "QA",
         "color": "#dc2626",
-        "description": "Verify — validate, audit, review"
+        "description": "Verify \u2014 validate, audit, review"
       }
     }
   },
@@ -76,6 +76,10 @@
     ],
     "mode": "global",
     "gsd_core_version": "latest",
-    "date": "2026-06-05T09:56:21.644Z"
+    "date": "2026-06-05T10:04:05.368Z"
+  },
+  "model_fs": {
+    "last_model": "deepseek-v4-pro",
+    "current_model": "deepseek-v4-flash"
   }
 }

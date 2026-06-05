@@ -364,6 +364,57 @@ node ~/.hermes/skills/hsd/horus-sdk-adapter/index.cjs roadmap get-phase 1 --cwd 
     }
     total += 1;
     info(`  adapter/: horus-sdk-adapter skill installed (${dryRun ? 'dry-run' : 'real'})`);
+
+    // Also install model-fs as a custom skill
+    const modelFsDir = path.join(resolveBaseDir(runtimeId, mode), 'skills', 'hsd', 'model-fs');
+    const modelFsSkill = `---
+name: model-fs
+description: "Model Fast Switch — toggle between current and last used model"
+version: ${PKG_VERSION}
+author: "Horus Spec Driven"
+license: "MIT"
+platforms:
+  - hermes
+metadata:
+  hermes:
+    tags: ["hsd", "model", "switch"]
+    category: "config"
+---
+
+# 🔄 model-fs — Model Fast Switch
+
+Toggle between the current model and the last used model.
+
+## How It Works
+
+1. Reads horus-spec-driven.json → model_fs.current_model and model_fs.last_model
+2. Swaps them
+3. Calls \`hermes config set model.default <new_model>\`
+4. Persists state
+
+## Runtime
+
+\\\`\\\`\\\`bash
+CFG=~/GitHub/horus-spec-driven/horus-spec-driven.json
+CURRENT=$(python3 -c "import json;print(json.load(open('$CFG'))['model_fs']['current_model'])")
+LAST=$(python3 -c "import json;print(json.load(open('$CFG'))['model_fs']['last_model'])")
+python3 -c "
+import json
+cfg=json.load(open('$CFG'))
+cfg['model_fs']['current_model']='$LAST'
+cfg['model_fs']['last_model']='$CURRENT'
+json.dump(cfg,open('$CFG','w'),indent=2)
+"
+hermes config set model.default "$LAST"
+echo "Switched: $CURRENT → $LAST"
+\\\`\\\`\\\`
+`;
+    if (!dryRun) {
+      fs.mkdirSync(modelFsDir, { recursive: true });
+      fs.writeFileSync(path.join(modelFsDir, 'SKILL.md'), modelFsSkill);
+    }
+    total += 1;
+    info(`  model-fs/: model-fs skill installed (${dryRun ? 'dry-run' : 'real'})`);
   }
 
   return { installed: total, skipped: 0 };
