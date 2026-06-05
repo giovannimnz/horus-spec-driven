@@ -1,138 +1,75 @@
-# HSD — CLI Compatibility Matrix
+# HSD v4 — CLI Compatibility Matrix
 
-**Qual skill/comando funciona em qual CLI.**
-
-O Horus Spec Driven é um wrapper multi-CLI. Cada runtime tem capacidades diferentes. Esta matriz documenta exatamente o que funciona onde.
+**67 upstream commands → 3 roles + config = 4 slash commands.**
 
 ---
 
 ## Slash Commands
 
-| Comando | Hermes | Claude Code | Codex | Gemini CLI | Copilot | Notas |
+| Comando | Subcomandos | Hermes | Claude | Codex | Gemini | Copilot |
 |---|---|---|---|---|---|---|
-| `/hsd-po-discover` | ✅ | ✅ | ✅ | ✅ | ✅ | Skills de descoberta — funciona em todos |
-| `/hsd-po-new` | ✅ | ✅ | ✅ | ✅ | ✅ | Criação de projeto/milestone |
-| `/hsd-po-define` | ✅ | ✅ | ✅ | ✅ | ✅ | Discussão e especificação |
-| `/hsd-po-inbox` | ✅ | ✅ | ✅ | ✅ | ✅ | Triage de issues |
-| `/hsd-pm-plan` | ✅ | ✅ | ✅ | ✅ | ✅ | Planejamento de fase |
-| `/hsd-pm-exec` | ✅ | ✅ | ✅ | ✅ | ✅ | Execução de planos |
-| `/hsd-pm-track` | ✅ | ✅ | ✅ | ✅ | ✅ | Tracking e progresso |
-| `/hsd-pm-config` | ✅ | ✅ | ✅ | ✅ | ✅ | Configuração |
-| `/hsd-pm-ship` | ✅ | ✅ | ✅ | ✅ | ✅ | Release e deploy |
-| `/hsd-pm-manage` | ✅ | ✅ | ✅ | ✅ | ✅ | Gestão geral |
-| `/hsd-front-ui` | ✅ | ✅ | ✅ | ✅ | ✅ | Design UI |
-| `/hsd-back-debug` | ✅ | ✅ | ✅ | ✅ | ✅ | Debug |
-| `/hsd-back-maintain` | ✅ | ✅ | ✅ | ✅ | ✅ | Manutenção |
-| `/hsd-back-context` | ✅ | ✅ | ✅ | ✅ | ✅ | Contexto |
-| `/hsd-qa-validate` | ✅ | ✅ | ✅ | ✅ | ✅ | Validação |
-| `/hsd-qa-audit` | ✅ | ✅ | ✅ | ✅ | ✅ | Auditoria |
-| `/hsd-qa-review` | ✅ | ✅ | ✅ | ✅ | ✅ | Revisão |
-| `/hsd-config` | ✅ | ⬜ | ⬜ | ⬜ | ⬜ | Config do HSD (lê horus-spec-driven.json) |
+| `/hsd-dev` | discover, define, plan, build, debug, maintain, ui | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `/hsd-pm` | new, track, ship, config, manage | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `/hsd-qa` | validate, audit, review | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `/hsd-config` | language | ✅ | ⬜ | ⬜ | ⬜ | ⬜ |
+
+---
+
+## /hsd-dev — Developer
+
+| Subcomando | Maps from (gsd-core) | Compatibilidade |
+|---|---|---|
+| `discover` | explore, spike, sketch, capture, ns-ideate, map-codebase, ns-context | ✅ Todos |
+| `define` | discuss-phase, spec-phase, mvp-phase | ✅ Todos |
+| `plan` | plan-phase, ultraplan-phase, ai-integration-phase | ✅ Todos |
+| `build` | execute-phase, autonomous, quick, fast | ✅ Todos |
+| `debug` | debug, forensics | ✅ Todos |
+| `maintain` | docs-update, extract-learnings, ingest-docs, import, cleanup | ✅ Todos |
+| `ui` | ui-phase, ui-review | ✅ Todos |
+
+## /hsd-pm — Project Manager
+
+| Subcomando | Maps from | Compatibilidade |
+|---|---|---|
+| `new` | new-project, new-milestone | ✅ Todos |
+| `track` | progress, workstreams, thread, phase, workspace, graphify, stats | ✅ Todos |
+| `ship` | ship, pr-branch, complete-milestone, milestone-summary, undo, update | ✅ Todos |
+| `config` | config, settings, profile-user | ✅ Todos |
+| `manage` | manager, surface, pause-work, resume-work, help, inbox | ✅ Todos |
+
+## /hsd-qa — Quality
+
+| Subcomando | Maps from | Compatibilidade |
+|---|---|---|
+| `validate` | validate-phase, verify-work, health, add-tests | ✅ Todos |
+| `audit` | audit-fix, audit-milestone, audit-uat | ✅ Todos |
+| `review` | code-review, eval-review, review, review-backlog, plan-review-convergence, secure-phase | ✅ Todos |
 
 ---
 
 ## Funcionalidades Avançadas
 
-| Funcionalidade | Hermes | Claude Code | Codex | Gemini CLI | Copilot |
+| Funcionalidade | Hermes | Claude | Codex | Gemini | Copilot |
 |---|---|---|---|---|---|
-| **horus-sdk-adapter** (31 verbos) | ✅ Nativo | ❌ | ❌ | ❌ | ❌ |
-| **graphify (Python code-aware)** | ✅ Nativo | ❌ | ❌ | ❌ | ❌ |
-| **graphify (File-based fallback)** | ✅ Nativo | ⬜ Planejado | ⬜ Planejado | ⬜ Planejado | ⬜ |
-| **agent-skills** | ✅ skill_view() | ✅ Agent() | ⬜ delegate | ❌ | ❌ |
-| **websearch** | ✅ web_search() | ✅ Brave API | ❌ | ❌ | ❌ |
+| **horus-sdk-adapter** | ✅ Nativo | ❌ | ❌ | ❌ | ❌ |
+| **graphify (Python)** | ✅ Nativo | ❌ | ❌ | ❌ | ❌ |
+| **graphify (File)** | ✅ Fallback | ⬜ | ⬜ | ⬜ | ❌ |
+| **Content converter** | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **Frontmatter converter** | ✅ | ✅ | ✅ | ✅ | ✅ |
 
 ---
 
-## Conversores de Conteúdo
+## Roteamento Inteligente
 
-| Runtime | Content Converter | Frontmatter Converter | Instala em |
-|---|---|---|---|
-| **Hermes** | Hermes → Hermes (CLAUDE.md→HERMES.md, paths) | Preserva YAML original + version | `~/.hermes/skills/hsd/` |
-| **Claude Code** | Claude → Claude (subagent neutralization) | Claude SKILL format | `~/.claude/skills/` |
-| **Codex** | Codex ($ARGUMENTS→{{GSD_ARGS}}) | Codex prompt.md | `~/.codex/prompts/` |
-| **Gemini CLI** | Gemini (.claude→.gemini) | TOML format | `~/.gemini/commands/hsd/` |
-| **GitHub Copilot** | Copilot (tool name mapping) | copilot-instructions.md | `.github/prompts/` |
+Cada slash command recebe `$ARGUMENTS[0]` como subcomando e roteia para o skill correspondente:
 
----
-
-## Funcionalidades Exclusivas do Hermes
-
-As seguintes capacidades SÓ existem no Hermes porque dependem de ferramentas nativas que os outros CLIs não têm:
-
-### horus-sdk-adapter (31 verbos)
-
-Reimplementação completa do `gsd-tools.cjs` (1722 linhas) usando ferramentas nativas do Hermes:
-
-| Verbo | Hermes-native | Descrição |
-|---|---|---|
-| `state` | `read_file`, `write_file` | Load, init, snapshot, summary, history |
-| `config` | `read_file`, `write_file` | Get, set, model-profile, new-project |
-| `commit` | `terminal(git...)` | Commit, subrepo, check |
-| `frontmatter` | `read_file`, `write_file` | Get, set, merge, validate |
-| `roadmap` | `read_file`, `search_files` | Get-phase, analyze, find, add |
-| `validate` | `read_file`, `search_files` | Consistency, health, audit-uat |
-| `workstream` | `read_file`, `write_file` | Create, list, set, complete |
-| `scaffold` | `write_file`, `mkdir` | Context, uat, verification |
-| `milestone` | `read_file`, `write_file` | Complete, requirements |
-| `misc` | `read_file`, `terminal` | List-todos, gap-analysis, learnings |
-| `resolve` | `read_file`, `search_files` | Progress, resolve-model |
-| `graphify` | `execSync(python3...)` | Build, query, status, diff |
-| `agent-skills` | `skill_view()` | Bridge para sub-agentes |
-| `websearch` | `web_search()` | Busca com 4 backends |
-
-### graphifyy.py
-
-Scanner de código em Python puro (stdlib, zero dependências) que analisa:
-- **Python** — AST parser (classes, funções, imports)
-- **JavaScript/TypeScript** — Regex (exports, imports, rotas)
-- **SQL** — Regex (CREATE TABLE)
-- **Genérico** — Go, Rust, Java, etc.
-
-Tiers de armazenamento:
-1. **Python** (Tier 0) — análise de código completa, auto-instala se ausente
-2. **File JSON** (Tier 1) — `.planning/graphs/graph.json`, zero config
-3. **PostgreSQL** (Tier 2) — `postgres_fact_store` com tsvector
+```
+/hsd-dev discover "auth system"
+  → $ARGUMENTS[0] = "discover"
+  → Skill: hsd-dev → Subcomando: discover
+  → Executa: explore + spike + map-codebase no contexto do projeto
+```
 
 ---
 
-## Funcionalidades Exclusivas do Claude Code
-
-| Funcionalidade | Descrição |
-|---|---|
-| `Agent(subagent_type="gsd-X")` | Spawn de subagentes nativos |
-| `Skill(skill="gsd-X")` | Invocação de skills como ferramentas |
-| Revisão cross-AI | `/gsd-review` com agentes externos |
-
----
-
-## Funcionalidades Exclusivas do Codex
-
-| Funcionalidade | Descrição |
-|---|---|
-| `delegate` | Delegation de tarefas |
-| Template vars | `{{GSD_ARGS}}` nativo |
-
----
-
-## Compatibilidade por Tipo de Arquivo
-
-| Extensão | Hermes | Claude | Codex | Gemini | Copilot |
-|---|---|---|---|---|---|
-| `SKILL.md` (frontmatter YAML) | ✅ | ✅ | ⚠️ prompt.md | ❌ | ❌ |
-| `.md` (flat) | ✅ | ✅ | ✅ | ❌ | ✅ |
-| `.toml` | ❌ | ❌ | ❌ | ✅ | ❌ |
-| `copilot-instructions.md` | ❌ | ❌ | ❌ | ❌ | ✅ |
-
----
-
-## Planos Futuros
-
-| Plataforma | Previsão | Adaptação necessária |
-|---|---|---|
-| **Amazon Q Developer** | 📋 Planejado | Converter de SKILL.md para formato Q (.md) |
-| **JetBrains AI** | 📋 Planejado | Converter para formato JetBrains (.md) |
-| **Cursor** | 📋 Planejado | Cursor usa formato Claude Code — compatível |
-
----
-
-*Horus Spec Driven v3.0.0 — Atualizado em 2026-06-05*
+*Horus Spec Driven v4.0 — 2026-06-05*

@@ -1,261 +1,52 @@
-# Horus Spec Driven — Unified Command Architecture
-# Generated 2026-06-05
-# 
-# 67 upstream gsd-core commands → 17 unified hsd commands
-# Reduction: 75% fewer commands, same coverage
-#
-# Categories:
-#   PO  = Product Owner — defines WHAT (discovery, scope, requirements)
-#   PM  = Project Manager — manages HOW (plan, execute, track, ship)
-#   FRONT = Frontend — builds UI
-#   BACK = Backend — builds infra/logic
-#   QA  = Quality — verifies, reviews, audits
+version: "4.0.0"
+reduction: "67 → 4 (94%)"
+roles: 3
 
-categories:
-  po:
-    prefix: hsd-po
-    description: Product Owner — Discovery, Scope, Requirements
-    commands:
-      - name: discover
-        description: "Explorar, pesquisar, mapear codebase, prototipar"
-        maps_from:
-          - explore         # Socratic ideation
-          - spike           # Experiments
-          - sketch          # UI wireframes
-          - capture         # Capture ideas
-          - ns-ideate       # Brainstorming
-          - map-codebase    # Codebase mapping
-          - ns-context      # Codebase intelligence
-        usage: "/hsd-po-discover <subcommand> --phase <N>"
-        subcommands:
-          explore: "Ideate and route ideas"
-          spike: "Validate with experiment"
-          sketch: "UI/design mockup"
-          map: "Map codebase structure"
-          capture: "Capture idea/note"
+dev:
+  prefix: hsd-dev
+  description: "Developer — discover, define, plan, build, debug, maintain, ui"
+  subcommands:
+    - cmd: discover
+      maps: [explore, spike, sketch, capture, ns-ideate, map-codebase, ns-context]
+    - cmd: define
+      maps: [discuss-phase, spec-phase, mvp-phase]
+    - cmd: plan
+      maps: [plan-phase, ultraplan-phase, ai-integration-phase]
+    - cmd: build
+      maps: [execute-phase, autonomous, quick, fast]
+    - cmd: debug
+      maps: [debug, forensics]
+    - cmd: maintain
+      maps: [docs-update, extract-learnings, ingest-docs, import, cleanup]
+    - cmd: ui
+      maps: [ui-phase, ui-review]
 
-      - name: new
-        description: "Iniciar novo projeto ou milestone"
-        maps_from:
-          - new-project      # Initialize new project
-          - new-milestone    # Start milestone cycle
-        usage: "/hsd-po-new <subcommand>"
-        subcommands:
-          project: "Create new project"
-          milestone: "Start new milestone"
+pm:
+  prefix: hsd-pm
+  description: "Project Manager — new, track, ship, config, manage"
+  subcommands:
+    - cmd: new
+      maps: [new-project, new-milestone]
+    - cmd: track
+      maps: [progress, workstreams, thread, phase, workspace, graphify, stats]
+    - cmd: ship
+      maps: [ship, pr-branch, complete-milestone, milestone-summary, undo, update]
+    - cmd: config
+      maps: [config, settings, profile-user]
+    - cmd: manage
+      maps: [manager, surface, pause-work, resume-work, help, inbox]
 
-      - name: define
-        description: "Definir escopo, contexto, requisitos"
-        maps_from:
-          - discuss-phase    # Gather design decisions
-          - spec-phase       # Clarify scope
-          - mvp-phase        # Define MVP slice
-        usage: "/hsd-po-define <subcommand> --phase <N>"
-        subcommands:
-          discuss: "Gather context and decisions"
-          spec: "Clarify what this phase delivers"
-          mvp: "Define vertical MVP slice"
+qa:
+  prefix: hsd-qa
+  description: "QA — validate, audit, review"
+  subcommands:
+    - cmd: validate
+      maps: [validate-phase, verify-work, health, add-tests]
+    - cmd: audit
+      maps: [audit-fix, audit-milestone, audit-uat]
+    - cmd: review
+      maps: [code-review, eval-review, review, review-backlog, plan-review-convergence, secure-phase]
 
-      - name: inbox
-        description: "Triar e revisar issues/PRs do backlog"
-        maps_from:
-          - inbox            # Triage issues
-        usage: "/hsd-po-inbox"
-        subcommands: []
-
-  pm:
-    prefix: hsd-pm
-    description: Project Manager — Planning, Execution, Tracking, Release
-    commands:
-      - name: plan
-        description: "Planejar fase ou milestone"
-        maps_from:
-          - plan-phase       # Create detailed plan
-          - ultraplan-phase  # Ultraplan mode
-          - ai-integration-phase  # AI design contract
-        usage: "/hsd-pm-plan <subcommand> --phase <N>"
-        subcommands:
-          phase: "Plan a specific phase"
-          ultra: "Ultraplan (beta)"
-          ai: "AI integration design"
-
-      - name: exec
-        description: "Executar planos da fase atual"
-        maps_from:
-          - execute-phase    # Execute all plans
-          - autonomous       # Autonomous execution
-          - quick            # Quick inline task
-          - fast             # Fast trivial task
-        usage: "/hsd-pm-exec <subcommand> --phase <N>"
-        subcommands:
-          run: "Execute phase plans"
-          auto: "Autonomous mode"
-          quick: "Quick inline execution"
-          fast: "Fast trivial task"
-
-      - name: track
-        description: "Acompanhar progresso, workspace, workstreams"
-        maps_from:
-          - progress         # Check progress
-          - workstreams      # Parallel workstreams
-          - thread           # Context threads
-          - phase            # Manage phases
-          - workspace        # Workspace management
-          - stats            # Project statistics
-          - graphify         # Knowledge graph
-          - ns-project       # Project lifecycle
-          - ns-workflow      # Workflow operations
-          - ns-manage        # Config/workspace management
-        usage: "/hsd-pm-track <subcommand>"
-        subcommands:
-          progress: "Check phase progress"
-          streams: "Manage workstreams"
-          graph: "Build/query knowledge graph"
-          stats: "Project statistics"
-          phase: "CRUD phases"
-          workspace: "Manage workspaces"
-
-      - name: config
-        description: "Configurar preferências, modelos, settings"
-        maps_from:
-          - config           # GSD settings
-          - settings         # Workflow toggles
-          - profile-user     # Developer profile
-        usage: "/hsd-pm-config <subcommand>"
-        subcommands:
-          set: "Set config value"
-          get: "Get config value"
-          model: "Set model profile"
-          profile: "Generate developer profile"
-
-      - name: ship
-        description: "Release, deploy, versionar, completar milestone"
-        maps_from:
-          - ship             # Create PR + review
-          - pr-branch        # Clean PR branch
-          - complete-milestone  # Archive milestone
-          - milestone-summary   # Generate summary
-          - undo             # Rollback
-          - update           # Update GSD
-        usage: "/hsd-pm-ship <subcommand>"
-        subcommands:
-          release: "Ship current phase as PR"
-          complete: "Complete milestone"
-          summary: "Generate milestone summary"
-          rollback: "Undo last commit"
-          update: "Update GSD to latest"
-
-      - name: manage
-        description: "Meta-gestão: surface skills, pausar, retomar"
-        maps_from:
-          - manager          # Interactive command center
-          - surface          # Toggle skills
-          - pause-work       # Pause work
-          - resume-work      # Resume work
-          - help             # Help
-        usage: "/hsd-pm-manage <subcommand>"
-        subcommands:
-          dashboard: "Interactive command center"
-          pause: "Pause current work"
-          resume: "Resume paused work"
-          toggle: "Toggle skill visibility"
-          help: "Show available commands"
-
-  front:
-    prefix: hsd-front
-    description: Frontend — UI design, visual specs, browser testing
-    commands:
-      - name: ui
-        description: "Gerar contrato de design UI"
-        maps_from:
-          - ui-phase         # UI design contract
-          - ui-review        # Visual audit
-        usage: "/hsd-front-ui <subcommand> --phase <N>"
-        subcommands:
-          spec: "Generate UI design contract"
-          review: "Visual audit of implemented UI"
-
-  back:
-    prefix: hsd-back
-    description: Backend — Debug, manutenção, documentação, codebase
-    commands:
-      - name: debug
-        description: "Debug e forense de falhas"
-        maps_from:
-          - debug            # Systematic debugging
-          - forensics        # Post-mortem
-        usage: "/hsd-back-debug <subcommand>"
-        subcommands:
-          trace: "Systematic debug"
-          forensics: "Post-mortem investigation"
-
-      - name: maintain
-        description: "Documentação, docs, cleanup, import/export"
-        maps_from:
-          - docs-update      # Update documentation
-          - extract-learnings  # Extract lessons
-          - ingest-docs      # Ingest external docs
-          - import           # Import plans
-          - cleanup          # Cleanup artifacts
-        usage: "/hsd-back-maintain <subcommand>"
-        subcommands:
-          docs: "Update project docs"
-          learn: "Extract learnings"
-          ingest: "Ingest external docs"
-          import: "Import external plans"
-          clean: "Cleanup artifacts"
-
-      - name: context
-        description: "Contexto de codebase e referências"
-        maps_from:
-          - ns-context       # Codebase intelligence
-        usage: "/hsd-back-context"
-        subcommands: []
-
-  qa:
-    prefix: hsd-qa
-    description: Quality Assurance — Validate, audit, review, test
-    commands:
-      - name: validate
-        description: "Validar fase, verificar implementação, health check"
-        maps_from:
-          - validate-phase   # Validate phase completion
-          - verify-work      # Verify built features
-          - health           # Health check
-          - add-tests        # Generate tests
-        usage: "/hsd-qa-validate <subcommand> --phase <N>"
-        subcommands:
-          phase: "Validate phase completion"
-          verify: "Verify built features"
-          health: "Health check"
-          tests: "Generate test suite"
-
-      - name: audit
-        description: "Auditoria de milestone, UAT, fixes"
-        maps_from:
-          - audit-fix        # Audit-to-fix pipeline
-          - audit-milestone  # Audit milestone
-          - audit-uat        # Audit UAT gaps
-        usage: "/hsd-qa-audit <subcommand>"
-        subcommands:
-          fix: "Audit and fix"
-          milestone: "Audit milestone"
-          uat: "Audit UAT gaps"
-
-      - name: review
-        description: "Code review, peer review, security review"
-        maps_from:
-          - code-review      # Review source files
-          - eval-review      # Evaluate review coverage
-          - review           # Cross-AI peer review
-          - review-backlog   # Review backlog
-          - plan-review-convergence  # Plan convergence
-          - ns-review        # Quality gates
-          - secure-phase     # Security review
-        usage: "/hsd-qa-review <subcommand> --phase <N>"
-        subcommands:
-          code: "Review source code"
-          peer: "Cross-AI peer review"
-          backlog: "Review and promote backlog"
-          security: "Security review"
-          convergence: "Convergence check"
+config:
+  prefix: hsd-config
+  description: "System configuration — language, models"

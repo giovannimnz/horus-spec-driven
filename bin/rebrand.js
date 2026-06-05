@@ -2,146 +2,123 @@
 'use strict';
 
 /**
- * rebrand.js v3.0 — Unified role-based wordlist for Horus Spec Driven
+ * rebrand.js v4.0 — Compact 3-role wordlist for Horus Spec Driven
  *
- * Maps 67 upstream gsd-core commands → 17 unified hsd commands.
+ * 67 upstream gsd-core commands → 3 roles (dev, pm, qa) + config
+ * Each role has subcommands routed by $ARGUMENTS[0] in the SKILL.md
  *
- * Categories:
- *   PO  (Product Owner): discover, new, define, inbox
- *   PM  (Project Manager): plan, exec, track, config, ship, manage
- *   FRONT (Frontend): ui
- *   BACK (Backend): debug, maintain, context
- *   QA  (Quality): validate, audit, review
+ * Roles:
+ *   DEV  (Developer): discover, define, plan, build, debug, maintain, ui
+ *   PM   (Project Manager): new, track, ship, config, manage
+ *   QA   (Quality): validate, audit, review
  *
- * Output: JSON wordlist gsd-X → hsd-{role}-Y
+ * Output: JSON wordlist gsd-X → hsd-{role}
  */
 
 const fs = require('fs');
 const path = require('path');
 
-// ── Unified mapping: old gsd- name → new hsd-{role}- name ──────────────────
-
 const UNIFIED_MAP = {
-  // ── PO: Product Owner ──
-  'new-project':            'hsd-po-new',
-  'new-milestone':          'hsd-po-new',
-  'explore':                'hsd-po-discover',
-  'spike':                  'hsd-po-discover',
-  'sketch':                 'hsd-po-discover',
-  'capture':                'hsd-po-discover',
-  'ns-ideate':              'hsd-po-discover',
-  'map-codebase':           'hsd-po-discover',
-  'ns-context':              'hsd-back-context',
-  'discuss-phase':          'hsd-po-define',
-  'spec-phase':             'hsd-po-define',
-  'mvp-phase':              'hsd-po-define',
-  'inbox':                  'hsd-po-inbox',
+  // ── DEV: Developer (discovery + analysis + implementation + ui + backend) ──
+  'explore':                'hsd-dev',
+  'spike':                  'hsd-dev',
+  'sketch':                 'hsd-dev',
+  'capture':                'hsd-dev',
+  'ns-ideate':              'hsd-dev',
+  'map-codebase':           'hsd-dev',
+  'ns-context':             'hsd-dev',
+  'discuss-phase':          'hsd-dev',
+  'spec-phase':             'hsd-dev',
+  'mvp-phase':              'hsd-dev',
+  'plan-phase':             'hsd-dev',
+  'ultraplan-phase':        'hsd-dev',
+  'ai-integration-phase':   'hsd-dev',
+  'execute-phase':          'hsd-dev',
+  'autonomous':             'hsd-dev',
+  'quick':                  'hsd-dev',
+  'fast':                   'hsd-dev',
+  'debug':                  'hsd-dev',
+  'forensics':              'hsd-dev',
+  'docs-update':            'hsd-dev',
+  'extract-learnings':      'hsd-dev',
+  'ingest-docs':            'hsd-dev',
+  'import':                 'hsd-dev',
+  'cleanup':                'hsd-dev',
+  'ui-phase':               'hsd-dev',
+  'ui-review':              'hsd-dev',
 
   // ── PM: Project Manager ──
-  'plan-phase':             'hsd-pm-plan',
-  'ultraplan-phase':        'hsd-pm-plan',
-  'ai-integration-phase':   'hsd-pm-plan',
-  'execute-phase':          'hsd-pm-exec',
-  'autonomous':             'hsd-pm-exec',
-  'quick':                  'hsd-pm-exec',
-  'fast':                   'hsd-pm-exec',
-  'progress':               'hsd-pm-track',
-  'workstreams':            'hsd-pm-track',
-  'thread':                 'hsd-pm-track',
-  'phase':                  'hsd-pm-track',
-  'workspace':              'hsd-pm-track',
-  'stats':                  'hsd-pm-track',
-  'graphify':               'hsd-pm-track',
-  'ns-project':             'hsd-pm-track',
-  'ns-workflow':            'hsd-pm-track',
-  'ns-manage':              'hsd-pm-track',
-  'config':                 'hsd-pm-config',
-  'settings':               'hsd-pm-config',
-  'profile-user':           'hsd-pm-config',
-  'ship':                   'hsd-pm-ship',
-  'pr-branch':              'hsd-pm-ship',
-  'complete-milestone':     'hsd-pm-ship',
-  'milestone-summary':      'hsd-pm-ship',
-  'undo':                   'hsd-pm-ship',
-  'update':                 'hsd-pm-ship',
-  'manager':                'hsd-pm-manage',
-  'surface':                'hsd-pm-manage',
-  'pause-work':             'hsd-pm-manage',
-  'resume-work':            'hsd-pm-manage',
-  'help':                   'hsd-pm-manage',
-
-  // ── FRONT: Frontend ──
-  'ui-phase':               'hsd-front-ui',
-  'ui-review':              'hsd-front-ui',
-
-  // ── BACK: Backend ──
-  'debug':                  'hsd-back-debug',
-  'forensics':              'hsd-back-debug',
-  'docs-update':            'hsd-back-maintain',
-  'extract-learnings':      'hsd-back-maintain',
-  'ingest-docs':            'hsd-back-maintain',
-  'import':                 'hsd-back-maintain',
-  'cleanup':                'hsd-back-maintain',
+  'new-project':            'hsd-pm',
+  'new-milestone':          'hsd-pm',
+  'progress':               'hsd-pm',
+  'workstreams':            'hsd-pm',
+  'thread':                 'hsd-pm',
+  'phase':                  'hsd-pm',
+  'workspace':              'hsd-pm',
+  'stats':                  'hsd-pm',
+  'graphify':               'hsd-pm',
+  'ns-project':             'hsd-pm',
+  'ns-workflow':            'hsd-pm',
+  'ns-manage':              'hsd-pm',
+  'config':                 'hsd-pm',
+  'settings':               'hsd-pm',
+  'profile-user':           'hsd-pm',
+  'ship':                   'hsd-pm',
+  'pr-branch':              'hsd-pm',
+  'complete-milestone':     'hsd-pm',
+  'milestone-summary':      'hsd-pm',
+  'undo':                   'hsd-pm',
+  'update':                 'hsd-pm',
+  'manager':                'hsd-pm',
+  'surface':                'hsd-pm',
+  'pause-work':             'hsd-pm',
+  'resume-work':            'hsd-pm',
+  'help':                   'hsd-pm',
+  'inbox':                  'hsd-pm',
 
   // ── QA: Quality Assurance ──
-  'validate-phase':         'hsd-qa-validate',
-  'verify-work':            'hsd-qa-validate',
-  'health':                 'hsd-qa-validate',
-  'add-tests':              'hsd-qa-validate',
-  'audit-fix':              'hsd-qa-audit',
-  'audit-milestone':        'hsd-qa-audit',
-  'audit-uat':              'hsd-qa-audit',
-  'code-review':            'hsd-qa-review',
-  'eval-review':            'hsd-qa-review',
-  'review':                 'hsd-qa-review',
-  'review-backlog':         'hsd-qa-review',
-  'plan-review-convergence':'hsd-qa-review',
-  'ns-review':              'hsd-qa-review',
-  'secure-phase':           'hsd-qa-review',
+  'validate-phase':         'hsd-qa',
+  'verify-work':            'hsd-qa',
+  'health':                 'hsd-qa',
+  'add-tests':              'hsd-qa',
+  'audit-fix':              'hsd-qa',
+  'audit-milestone':        'hsd-qa',
+  'audit-uat':              'hsd-qa',
+  'code-review':            'hsd-qa',
+  'eval-review':            'hsd-qa',
+  'review':                 'hsd-qa',
+  'review-backlog':         'hsd-qa',
+  'plan-review-convergence': 'hsd-qa',
+  'ns-review':              'hsd-qa',
+  'secure-phase':           'hsd-qa',
 };
-
-// ── Agent remapping ──────────────────────────────────────────────────────
 
 const AGENT_REMAP = {
-  'gsd-executor':           'hsd-pm-exec',
-  'gsd-planner':            'hsd-pm-plan',
-  'gsd-researcher':         'hsd-po-discover',
-  'gsd-plan-checker':       'hsd-qa-validate',
-  'gsd-phase-researcher':   'hsd-po-discover',
-  'gsd-pattern-mapper':     'hsd-po-discover',
-  'gsd-auditor':            'hsd-qa-audit',
-  'gsd-debugger':           'hsd-back-debug',
+  'gsd-executor':           'hsd-dev',
+  'gsd-planner':            'hsd-dev',
+  'gsd-researcher':         'hsd-dev',
+  'gsd-plan-checker':       'hsd-qa',
+  'gsd-phase-researcher':   'hsd-dev',
+  'gsd-pattern-mapper':     'hsd-dev',
+  'gsd-auditor':            'hsd-qa',
+  'gsd-debugger':           'hsd-dev',
 };
-
-// ── Historical references in skill bodies ─────────────────────────────────
 
 function buildWordlist(vendorCommandsDir) {
   const wordlist = new Map();
-
-  // 1. Add unified map
   for (const [oldName, newName] of Object.entries(UNIFIED_MAP)) {
     wordlist.set(`gsd-${oldName}`, newName);
     wordlist.set(`gsd:${oldName}`, newName);
   }
-
-  // 2. Add agent remaps
   for (const [oldAgent, newAgent] of Object.entries(AGENT_REMAP)) {
     wordlist.set(oldAgent, newAgent);
   }
-
-  // 3. Scan vendor commands for any missing entries
   if (vendorCommandsDir && fs.existsSync(vendorCommandsDir)) {
     for (const file of fs.readdirSync(vendorCommandsDir)) {
       const name = file.replace(/\.md$/, '');
-      if (!UNIFIED_MAP[name]) {
-        // Unknown command — map to PM by default
-        wordlist.set(`gsd-${name}`, `hsd-pm-manage`);
-        wordlist.set(`gsd:${name}`, `hsd-pm-manage`);
-      }
+      if (!UNIFIED_MAP[name]) wordlist.set(`gsd-${name}`, 'hsd-pm');
     }
   }
-
-  // 4. Add historical/branding references
   const historical = [
     ['gsd-core', 'hsd-core'],
     ['gsd-sdk', 'hsd-sdk'],
@@ -159,23 +136,16 @@ function buildWordlist(vendorCommandsDir) {
     ['CLAUDE.md', 'HERMES.md'],
     ['Claude Code', 'Hermes Agent'],
   ];
-  for (const [old, nu] of historical) {
-    wordlist.set(old, nu);
-  }
-
+  for (const [old, nu] of historical) wordlist.set(old, nu);
   return wordlist;
 }
 
 function writeWordlist(wordlist, outputPath) {
   const obj = {};
-  for (const [k, v] of wordlist) {
-    obj[k] = v;
-  }
+  for (const [k, v] of wordlist) obj[k] = v;
   fs.writeFileSync(outputPath, JSON.stringify(obj, null, 2), 'utf8');
   return Object.keys(obj).length;
 }
-
-// ── CLI ───────────────────────────────────────────────────────────────────
 
 if (require.main === module) {
   const vendorDir = path.join(__dirname, '..', 'modules', 'gsd-core', 'commands', 'gsd');
@@ -183,17 +153,12 @@ if (require.main === module) {
   const out = process.argv[2] || path.join(__dirname, '..', 'modules', 'unified-wordlist.json');
   const count = writeWordlist(wl, out);
   console.log(`Unified wordlist: ${count} entries → ${out}`);
-  console.log('');
-  console.log('Categories:');
   const cats = {};
   for (const [k, v] of wl) {
     if (!k.startsWith('gsd-')) continue;
-    const cat = v.replace(/^hsd-/, '').split('-')[0];
-    cats[cat] = (cats[cat] || 0) + 1;
+    cats[v] = (cats[v] || 0) + 1;
   }
-  for (const [cat, count] of Object.entries(cats)) {
-    console.log(`  ${cat}: ${count} commands`);
-  }
+  for (const [cat, count] of Object.entries(cats)) console.log(`  ${cat}: ${count} commands`);
 }
 
 module.exports = { buildWordlist, writeWordlist, UNIFIED_MAP, AGENT_REMAP };
