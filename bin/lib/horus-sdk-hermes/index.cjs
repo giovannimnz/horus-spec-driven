@@ -2,7 +2,7 @@
 'use strict';
 
 /**
- * horus-sdk-adapter — Hermes-native reimplementation of gsd-tools.cjs
+ * horus-sdk-hermes — Hermes-native reimplementation of gsd-tools.cjs
  *
  * CLI entry. Usage:
  *   node gsd-adapter.js <verb> [args] --cwd <project-path>

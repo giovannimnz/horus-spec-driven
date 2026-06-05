@@ -1,7 +1,7 @@
 {
   "name": "horus-spec-driven",
   "version": "3.0.0",
-  "description": "Horus Spec Driven — multi-CLI wrapper around @opengsd/gsd-core with role-based unified commands (67→17) and horus-sdk-adapter. Supports Hermes, Claude Code, Codex, Gemini CLI, and GitHub Copilot.",
+  "description": "Horus Spec Driven — multi-CLI wrapper around @opengsd/gsd-core with role-based unified commands (67→17) and horus-sdk-hermes. Supports Hermes, Claude Code, Codex, Gemini CLI, and GitHub Copilot.",
   "bin": {
     "hsd": "bin/install.js"
   },

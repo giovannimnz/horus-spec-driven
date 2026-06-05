@@ -20,7 +20,7 @@ modules/gsd-core/  (upstream, submodule)
    ├── hermes/      ← Hermes Agent
    │   ├── skills/hsd/          4 SKILL.md (nested, $ARGUMENTS[0])
    │   ├── agents/              hsd-*-agent.md (3)
-   │   ├── adapter/             horus-sdk-adapter (31 verbos + graphifyy.py)
+   │   ├── adapter/             horus-sdk-hermes (31 verbos + graphifyy.py)
    │   ├── install.sh           Instalador self-contained
    │   └── README.md            Documentação específica
    ├── claude/      ← Claude Code
@@ -83,7 +83,7 @@ Cada runtime recebe 3 agentes especializados:
 
 ### 4. Adapter (Hermes Only)
 
-Apenas o Hermes recebe o `horus-sdk-adapter` (31 verbos + `graphifyy.py`). Os outros runtimes usam seus próprios SDKs nativos (Claude: `Agent()`, Codex: `delegate`, etc.).
+Apenas o Hermes recebe o `horus-sdk-hermes` (31 verbos + `graphifyy.py`). Os outros runtimes usam seus próprios SDKs nativos (Claude: `Agent()`, Codex: `delegate`, etc.).
 
 ### 5. Content Converters
 
@@ -91,7 +91,7 @@ Cada runtime tem seu próprio converter em `bin/lib/content-converters/`:
 
 | Runtime | Arquivo | Transformações |
 |---|---|---|
-| Hermes | `hermes.js` | CLAUDE.md→HERMES.md, paths, horus-sdk-adapter |
+| Hermes | `hermes.js` | CLAUDE.md→HERMES.md, paths, horus-sdk-hermes |
 | Claude | `claude.js` | Subagent neutralization |
 | Codex | `codex.js` | $ARGUMENTS→{{GSD_ARGS}}, slash→skill |
 | Gemini | `gemini.js` | .claude→.gemini, TOML format |
@@ -204,7 +204,7 @@ bash dist/hermes/install.sh
 | **Self-contained** | Cada `install.sh` detecta seu próprio diretório via `SCRIPT_DIR` |
 | **Upstream filter** | Comandos com níveis > ultra (wenyan-*, extreme-*) são removidos automaticamente |
 | **Agentes por role** | 3 agentes com mesmo toolset, especialidades diferentes |
-| **Adapter Hermes-only** | Só o Hermes precisa do horus-sdk-adapter; outros usam SDKs nativos |
+| **Adapter Hermes-only** | Só o Hermes precisa do horus-sdk-hermes; outros usam SDKs nativos |
 
 ---
 

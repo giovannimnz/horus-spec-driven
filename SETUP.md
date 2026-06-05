@@ -27,7 +27,7 @@ ls ~/.hermes/skills/hsd/
 # → hsd-front-ui
 # → hsd-back-debug   hsd-back-maintain  hsd-back-context
 # → hsd-qa-validate  hsd-qa-audit  hsd-qa-review
-# → horus-sdk-adapter
+# → horus-sdk-hermes
 ```
 
 ## 3. Daily Sync
@@ -45,18 +45,18 @@ pm2 save
 
 ```bash
 # Test adapter
-node ~/.hermes/skills/hsd/horus-sdk-adapter/index.cjs state load --cwd /path/to/project
+node ~/.hermes/skills/hsd/horus-sdk-hermes/index.cjs state load --cwd /path/to/project
 
 # Test graphify (code-aware knowledge graph)
-node ~/.hermes/skills/hsd/horus-sdk-adapter/index.cjs graphify build --cwd /path/to/project
-node ~/.hermes/skills/hsd/horus-sdk-adapter/index.cjs graphify query "function" --cwd /path/to/project
+node ~/.hermes/skills/hsd/horus-sdk-hermes/index.cjs graphify build --cwd /path/to/project
+node ~/.hermes/skills/hsd/horus-sdk-hermes/index.cjs graphify query "function" --cwd /path/to/project
 ```
 
 ## Requirements
 
 | Dependency | Why |
 |---|---|
-| **Node.js ≥ 22** | Core engine — install.js, rebrand.js, horus-sdk-adapter |
+| **Node.js ≥ 22** | Core engine — install.js, rebrand.js, horus-sdk-hermes |
 | **Python 3.8+** | graphifyy.py — code-aware scanning (auto-installs if missing) |
 | **Git** | Vendor pull from open-gsd/gsd-core |
 | **PM2** | Auto-sync cron (optional) |
@@ -83,7 +83,7 @@ node ~/.hermes/skills/hsd/horus-sdk-adapter/index.cjs graphify query "function" 
 ├── hsd-qa-validate/SKILL.md
 ├── hsd-qa-audit/SKILL.md
 ├── hsd-qa-review/SKILL.md
-└── horus-sdk-adapter/
+└── horus-sdk-hermes/
     ├── index.cjs
     ├── state.cjs
     ├── graphify.cjs

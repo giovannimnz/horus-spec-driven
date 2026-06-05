@@ -338,10 +338,10 @@ shd-stats as alternatives.
 
 ## ARQUIVO DE IMPLEMENTAÇÃO
 
-`bin/lib/horus-sdk-adapter/` — novo diretório no horus-spec-driven:
+`bin/lib/horus-sdk-hermes/` — novo diretório no horus-spec-driven:
 
 ```
-bin/lib/horus-sdk-adapter/
+bin/lib/horus-sdk-hermes/
 ├── index.js          # CLI entry: node gsd-adapter.js <verb> [args]
 ├── state.js          # state/init/snapshot/summary-extract
 ├── config.js         # config-get/set/set-model-profile/new-project

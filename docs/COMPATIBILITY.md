@@ -58,7 +58,7 @@
 | Frontmatter converter | ✅ | ✅ | ✅ | ✅ | ✅ |
 | "Explode" subcomandos | — | — | ⬜ | ⬜ | ⬜ |
 | Install funcional | ✅ | ✅ | ⬜ | ⬜ | ⬜ |
-| horus-sdk-adapter | ✅ | ❌ | ❌ | ❌ | ❌ |
+| horus-sdk-hermes | ✅ | ❌ | ❌ | ❌ | ❌ |
 | graphify (Python) | ✅ | ❌ | ❌ | ❌ | ❌ |
 
 **"Explode" subcomandos** é a fase que converte 1 SKILL.md com N subcomandos em N arquivos planos (`.toml`, `prompt.md`, etc.). Implementado apenas para Hermes e Claude (que suportam `$ARGUMENTS[0]`). Codex, Gemini e Copilot precisam desse passo extra.

@@ -62,7 +62,7 @@ const T = pt ? {
   usage: 'Uso',
   quickExample: 'Exemplo Rápido',
   runtimeNotes: 'Notas de Runtime',
-  langNote: 'Este skill usa o **horus-sdk-adapter** para operações internas.',
+  langNote: 'Este skill usa o **horus-sdk-hermes** para operações internas.',
   language: 'Idioma',
 } : {
   mapsFrom: 'Maps from',
@@ -89,7 +89,7 @@ const T = pt ? {
   usage: 'Usage',
   quickExample: 'Quick Example',
   runtimeNotes: 'Runtime Notes',
-  langNote: 'This skill uses **horus-sdk-adapter** for internal operations.',
+  langNote: 'This skill uses **horus-sdk-hermes** for internal operations.',
   language: 'Language',
 };
 
@@ -271,7 +271,7 @@ ${agentBlock}
 <horus_sdk_adapter runtime="hermes">
 ${T.langNote}
 
-\`node ~/.hermes/skills/hsd/horus-sdk-adapter/index.cjs <verb> [args] --cwd .\`
+\`node ~/.hermes/skills/hsd/horus-sdk-hermes/index.cjs <verb> [args] --cwd .\`
 </horus_sdk_adapter>
 
 ---

@@ -13,7 +13,7 @@
  * Outputs to dist/<runtime>/:
  *   skills/   — runtime-native skill files
  *   agents/   — agent definition files
- *   adapter/  — horus-sdk-adapter (Hermes only)
+ *   adapter/  — horus-sdk-hermes (Hermes only)
  *   install.sh — runtime-specific installer
  *   README.md — runtime-specific documentation
  *
@@ -33,7 +33,7 @@ const DIST = path.join(ROOT, 'dist');
 const WORDLIST_PATH = path.join(ROOT, 'modules', 'unified-wordlist.json');
 const CONFIG_PATH = path.join(ROOT, 'horus-spec-driven.json');
 const LOCALES_DIR = path.join(ROOT, 'locales');
-const ADAPTER_SRC = path.join(ROOT, 'bin', 'lib', 'horus-sdk-adapter');
+const ADAPTER_SRC = path.join(ROOT, 'bin', 'lib', 'horus-sdk-hermes');
 
 // ─── Load config ───────────────────────────────────────────────────────────
 
@@ -168,8 +168,8 @@ ${pt ? '**Ferramentas:**' : '**Tools:**'} read_file, write_file, terminal, searc
 ---
 
 <horus_sdk_adapter runtime="hermes">
-${pt ? '**horus-sdk-adapter** gerencia todas as operações internas.' : '**horus-sdk-adapter** handles all internal operations.'}
-\`node ~/.hermes/skills/hsd/horus-sdk-adapter/index.cjs <verb> [args] --cwd .\`
+${pt ? '**horus-sdk-hermes** gerencia todas as operações internas.' : '**horus-sdk-hermes** handles all internal operations.'}
+\`node ~/.hermes/skills/hsd/horus-sdk-hermes/index.cjs <verb> [args] --cwd .\`
 </horus_sdk_adapter>
 
 ---
@@ -376,7 +376,7 @@ echo "Installing HSD v5.0 for Hermes Agent..."
 mkdir -p "$HD" "$AD"
 cp -r dist/hermes/skills/hsd/* "$HD/"
 cp dist/hermes/agents/*.md "$AD/" 2>/dev/null || true
-cp -r dist/hermes/adapter/* "$HD/horus-sdk-adapter/" 2>/dev/null || true
+cp -r dist/hermes/adapter/* "$HD/horus-sdk-hermes/" 2>/dev/null || true
 echo "✓ $(ls "$HD" | wc -l) skills + agents installed"
 echo "  Restart Hermes or run /reload_skills"
 `,
@@ -432,7 +432,7 @@ function buildRuntimeReadme(runtime) {
   }[runtime] || { name: runtime, dest: '—', format: '—', count: '0', cmds: '' };
 
   const extraNotes = runtime === 'hermes'
-    ? `\n## Adapter\n\nhorus-sdk-adapter incluído — 31 verbos, graphifyy.py (Python code-aware scanning).\n\n\`node ~/.hermes/skills/hsd/horus-sdk-adapter/index.cjs <verb> [args] --cwd .\``
+    ? `\n## Adapter\n\nhorus-sdk-hermes incluído — 31 verbos, graphifyy.py (Python code-aware scanning).\n\n\`node ~/.hermes/skills/hsd/horus-sdk-hermes/index.cjs <verb> [args] --cwd .\``
     : '';
 
   return `# Horus Spec Driven — ${rt.name}

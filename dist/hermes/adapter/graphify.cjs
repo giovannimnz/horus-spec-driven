@@ -92,7 +92,7 @@ function ensurePython(cwd) {
 }
 
 function graphifyyPath() {
-  // graphifyy.py lives next to this .cjs file in the horus-sdk-adapter dir
+  // graphifyy.py lives next to this .cjs file in the horus-sdk-hermes dir
   return path.join(__dirname, 'graphifyy.py');
 }
 

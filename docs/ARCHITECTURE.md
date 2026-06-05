@@ -56,7 +56,7 @@ Design do wrapper, submodules, rebrand, e pipeline de install/sync.
 │  │    OpenAI Codex     prompts/          prompt.md            │      │
 │  │    Google Gemini    commands/hsd/     .toml                │      │
 │  │    GitHub Copilot   .github/prompts/  copilot-instructions │      │
-│  ├── + horus-sdk-adapter (skill extra, só Hermes)             │      │
+│  ├── + horus-sdk-hermes (skill extra, só Hermes)             │      │
 │  └────────────────────────────────────────────────────────────┘      │
 │                                                                      │
 │  Output: 18 skills × N runtimes                                     │
@@ -110,7 +110,7 @@ Cada runtime converte o conteúdo do SKILL.md para o formato nativo:
 
 | Runtime | Arquivo | Transformações |
 |---|---|---|
-| **Hermes** | `hermes.js` | CLAUDE.md→HERMES.md, .claude/→.hermes/, horus-sdk-adapter injection |
+| **Hermes** | `hermes.js` | CLAUDE.md→HERMES.md, .claude/→.hermes/, horus-sdk-hermes injection |
 | **Claude** | `claude.js` | Subagent neutralization, colon→hyphen |
 | **Codex** | `codex.js` | $ARGUMENTS→{{GSD_ARGS}}, slash→skill mentions |
 | **Gemini** | `gemini.js` | .claude→.gemini, CLAUDE.md→GEMINI.md |
@@ -125,7 +125,7 @@ Cada runtime tem seu formato de frontmatter:
 - **Gemini**: TOML
 - **Copilot**: copilot-instructions.md
 
-### 6. horus-sdk-adapter (`bin/lib/horus-sdk-adapter/`)
+### 6. horus-sdk-hermes (`bin/lib/horus-sdk-hermes/`)
 
 Reimplementação completa do `gsd-tools.cjs` para Hermes. 13 módulos, 31 verbos:
 
@@ -218,7 +218,7 @@ horus-spec-driven/
 │   ├── build-unified-skills.cjs    Gera 18 SKILL.md com i18n
 │   ├── sync.js                     Convenience wrapper (install --no-pull)
 │   └── lib/
-│       ├── horus-sdk-adapter/      Reimplementation do gsd-tools.cjs (31 verbos)
+│       ├── horus-sdk-hermes/      Reimplementation do gsd-tools.cjs (31 verbos)
 │       ├── content-converters/     5 conversores de conteúdo (hermes, claude, codex, gemini, copilot)
 │       ├── frontmatter-converters/ 5 conversores de frontmatter
 │       ├── subagent-adapter/       Neutralização de Agent() calls

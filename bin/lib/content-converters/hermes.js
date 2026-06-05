@@ -75,11 +75,11 @@ function convertHermesMarkdown(content, cmdNames) {
  */
 function injectHorusSdkAdapter(content, runtime) {
   const adapterNote = '\n<horus_sdk_adapter runtime="' + runtime + '">\n' +
-    '**gsd-tools.cjs is replaced by the Hermes-native horus-sdk-adapter.**\n\n' +
+    '**gsd-tools.cjs is replaced by the Hermes-native horus-sdk-hermes.**\n\n' +
     'All gsd-tools calls in this skill should be replaced with:\n' +
-    '  `node ~/.hermes/skills/hsd/horus-sdk-adapter/index.cjs <verb> [args] --cwd .`\n\n' +
+    '  `node ~/.hermes/skills/hsd/horus-sdk-hermes/index.cjs <verb> [args] --cwd .`\n\n' +
     'The adapter is installed at:\n' +
-    '  ~/.hermes/skills/hsd/horus-sdk-adapter/\n\n' +
+    '  ~/.hermes/skills/hsd/horus-sdk-hermes/\n\n' +
     'Supported verbs: state, init, state-snapshot, summary-extract, config-get,\n' +
     '  config-set, config-set-model-profile, config-new-project, commit,\n' +
     '  frontmatter.get, frontmatter.set, roadmap, phase, validate, workstream,\n' +
@@ -87,7 +87,7 @@ function injectHorusSdkAdapter(content, runtime) {
     '  generate-slug, current-timestamp, list-todos, gap-analysis, learnings,\n' +
     '  prompt-budget, update-context, verify-path-exists.\n\n' +
     'Output is JSON. Use --raw for single-value output.\n' +
-    'Example: `gsd-tools state load --cwd .` -> `node ~/.hermes/skills/hsd/horus-sdk-adapter/index.cjs state load --cwd .`\n\n' +
+    'Example: `gsd-tools state load --cwd .` -> `node ~/.hermes/skills/hsd/horus-sdk-hermes/index.cjs state load --cwd .`\n\n' +
     'Graphify uses graphifyy.py (Python code-aware) + file-based fallback.\n' +
     'Agent-skills uses skill_view(name=...) -- the Hermes-native skill loader.\n' +
     'Websearch uses web_search() -- Hermes built-in with 4 backends.\n' +

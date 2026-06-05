@@ -59,7 +59,7 @@ open-gsd/gsd-core (67 comandos)
   │                                  │
   │   📋 PM    ⚡ DEV    ✅ QA        │
   │   ┌──────────────────────────┐   │
-  │   │ horus-sdk-adapter (31)   │   │
+  │   │ horus-sdk-hermes (31)   │   │
   │   │ Rebrand engine (157)     │   │
   │   │ Content converters (5)   │   │
   │   │ Frontmatter converters   │   │
@@ -199,7 +199,7 @@ Cada CLI tem sua própria pasta em `dist/` com **tudo personalizado**:
 
 ```
 dist/
-├── hermes/      skills + agents + horus-sdk-adapter + install.sh
+├── hermes/      skills + agents + horus-sdk-hermes + install.sh
 ├── claude/      skills + agents + install.sh
 ├── codex/       prompts (16) + agents + install.sh
 ├── gemini/      commands (16 .toml) + agents + install.sh

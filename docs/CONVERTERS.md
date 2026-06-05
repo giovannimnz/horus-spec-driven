@@ -7,7 +7,7 @@ para o formato nativo que o loader do runtime espera.
 
 | Runtime | Arquivo | Função | Descrição |
 |---|---|---|---|
-| Hermes | `hermes.js` | `convertHermesMarkdown` | CLAUDE.md→HERMES.md, .claude/→.hermes/, gsd:→gsd-, horus-sdk-adapter injection |
+| Hermes | `hermes.js` | `convertHermesMarkdown` | CLAUDE.md→HERMES.md, .claude/→.hermes/, gsd:→gsd-, horus-sdk-hermes injection |
 | Claude | `claude.js` | `convertClaudeMarkdown` | Colon→hyphen, vendor paths neutralized, subagent neutralization |
 | Codex | `codex.js` | `convertCodexMarkdown` | $ARGUMENTS→{{GSD_ARGS}}, /clear removal, .claude→.codex, .claudeignore→.codexignore |
 | Copilot | `copilot.js` | `convertCopilotContent` | Tool name mapping (Read→read, etc.), gsd:→gsd-, AGENTS.md→copilot-instructions.md |
@@ -21,7 +21,7 @@ Ordem de transformação:
 3. Runtime paths: `~/.claude/` → `~/.hermes/`
 4. Colon→hyphen: `/gsd:foo` → `/gsd-foo`
 5. Subagent neutralization: `Agent(subagent_type=gsd-X)` → neutral form
-6. **horus-sdk-adapter injection**: se o skill referencia `gsd-tools` ou `shd-tools`, injeta `<horus_sdk_adapter>` explicando como usar o adapter Hermes-native
+6. **horus-sdk-hermes injection**: se o skill referencia `gsd-tools` ou `shd-tools`, injeta `<horus_sdk_adapter>` explicando como usar o adapter Hermes-native
 
 ## Codex converter (detalhado)
 

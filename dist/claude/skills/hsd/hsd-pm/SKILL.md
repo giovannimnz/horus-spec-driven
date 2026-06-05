@@ -75,8 +75,8 @@ Este comando ativa automaticamente o agente `hsd-pm-agent`.
 ---
 
 <horus_sdk_adapter runtime="hermes">
-**horus-sdk-adapter** gerencia todas as operações internas.
-`node ~/.hermes/skills/hsd/horus-sdk-adapter/index.cjs <verb> [args] --cwd .`
+**horus-sdk-hermes** gerencia todas as operações internas.
+`node ~/.hermes/skills/hsd/horus-sdk-hermes/index.cjs <verb> [args] --cwd .`
 </horus_sdk_adapter>
 
 ---

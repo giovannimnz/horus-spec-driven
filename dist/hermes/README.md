@@ -25,9 +25,9 @@
 
 ## Adapter
 
-horus-sdk-adapter incluído — 31 verbos, graphifyy.py (Python code-aware scanning).
+horus-sdk-hermes incluído — 31 verbos, graphifyy.py (Python code-aware scanning).
 
-`node ~/.hermes/skills/hsd/horus-sdk-adapter/index.cjs <verb> [args] --cwd .`
+`node ~/.hermes/skills/hsd/horus-sdk-hermes/index.cjs <verb> [args] --cwd .`
 ## Install
 
 ```bash

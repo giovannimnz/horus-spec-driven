@@ -16,9 +16,9 @@ echo "  ✓ Skills: $(ls "$DIST_DIR/skills/hsd/" | wc -l)"
 cp "$DIST_DIR/agents/"*.md "$AD/" 2>/dev/null || true
 echo "  ✓ Agents: $(ls "$DIST_DIR/agents/"*.md 2>/dev/null | wc -l)"
 
-# horus-sdk-adapter (31 verbs, graphifyy.py)
-mkdir -p "$HD/horus-sdk-adapter"
-cp -r "$DIST_DIR/adapter/"* "$HD/horus-sdk-adapter/"
+# horus-sdk-hermes (31 verbs, graphifyy.py)
+mkdir -p "$HD/horus-sdk-hermes"
+cp -r "$DIST_DIR/adapter/"* "$HD/horus-sdk-hermes/"
 echo "  ✓ Adapter: $(ls "$DIST_DIR/adapter/" | wc -l) files"
 
 echo ""

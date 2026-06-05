@@ -59,7 +59,7 @@
 
 ### Rebrand
 - `skills/gsd/` → `skills/hsd/`
-- `gsd-sdk-adapter` → `horus-sdk-adapter`
+- `gsd-sdk-adapter` → `horus-sdk-hermes`
 - `gsd_sdk_adapter` → `horus_sdk_adapter`
 - Fork-sync paths updated: `spec-horus` → `horus-spec-driven`
 
@@ -85,7 +85,7 @@
 - Subagent adapter: Agent() calls → neutral form
 - Kind-driven layout: skills/agents/commands per runtime
 - Rebrand engine: gsd → shd/shq/shp
-- horus-sdk-adapter: 31 verbs, 13 modules
+- horus-sdk-hermes: 31 verbs, 13 modules
 
 ---
 

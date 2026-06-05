@@ -299,16 +299,16 @@ function installRuntime(runtimeId, mode, wordlist, dryRun) {
     info(`  ${kind.kind}/: ${result.installed} files`);
   }
 
-  // Also install horus-sdk-adapter as a skill for Hermes
+  // Also install horus-sdk-hermes as a skill for Hermes
   if (runtimeId === 'hermes' && mode === 'global') {
-    const adapterDir = path.join(resolveBaseDir(runtimeId, mode), 'skills', 'hsd', 'horus-sdk-adapter');
+    const adapterDir = path.join(resolveBaseDir(runtimeId, mode), 'skills', 'hsd', 'horus-sdk-hermes');
     if (!dryRun) {
-      const srcAdapter = path.join(ROOT, 'bin', 'lib', 'horus-sdk-adapter');
+      const srcAdapter = path.join(ROOT, 'bin', 'lib', 'horus-sdk-hermes');
       if (fs.existsSync(srcAdapter)) {
         fs.cpSync(srcAdapter, adapterDir, { recursive: true });
         // Create SKILL.md
         const skillMd = `---
-name: horus-sdk-adapter
+name: horus-sdk-hermes
 description: Hermes-native reimplementation of gsd-tools.cjs — supports state, init, config, commit, frontmatter, roadmap, phase, validate, workstream, scaffold, milestone, misc, and resolve commands
 version: ${PKG_VERSION}
 metadata:
@@ -317,14 +317,14 @@ metadata:
     related_skills: [shd-health, shd-config, shd-execute-phase, shd-plan-phase, shd-graphify]
 ---
 
-# horus-sdk-adapter — Hermes-native gsd-tools.cjs replacement
+# horus-sdk-hermes — Hermes-native gsd-tools.cjs replacement
 
 Reimplements 90+ subcommands from gsd-tools.cjs using Hermes-native
 tools (read_file, write_file, terminal). No gsd-core dependency.
 
 ## Usage
 \`\`\`bash
-node ~/.hermes/skills/hsd/horus-sdk-adapter/index.cjs <verb> [args] --cwd <project-path>
+node ~/.hermes/skills/hsd/horus-sdk-hermes/index.cjs <verb> [args] --cwd <project-path>
 \`\`\`
 
 ## Supported verbs (28 unique)
@@ -348,17 +348,17 @@ Websearch uses web_search() -- Hermes built-in with Exa, Firecrawl, Parallel, Ta
 ## Example
 \`\`\`bash
 # Same as gsd-tools state load --cwd /path
-node ~/.hermes/skills/hsd/horus-sdk-adapter/index.cjs state load --cwd /path/to/project
+node ~/.hermes/skills/hsd/horus-sdk-hermes/index.cjs state load --cwd /path/to/project
 
 # Same as gsd-tools roadmap get-phase 1
-node ~/.hermes/skills/hsd/horus-sdk-adapter/index.cjs roadmap get-phase 1 --cwd /path/to/project
+node ~/.hermes/skills/hsd/horus-sdk-hermes/index.cjs roadmap get-phase 1 --cwd /path/to/project
 \`\`\`
 `;
         fs.writeFileSync(path.join(adapterDir, 'SKILL.md'), skillMd);
       }
     }
     total += 1;
-    info(`  adapter/: horus-sdk-adapter skill installed (${dryRun ? 'dry-run' : 'real'})`);
+    info(`  adapter/: horus-sdk-hermes skill installed (${dryRun ? 'dry-run' : 'real'})`);
   }
 
   return { installed: total, skipped: 0 };

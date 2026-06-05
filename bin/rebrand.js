@@ -126,7 +126,7 @@ function buildWordlist(vendorCommandsDir) {
     ['gsd-core', 'hsd-core'],
     ['gsd-sdk', 'hsd-sdk'],
     ['gsd-tools', 'hsd-tools'],
-    ['gsd-sdk-adapter', 'horus-sdk-adapter'],
+    ['gsd-sdk-adapter', 'horus-sdk-hermes'],
     ['get-shit-done', 'horus-spec-driven'],
     ['GSD', 'HSD'],
     ['gsd.', 'hsd.'],
