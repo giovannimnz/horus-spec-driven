@@ -74,9 +74,9 @@ Este agente é ativado automaticamente ao usar `/hsd-qa`.
 ## Notas de Runtime
 
 <horus_sdk_adapter runtime="hermes">
-Este skill usa o **horus-sdk-adapter** para operações internas.
+Este skill usa o **horus-sdk-hermes** para operações internas.
 
-`node ~/.hermes/skills/hsd/horus-sdk-adapter/index.cjs <verb> [args] --cwd .`
+`node ~/.hermes/skills/hsd/horus-sdk-hermes/index.cjs <verb> [args] --cwd .`
 </horus_sdk_adapter>
 
 ---
