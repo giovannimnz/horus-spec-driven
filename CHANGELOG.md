@@ -1,0 +1,71 @@
+# Changelog
+
+## v3.0.0 — 2026-06-05
+
+### Unified Slash Commands (BREAKING)
+- **67 commands → 17 unified** with 5 role-based prefixes (PO, PM, FRONT, BACK, QA)
+- `shd/shq/shp` prefix system replaced by `hsd-{role}-` + subcommands
+- Each command uses `$ARGUMENTS[0]` as subcommand selector
+- `build-unified-skills.cjs` generates 17 SKILL.md from vendor wordlist
+- `install.js` auto-detects `unified-skills/` and uses them instead of flat commands
+
+### Architecture Decisions
+- D-01: Role-based unification (PO=what, PM=how, FRONT=UI, BACK=logic, QA=verify)
+- D-02: Storage-agnostic graphify (Python → file → PostgreSQL, auto-detect)
+- D-03: Prefix `hsd` (Horus Spec Driven) — consistent with project identity
+- D-04: Subcommands via `$ARGUMENTS[0]` — 1 SKILL.md per command, not 67
+- D-05: Layout `skills/hsd/` as root namespace (not inside openclaw-imports)
+
+### Rebrand Engine
+- Wordlist rebuilt: 157 rules covering 67 commands + 33 agents + 23 historical refs
+- `gsd-X` → `hsd-{role}-Y` with role-aware routing
+- Agent remap: `gsd-executor` → `hsd-pm-exec`, `gsd-planner` → `hsd-pm-plan`, etc.
+- Historical refs: `CLAUDE.md`→`HERMES.md`, `get-shit-done`→`horus-spec-driven`
+
+### Documentation
+- README.md: full ASCII art header, tables, architecture diagram, platform matrix
+- SETUP.md: quick start with per-platform layouts
+- Vault: 5 docs (README + 2 decisões + session log + decisions)
+- Fork-sync: sync.yaml + deploy.yaml + cron + manual
+
+---
+
+## v2.1.0 — 2026-06-05
+
+### Rebrand
+- `skills/gsd/` → `skills/hsd/`
+- `gsd-sdk-adapter` → `horus-sdk-adapter`
+- `gsd_sdk_adapter` → `horus_sdk_adapter`
+- Fork-sync paths updated: `spec-horus` → `horus-spec-driven`
+
+### graphifyy.py — Code-Aware Knowledge Graph
+- Python stdlib scanner: 460 LOC, zero dependencies
+- AST parser for Python, regex for JS/TS/SQL/Go/Rust
+- Auto-install: apt/brew/dnf/pacman/apk/pip attempts
+- 3-tier fallback: Python → file-based → PostgreSQL
+
+### Agent Features
+- agent-skills via `skill_view()` bridge
+- websearch via `web_search()` instructions
+- `<horus_sdk_adapter>` injection in 12 skills
+
+---
+
+## v2.0.0 — 2026-06-05
+
+### Complete Rewrite
+- Wrapper over open-gsd/gsd-core (no fork)
+- 5 content converters: hermes, claude, codex, copilot, gemini
+- 5 frontmatter converters: per-runtime format
+- Subagent adapter: Agent() calls → neutral form
+- Kind-driven layout: skills/agents/commands per runtime
+- Rebrand engine: gsd → shd/shq/shp
+- horus-sdk-adapter: 31 verbs, 13 modules
+
+---
+
+## v1.x — 2026-05 (Legacy)
+
+- Fork of get-shit-done + caveman
+- Prefix-based rebrand (gsd → shd)
+- Claude Code-only

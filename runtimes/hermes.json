@@ -1,0 +1,32 @@
+{
+  "id": "hermes",
+  "label": "Hermes Agent",
+  "home": "~/.hermes",
+  "homeEnv": "HERMES_HOME",
+  "local": null,
+  "modes": ["global"],
+  "layout": {
+    "global": {
+      "kinds": [
+        {
+          "kind": "skills",
+          "destSubpath": "skills/hsd",
+          "prefix": "",
+          "format": "markdown",
+          "notes": "Hermes nests skills/hsd/<stem>/SKILL.md. Frontmatter requires `version:` field."
+        },
+        {
+          "kind": "agents",
+          "destSubpath": "agents",
+          "prefix": "",
+          "format": "markdown"
+        }
+      ]
+    }
+  },
+  "content_converter": "hermes",
+  "frontmatter_converter": "hermes",
+  "subagent_adapter": "neutralize",
+  "detect_command": "test -f ~/.hermes/config.yaml",
+  "invocation": "skill_view(name='shd-foo') — Hermes has no /<skill-name> slash commands; skill_view is the tool the agent uses"
+}

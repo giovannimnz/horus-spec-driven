@@ -1,0 +1,35 @@
+{
+  "project": "horus-spec-driven",
+  "version": "3.0.0",
+  "description": "Multi-CLI wrapper for gsd-core with role-based unified commands",
+  "upstream_repo": "https://github.com/open-gsd/gsd-core",
+  "upstream_npm": "@opengsd/gsd-core",
+  "runtimes": {
+    "hermes": { "enabled": true, "mode": "global", "dest_subpath": "skills/hsd" },
+    "claude": { "enabled": true, "mode": "global" },
+    "codex": { "enabled": true, "mode": "global" },
+    "gemini": { "enabled": true, "mode": "global" },
+    "copilot": { "enabled": false, "mode": "local" }
+  },
+  "unified": {
+    "prefix": "hsd",
+    "reduction": "67 → 17 (75%)",
+    "roles": {
+      "po": { "name": "Product Owner", "color": "#7c3aed", "description": "Define WHAT — discovery, scope, requirements" },
+      "pm": { "name": "Project Manager", "color": "#2563eb", "description": "Manage HOW — plan, execute, track, ship" },
+      "front": { "name": "Frontend", "color": "#059669", "description": "Build UI — design, visual specs" },
+      "back": { "name": "Backend", "color": "#ea580c", "description": "Build Logic — debug, maintain, context" },
+      "qa": { "name": "Quality", "color": "#dc2626", "description": "Verify — validate, audit, review" }
+    }
+  },
+  "branding": {
+    "project": "Horus Spec Driven",
+    "acronym": "hsd",
+    "tagline": "Spec-Driven Development for Hermes, Claude, Codex, Gemini, Copilot"
+  },
+  "last_install": {
+    "runtimes": ["hermes"],
+    "mode": "global",
+    "date": "2026-06-05T08:54:12.345Z"
+  }
+}

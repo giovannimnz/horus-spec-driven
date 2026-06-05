@@ -1,0 +1,43 @@
+{
+  "id": "claude",
+  "label": "Claude Code",
+  "home": "~/.claude",
+  "homeEnv": "CLAUDE_CONFIG_DIR",
+  "local": ".claude",
+  "modes": ["global", "local"],
+  "layout": {
+    "global": {
+      "kinds": [
+        {
+          "kind": "skills",
+          "destSubpath": "skills",
+          "prefix": "",
+          "format": "markdown",
+          "notes": "Skills are <base>/skills/<shd-foo>/SKILL.md. Slash command = frontmatter name."
+        }
+      ]
+    },
+    "local": {
+      "kinds": [
+        {
+          "kind": "commands",
+          "destSubpath": "commands/hsd",
+          "prefix": "",
+          "format": "markdown",
+          "notes": "Local Claude: flat files in .claude/commands/hsd/<shd-foo>.md"
+        },
+        {
+          "kind": "agents",
+          "destSubpath": "agents",
+          "prefix": "",
+          "format": "markdown"
+        }
+      ]
+    }
+  },
+  "content_converter": "claude",
+  "frontmatter_converter": "claude",
+  "subagent_adapter": "passthrough",
+  "detect_command": "test -d ~/.claude || test -d ./.claude",
+  "invocation": "/shd-foo (slash from frontmatter name)"
+}

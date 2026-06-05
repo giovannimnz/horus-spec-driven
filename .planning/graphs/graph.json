@@ -1,0 +1,956 @@
+{
+  "built": "2026-06-05T08:54:27Z",
+  "version": "2.1.0",
+  "storage": "file",
+  "tier_description": "File-based graphifyy (Python stdlib)",
+  "nodes": [
+    {
+      "id": "require:bin/rebrand.js:fs",
+      "label": "fs",
+      "type": "require",
+      "source_file": "bin/rebrand.js",
+      "line": 19,
+      "description": "require('fs')"
+    },
+    {
+      "id": "require:bin/rebrand.js:path",
+      "label": "path",
+      "type": "require",
+      "source_file": "bin/rebrand.js",
+      "line": 20,
+      "description": "require('path')"
+    },
+    {
+      "id": "require:bin/install.js:fs",
+      "label": "fs",
+      "type": "require",
+      "source_file": "bin/install.js",
+      "line": 37,
+      "description": "require('fs')"
+    },
+    {
+      "id": "require:bin/install.js:os",
+      "label": "os",
+      "type": "require",
+      "source_file": "bin/install.js",
+      "line": 38,
+      "description": "require('os')"
+    },
+    {
+      "id": "require:bin/install.js:path",
+      "label": "path",
+      "type": "require",
+      "source_file": "bin/install.js",
+      "line": 39,
+      "description": "require('path')"
+    },
+    {
+      "id": "require:bin/install.js:child_process",
+      "label": "child_process",
+      "type": "require",
+      "source_file": "bin/install.js",
+      "line": 40,
+      "description": "require('child_process')"
+    },
+    {
+      "id": "require:bin/install.js:./lib/runtime-paths.js",
+      "label": "./lib/runtime-paths.js",
+      "type": "require",
+      "source_file": "bin/install.js",
+      "line": 42,
+      "description": "require('./lib/runtime-paths.js')"
+    },
+    {
+      "id": "require:bin/install.js:./rebrand.js",
+      "label": "./rebrand.js",
+      "type": "require",
+      "source_file": "bin/install.js",
+      "line": 43,
+      "description": "require('./rebrand.js')"
+    },
+    {
+      "id": "require:bin/install.js:./lib/layout.js",
+      "label": "./lib/layout.js",
+      "type": "require",
+      "source_file": "bin/install.js",
+      "line": 44,
+      "description": "require('./lib/layout.js')"
+    },
+    {
+      "id": "require:bin/sync.js:./install.js",
+      "label": "./install.js",
+      "type": "require",
+      "source_file": "bin/sync.js",
+      "line": 16,
+      "description": "require('./install.js')"
+    },
+    {
+      "id": "require:bin/build-unified-skills.cjs:fs",
+      "label": "fs",
+      "type": "require",
+      "source_file": "bin/build-unified-skills.cjs",
+      "line": 9,
+      "description": "require('fs')"
+    },
+    {
+      "id": "require:bin/build-unified-skills.cjs:path",
+      "label": "path",
+      "type": "require",
+      "source_file": "bin/build-unified-skills.cjs",
+      "line": 10,
+      "description": "require('path')"
+    },
+    {
+      "id": "require:bin/lib/runtime-paths.js:fs",
+      "label": "fs",
+      "type": "require",
+      "source_file": "bin/lib/runtime-paths.js",
+      "line": 25,
+      "description": "require('fs')"
+    },
+    {
+      "id": "require:bin/lib/runtime-paths.js:os",
+      "label": "os",
+      "type": "require",
+      "source_file": "bin/lib/runtime-paths.js",
+      "line": 26,
+      "description": "require('os')"
+    },
+    {
+      "id": "require:bin/lib/runtime-paths.js:path",
+      "label": "path",
+      "type": "require",
+      "source_file": "bin/lib/runtime-paths.js",
+      "line": 27,
+      "description": "require('path')"
+    },
+    {
+      "id": "require:bin/lib/layout.js:path",
+      "label": "path",
+      "type": "require",
+      "source_file": "bin/lib/layout.js",
+      "line": 24,
+      "description": "require('path')"
+    },
+    {
+      "id": "require:bin/lib/layout.js:./content-converters/hermes.js",
+      "label": "./content-converters/hermes.js",
+      "type": "require",
+      "source_file": "bin/lib/layout.js",
+      "line": 27,
+      "description": "require('./content-converters/hermes.js')"
+    },
+    {
+      "id": "require:bin/lib/layout.js:./content-converters/codex.js",
+      "label": "./content-converters/codex.js",
+      "type": "require",
+      "source_file": "bin/lib/layout.js",
+      "line": 28,
+      "description": "require('./content-converters/codex.js')"
+    },
+    {
+      "id": "require:bin/lib/layout.js:./content-converters/copilot.js",
+      "label": "./content-converters/copilot.js",
+      "type": "require",
+      "source_file": "bin/lib/layout.js",
+      "line": 29,
+      "description": "require('./content-converters/copilot.js')"
+    },
+    {
+      "id": "require:bin/lib/layout.js:./content-converters/claude.js",
+      "label": "./content-converters/claude.js",
+      "type": "require",
+      "source_file": "bin/lib/layout.js",
+      "line": 30,
+      "description": "require('./content-converters/claude.js')"
+    },
+    {
+      "id": "require:bin/lib/layout.js:./content-converters/gemini.js",
+      "label": "./content-converters/gemini.js",
+      "type": "require",
+      "source_file": "bin/lib/layout.js",
+      "line": 31,
+      "description": "require('./content-converters/gemini.js')"
+    },
+    {
+      "id": "require:bin/lib/layout.js:./frontmatter-converters/claude.js",
+      "label": "./frontmatter-converters/claude.js",
+      "type": "require",
+      "source_file": "bin/lib/layout.js",
+      "line": 33,
+      "description": "require('./frontmatter-converters/claude.js')"
+    },
+    {
+      "id": "require:bin/lib/layout.js:./frontmatter-converters/hermes.js",
+      "label": "./frontmatter-converters/hermes.js",
+      "type": "require",
+      "source_file": "bin/lib/layout.js",
+      "line": 34,
+      "description": "require('./frontmatter-converters/hermes.js')"
+    },
+    {
+      "id": "require:bin/lib/layout.js:./frontmatter-converters/codex.js",
+      "label": "./frontmatter-converters/codex.js",
+      "type": "require",
+      "source_file": "bin/lib/layout.js",
+      "line": 35,
+      "description": "require('./frontmatter-converters/codex.js')"
+    },
+    {
+      "id": "require:bin/lib/layout.js:./frontmatter-converters/copilot.js",
+      "label": "./frontmatter-converters/copilot.js",
+      "type": "require",
+      "source_file": "bin/lib/layout.js",
+      "line": 36,
+      "description": "require('./frontmatter-converters/copilot.js')"
+    },
+    {
+      "id": "require:bin/lib/layout.js:./frontmatter-converters/gemini.js",
+      "label": "./frontmatter-converters/gemini.js",
+      "type": "require",
+      "source_file": "bin/lib/layout.js",
+      "line": 37,
+      "description": "require('./frontmatter-converters/gemini.js')"
+    },
+    {
+      "id": "require:bin/lib/layout.js:./subagent-adapter/index.js",
+      "label": "./subagent-adapter/index.js",
+      "type": "require",
+      "source_file": "bin/lib/layout.js",
+      "line": 39,
+      "description": "require('./subagent-adapter/index.js')"
+    },
+    {
+      "id": "require:bin/lib/frontmatter-converters/claude.js:../content-converters/shared.js",
+      "label": "../content-converters/shared.js",
+      "type": "require",
+      "source_file": "bin/lib/frontmatter-converters/claude.js",
+      "line": 25,
+      "description": "require('../content-converters/shared.js')"
+    },
+    {
+      "id": "require:bin/lib/frontmatter-converters/copilot.js:../content-converters/shared.js",
+      "label": "../content-converters/shared.js",
+      "type": "require",
+      "source_file": "bin/lib/frontmatter-converters/copilot.js",
+      "line": 21,
+      "description": "require('../content-converters/shared.js')"
+    },
+    {
+      "id": "require:bin/lib/frontmatter-converters/gemini.js:../content-converters/shared.js",
+      "label": "../content-converters/shared.js",
+      "type": "require",
+      "source_file": "bin/lib/frontmatter-converters/gemini.js",
+      "line": 22,
+      "description": "require('../content-converters/shared.js')"
+    },
+    {
+      "id": "require:bin/lib/frontmatter-converters/codex.js:../content-converters/shared.js",
+      "label": "../content-converters/shared.js",
+      "type": "require",
+      "source_file": "bin/lib/frontmatter-converters/codex.js",
+      "line": 23,
+      "description": "require('../content-converters/shared.js')"
+    },
+    {
+      "id": "require:bin/lib/frontmatter-converters/hermes.js:./claude.js",
+      "label": "./claude.js",
+      "type": "require",
+      "source_file": "bin/lib/frontmatter-converters/hermes.js",
+      "line": 14,
+      "description": "require('./claude.js')"
+    },
+    {
+      "id": "require:bin/lib/horus-sdk-adapter/validate.cjs:fs",
+      "label": "fs",
+      "type": "require",
+      "source_file": "bin/lib/horus-sdk-adapter/validate.cjs",
+      "line": 2,
+      "description": "require('fs')"
+    },
+    {
+      "id": "require:bin/lib/horus-sdk-adapter/validate.cjs:path",
+      "label": "path",
+      "type": "require",
+      "source_file": "bin/lib/horus-sdk-adapter/validate.cjs",
+      "line": 3,
+      "description": "require('path')"
+    },
+    {
+      "id": "require:bin/lib/horus-sdk-adapter/commit.cjs:child_process",
+      "label": "child_process",
+      "type": "require",
+      "source_file": "bin/lib/horus-sdk-adapter/commit.cjs",
+      "line": 2,
+      "description": "require('child_process')"
+    },
+    {
+      "id": "require:bin/lib/horus-sdk-adapter/commit.cjs:fs",
+      "label": "fs",
+      "type": "require",
+      "source_file": "bin/lib/horus-sdk-adapter/commit.cjs",
+      "line": 3,
+      "description": "require('fs')"
+    },
+    {
+      "id": "require:bin/lib/horus-sdk-adapter/commit.cjs:path",
+      "label": "path",
+      "type": "require",
+      "source_file": "bin/lib/horus-sdk-adapter/commit.cjs",
+      "line": 4,
+      "description": "require('path')"
+    },
+    {
+      "id": "require:bin/lib/horus-sdk-adapter/state.cjs:fs",
+      "label": "fs",
+      "type": "require",
+      "source_file": "bin/lib/horus-sdk-adapter/state.cjs",
+      "line": 11,
+      "description": "require('fs')"
+    },
+    {
+      "id": "require:bin/lib/horus-sdk-adapter/state.cjs:path",
+      "label": "path",
+      "type": "require",
+      "source_file": "bin/lib/horus-sdk-adapter/state.cjs",
+      "line": 12,
+      "description": "require('path')"
+    },
+    {
+      "id": "require:bin/lib/horus-sdk-adapter/graphify.cjs:fs",
+      "label": "fs",
+      "type": "require",
+      "source_file": "bin/lib/horus-sdk-adapter/graphify.cjs",
+      "line": 38,
+      "description": "require('fs')"
+    },
+    {
+      "id": "require:bin/lib/horus-sdk-adapter/graphify.cjs:path",
+      "label": "path",
+      "type": "require",
+      "source_file": "bin/lib/horus-sdk-adapter/graphify.cjs",
+      "line": 39,
+      "description": "require('path')"
+    },
+    {
+      "id": "require:bin/lib/horus-sdk-adapter/graphify.cjs:child_process",
+      "label": "child_process",
+      "type": "require",
+      "source_file": "bin/lib/horus-sdk-adapter/graphify.cjs",
+      "line": 55,
+      "description": "require('child_process')"
+    },
+    {
+      "id": "require:bin/lib/horus-sdk-adapter/graphify.cjs:child_process",
+      "label": "child_process",
+      "type": "require",
+      "source_file": "bin/lib/horus-sdk-adapter/graphify.cjs",
+      "line": 63,
+      "description": "require('child_process')"
+    },
+    {
+      "id": "require:bin/lib/horus-sdk-adapter/graphify.cjs:child_process",
+      "label": "child_process",
+      "type": "require",
+      "source_file": "bin/lib/horus-sdk-adapter/graphify.cjs",
+      "line": 83,
+      "description": "require('child_process')"
+    },
+    {
+      "id": "require:bin/lib/horus-sdk-adapter/graphify.cjs:child_process",
+      "label": "child_process",
+      "type": "require",
+      "source_file": "bin/lib/horus-sdk-adapter/graphify.cjs",
+      "line": 265,
+      "description": "require('child_process')"
+    },
+    {
+      "id": "require:bin/lib/horus-sdk-adapter/graphify.cjs:child_process",
+      "label": "child_process",
+      "type": "require",
+      "source_file": "bin/lib/horus-sdk-adapter/graphify.cjs",
+      "line": 294,
+      "description": "require('child_process')"
+    },
+    {
+      "id": "require:bin/lib/horus-sdk-adapter/graphify.cjs:child_process",
+      "label": "child_process",
+      "type": "require",
+      "source_file": "bin/lib/horus-sdk-adapter/graphify.cjs",
+      "line": 404,
+      "description": "require('child_process')"
+    },
+    {
+      "id": "require:bin/lib/horus-sdk-adapter/config.cjs:fs",
+      "label": "fs",
+      "type": "require",
+      "source_file": "bin/lib/horus-sdk-adapter/config.cjs",
+      "line": 3,
+      "description": "require('fs')"
+    },
+    {
+      "id": "require:bin/lib/horus-sdk-adapter/config.cjs:path",
+      "label": "path",
+      "type": "require",
+      "source_file": "bin/lib/horus-sdk-adapter/config.cjs",
+      "line": 4,
+      "description": "require('path')"
+    },
+    {
+      "id": "require:bin/lib/horus-sdk-adapter/scaffold.cjs:fs",
+      "label": "fs",
+      "type": "require",
+      "source_file": "bin/lib/horus-sdk-adapter/scaffold.cjs",
+      "line": 2,
+      "description": "require('fs')"
+    },
+    {
+      "id": "require:bin/lib/horus-sdk-adapter/scaffold.cjs:path",
+      "label": "path",
+      "type": "require",
+      "source_file": "bin/lib/horus-sdk-adapter/scaffold.cjs",
+      "line": 3,
+      "description": "require('path')"
+    },
+    {
+      "id": "require:bin/lib/horus-sdk-adapter/milestone.cjs:fs",
+      "label": "fs",
+      "type": "require",
+      "source_file": "bin/lib/horus-sdk-adapter/milestone.cjs",
+      "line": 2,
+      "description": "require('fs')"
+    },
+    {
+      "id": "require:bin/lib/horus-sdk-adapter/milestone.cjs:path",
+      "label": "path",
+      "type": "require",
+      "source_file": "bin/lib/horus-sdk-adapter/milestone.cjs",
+      "line": 3,
+      "description": "require('path')"
+    },
+    {
+      "id": "require:bin/lib/horus-sdk-adapter/misc.cjs:fs",
+      "label": "fs",
+      "type": "require",
+      "source_file": "bin/lib/horus-sdk-adapter/misc.cjs",
+      "line": 2,
+      "description": "require('fs')"
+    },
+    {
+      "id": "require:bin/lib/horus-sdk-adapter/misc.cjs:path",
+      "label": "path",
+      "type": "require",
+      "source_file": "bin/lib/horus-sdk-adapter/misc.cjs",
+      "line": 3,
+      "description": "require('path')"
+    },
+    {
+      "id": "require:bin/lib/horus-sdk-adapter/index.cjs:path",
+      "label": "path",
+      "type": "require",
+      "source_file": "bin/lib/horus-sdk-adapter/index.cjs",
+      "line": 22,
+      "description": "require('path')"
+    },
+    {
+      "id": "require:bin/lib/horus-sdk-adapter/index.cjs:./state.cjs",
+      "label": "./state.cjs",
+      "type": "require",
+      "source_file": "bin/lib/horus-sdk-adapter/index.cjs",
+      "line": 23,
+      "description": "require('./state.cjs')"
+    },
+    {
+      "id": "require:bin/lib/horus-sdk-adapter/index.cjs:./config.cjs",
+      "label": "./config.cjs",
+      "type": "require",
+      "source_file": "bin/lib/horus-sdk-adapter/index.cjs",
+      "line": 24,
+      "description": "require('./config.cjs')"
+    },
+    {
+      "id": "require:bin/lib/horus-sdk-adapter/index.cjs:./commit.cjs",
+      "label": "./commit.cjs",
+      "type": "require",
+      "source_file": "bin/lib/horus-sdk-adapter/index.cjs",
+      "line": 25,
+      "description": "require('./commit.cjs')"
+    },
+    {
+      "id": "require:bin/lib/horus-sdk-adapter/index.cjs:./frontmatter.cjs",
+      "label": "./frontmatter.cjs",
+      "type": "require",
+      "source_file": "bin/lib/horus-sdk-adapter/index.cjs",
+      "line": 26,
+      "description": "require('./frontmatter.cjs')"
+    },
+    {
+      "id": "require:bin/lib/horus-sdk-adapter/index.cjs:./roadmap.cjs",
+      "label": "./roadmap.cjs",
+      "type": "require",
+      "source_file": "bin/lib/horus-sdk-adapter/index.cjs",
+      "line": 27,
+      "description": "require('./roadmap.cjs')"
+    },
+    {
+      "id": "require:bin/lib/horus-sdk-adapter/index.cjs:./validate.cjs",
+      "label": "./validate.cjs",
+      "type": "require",
+      "source_file": "bin/lib/horus-sdk-adapter/index.cjs",
+      "line": 28,
+      "description": "require('./validate.cjs')"
+    },
+    {
+      "id": "require:bin/lib/horus-sdk-adapter/index.cjs:./workstream.cjs",
+      "label": "./workstream.cjs",
+      "type": "require",
+      "source_file": "bin/lib/horus-sdk-adapter/index.cjs",
+      "line": 29,
+      "description": "require('./workstream.cjs')"
+    },
+    {
+      "id": "require:bin/lib/horus-sdk-adapter/index.cjs:./scaffold.cjs",
+      "label": "./scaffold.cjs",
+      "type": "require",
+      "source_file": "bin/lib/horus-sdk-adapter/index.cjs",
+      "line": 30,
+      "description": "require('./scaffold.cjs')"
+    },
+    {
+      "id": "require:bin/lib/horus-sdk-adapter/index.cjs:./milestone.cjs",
+      "label": "./milestone.cjs",
+      "type": "require",
+      "source_file": "bin/lib/horus-sdk-adapter/index.cjs",
+      "line": 31,
+      "description": "require('./milestone.cjs')"
+    },
+    {
+      "id": "require:bin/lib/horus-sdk-adapter/index.cjs:./misc.cjs",
+      "label": "./misc.cjs",
+      "type": "require",
+      "source_file": "bin/lib/horus-sdk-adapter/index.cjs",
+      "line": 32,
+      "description": "require('./misc.cjs')"
+    },
+    {
+      "id": "require:bin/lib/horus-sdk-adapter/index.cjs:./resolve.cjs",
+      "label": "./resolve.cjs",
+      "type": "require",
+      "source_file": "bin/lib/horus-sdk-adapter/index.cjs",
+      "line": 33,
+      "description": "require('./resolve.cjs')"
+    },
+    {
+      "id": "require:bin/lib/horus-sdk-adapter/index.cjs:./graphify.cjs",
+      "label": "./graphify.cjs",
+      "type": "require",
+      "source_file": "bin/lib/horus-sdk-adapter/index.cjs",
+      "line": 34,
+      "description": "require('./graphify.cjs')"
+    },
+    {
+      "id": "require:bin/lib/horus-sdk-adapter/index.cjs:os",
+      "label": "os",
+      "type": "require",
+      "source_file": "bin/lib/horus-sdk-adapter/index.cjs",
+      "line": 156,
+      "description": "require('os')"
+    },
+    {
+      "id": "require:bin/lib/horus-sdk-adapter/index.cjs:os",
+      "label": "os",
+      "type": "require",
+      "source_file": "bin/lib/horus-sdk-adapter/index.cjs",
+      "line": 194,
+      "description": "require('os')"
+    },
+    {
+      "id": "require:bin/lib/horus-sdk-adapter/index.cjs:fs",
+      "label": "fs",
+      "type": "require",
+      "source_file": "bin/lib/horus-sdk-adapter/index.cjs",
+      "line": 212,
+      "description": "require('fs')"
+    },
+    {
+      "id": "require:bin/lib/horus-sdk-adapter/index.cjs:fs",
+      "label": "fs",
+      "type": "require",
+      "source_file": "bin/lib/horus-sdk-adapter/index.cjs",
+      "line": 214,
+      "description": "require('fs')"
+    },
+    {
+      "id": "require:bin/lib/horus-sdk-adapter/frontmatter.cjs:fs",
+      "label": "fs",
+      "type": "require",
+      "source_file": "bin/lib/horus-sdk-adapter/frontmatter.cjs",
+      "line": 2,
+      "description": "require('fs')"
+    },
+    {
+      "id": "require:bin/lib/horus-sdk-adapter/frontmatter.cjs:path",
+      "label": "path",
+      "type": "require",
+      "source_file": "bin/lib/horus-sdk-adapter/frontmatter.cjs",
+      "line": 3,
+      "description": "require('path')"
+    },
+    {
+      "id": "require:bin/lib/horus-sdk-adapter/roadmap.cjs:fs",
+      "label": "fs",
+      "type": "require",
+      "source_file": "bin/lib/horus-sdk-adapter/roadmap.cjs",
+      "line": 2,
+      "description": "require('fs')"
+    },
+    {
+      "id": "require:bin/lib/horus-sdk-adapter/roadmap.cjs:path",
+      "label": "path",
+      "type": "require",
+      "source_file": "bin/lib/horus-sdk-adapter/roadmap.cjs",
+      "line": 3,
+      "description": "require('path')"
+    },
+    {
+      "id": "require:bin/lib/horus-sdk-adapter/workstream.cjs:fs",
+      "label": "fs",
+      "type": "require",
+      "source_file": "bin/lib/horus-sdk-adapter/workstream.cjs",
+      "line": 2,
+      "description": "require('fs')"
+    },
+    {
+      "id": "require:bin/lib/horus-sdk-adapter/workstream.cjs:path",
+      "label": "path",
+      "type": "require",
+      "source_file": "bin/lib/horus-sdk-adapter/workstream.cjs",
+      "line": 3,
+      "description": "require('path')"
+    },
+    {
+      "id": "require:bin/lib/horus-sdk-adapter/resolve.cjs:fs",
+      "label": "fs",
+      "type": "require",
+      "source_file": "bin/lib/horus-sdk-adapter/resolve.cjs",
+      "line": 2,
+      "description": "require('fs')"
+    },
+    {
+      "id": "require:bin/lib/horus-sdk-adapter/resolve.cjs:path",
+      "label": "path",
+      "type": "require",
+      "source_file": "bin/lib/horus-sdk-adapter/resolve.cjs",
+      "line": 3,
+      "description": "require('path')"
+    },
+    {
+      "id": "import:bin/lib/horus-sdk-adapter/graphifyy.py:ast",
+      "label": "import ast",
+      "type": "import",
+      "source_file": "bin/lib/horus-sdk-adapter/graphifyy.py",
+      "line": 27,
+      "description": "import ast"
+    },
+    {
+      "id": "import:bin/lib/horus-sdk-adapter/graphifyy.py:json",
+      "label": "import json",
+      "type": "import",
+      "source_file": "bin/lib/horus-sdk-adapter/graphifyy.py",
+      "line": 28,
+      "description": "import json"
+    },
+    {
+      "id": "import:bin/lib/horus-sdk-adapter/graphifyy.py:os",
+      "label": "import os",
+      "type": "import",
+      "source_file": "bin/lib/horus-sdk-adapter/graphifyy.py",
+      "line": 29,
+      "description": "import os"
+    },
+    {
+      "id": "import:bin/lib/horus-sdk-adapter/graphifyy.py:re",
+      "label": "import re",
+      "type": "import",
+      "source_file": "bin/lib/horus-sdk-adapter/graphifyy.py",
+      "line": 30,
+      "description": "import re"
+    },
+    {
+      "id": "import:bin/lib/horus-sdk-adapter/graphifyy.py:sys",
+      "label": "import sys",
+      "type": "import",
+      "source_file": "bin/lib/horus-sdk-adapter/graphifyy.py",
+      "line": 31,
+      "description": "import sys"
+    },
+    {
+      "id": "import:bin/lib/horus-sdk-adapter/graphifyy.py:time",
+      "label": "import time",
+      "type": "import",
+      "source_file": "bin/lib/horus-sdk-adapter/graphifyy.py",
+      "line": 32,
+      "description": "import time"
+    },
+    {
+      "id": "import:bin/lib/horus-sdk-adapter/graphifyy.py:collections.defaultdict",
+      "label": "from collections import defaultdict",
+      "type": "import",
+      "source_file": "bin/lib/horus-sdk-adapter/graphifyy.py",
+      "line": 33,
+      "description": "from collections import defaultdict"
+    },
+    {
+      "id": "import:bin/lib/horus-sdk-adapter/graphifyy.py:pathlib.Path",
+      "label": "from pathlib import Path",
+      "type": "import",
+      "source_file": "bin/lib/horus-sdk-adapter/graphifyy.py",
+      "line": 34,
+      "description": "from pathlib import Path"
+    },
+    {
+      "id": "import:bin/lib/horus-sdk-adapter/graphifyy.py:typing.Any",
+      "label": "from typing import Any",
+      "type": "import",
+      "source_file": "bin/lib/horus-sdk-adapter/graphifyy.py",
+      "line": 35,
+      "description": "from typing import Any"
+    },
+    {
+      "id": "func:bin/lib/horus-sdk-adapter/graphifyy.py:scan_python",
+      "label": "scan_python",
+      "type": "function",
+      "source_file": "bin/lib/horus-sdk-adapter/graphifyy.py",
+      "line": 54,
+      "description": "def scan_python(filepath, lines)",
+      "details": {
+        "args": [
+          "filepath",
+          "lines"
+        ],
+        "decorators": []
+      }
+    },
+    {
+      "id": "func:bin/lib/horus-sdk-adapter/graphifyy.py:scan_javascript",
+      "label": "scan_javascript",
+      "type": "function",
+      "source_file": "bin/lib/horus-sdk-adapter/graphifyy.py",
+      "line": 107,
+      "description": "def scan_javascript(filepath, lines)",
+      "details": {
+        "args": [
+          "filepath",
+          "lines"
+        ],
+        "decorators": []
+      }
+    },
+    {
+      "id": "func:bin/lib/horus-sdk-adapter/graphifyy.py:scan_sql",
+      "label": "scan_sql",
+      "type": "function",
+      "source_file": "bin/lib/horus-sdk-adapter/graphifyy.py",
+      "line": 172,
+      "description": "def scan_sql(filepath, lines)",
+      "details": {
+        "args": [
+          "filepath",
+          "lines"
+        ],
+        "decorators": []
+      }
+    },
+    {
+      "id": "func:bin/lib/horus-sdk-adapter/graphifyy.py:scan_generic",
+      "label": "scan_generic",
+      "type": "function",
+      "source_file": "bin/lib/horus-sdk-adapter/graphifyy.py",
+      "line": 189,
+      "description": "def scan_generic(filepath, lines)",
+      "details": {
+        "args": [
+          "filepath",
+          "lines"
+        ],
+        "decorators": []
+      }
+    },
+    {
+      "id": "func:bin/lib/horus-sdk-adapter/graphifyy.py:scan_planning",
+      "label": "scan_planning",
+      "type": "function",
+      "source_file": "bin/lib/horus-sdk-adapter/graphifyy.py",
+      "line": 215,
+      "description": "def scan_planning(cwd)",
+      "details": {
+        "args": [
+          "cwd"
+        ],
+        "decorators": []
+      }
+    },
+    {
+      "id": "func:bin/lib/horus-sdk-adapter/graphifyy.py:infer_edges",
+      "label": "infer_edges",
+      "type": "function",
+      "source_file": "bin/lib/horus-sdk-adapter/graphifyy.py",
+      "line": 255,
+      "description": "def infer_edges(nodes)",
+      "details": {
+        "args": [
+          "nodes"
+        ],
+        "decorators": []
+      }
+    },
+    {
+      "id": "func:bin/lib/horus-sdk-adapter/graphifyy.py:build",
+      "label": "build",
+      "type": "function",
+      "source_file": "bin/lib/horus-sdk-adapter/graphifyy.py",
+      "line": 285,
+      "description": "def build(cwd)",
+      "details": {
+        "args": [
+          "cwd"
+        ],
+        "decorators": []
+      }
+    },
+    {
+      "id": "func:bin/lib/horus-sdk-adapter/graphifyy.py:query",
+      "label": "query",
+      "type": "function",
+      "source_file": "bin/lib/horus-sdk-adapter/graphifyy.py",
+      "line": 336,
+      "description": "def query(graph, term, budget)",
+      "details": {
+        "args": [
+          "graph",
+          "term",
+          "budget"
+        ],
+        "decorators": []
+      }
+    },
+    {
+      "id": "func:bin/lib/horus-sdk-adapter/graphifyy.py:status",
+      "label": "status",
+      "type": "function",
+      "source_file": "bin/lib/horus-sdk-adapter/graphifyy.py",
+      "line": 362,
+      "description": "def status(cwd)",
+      "details": {
+        "args": [
+          "cwd"
+        ],
+        "decorators": []
+      }
+    },
+    {
+      "id": "func:bin/lib/horus-sdk-adapter/graphifyy.py:diff",
+      "label": "diff",
+      "type": "function",
+      "source_file": "bin/lib/horus-sdk-adapter/graphifyy.py",
+      "line": 381,
+      "description": "def diff(cwd)",
+      "details": {
+        "args": [
+          "cwd"
+        ],
+        "decorators": []
+      }
+    },
+    {
+      "id": "func:bin/lib/horus-sdk-adapter/graphifyy.py:main",
+      "label": "main",
+      "type": "function",
+      "source_file": "bin/lib/horus-sdk-adapter/graphifyy.py",
+      "line": 403,
+      "description": "def main()",
+      "details": {
+        "args": [],
+        "decorators": []
+      }
+    },
+    {
+      "id": "func:bin/lib/horus-sdk-adapter/graphifyy.py:add_node",
+      "label": "add_node",
+      "type": "function",
+      "source_file": "bin/lib/horus-sdk-adapter/graphifyy.py",
+      "line": 225,
+      "description": "def add_node(nid, label, ntype, desc, src)",
+      "details": {
+        "args": [
+          "nid",
+          "label",
+          "ntype",
+          "desc",
+          "src"
+        ],
+        "decorators": []
+      }
+    },
+    {
+      "id": "require:bin/lib/subagent-adapter/index.js:../content-converters/shared.js",
+      "label": "../content-converters/shared.js",
+      "type": "require",
+      "source_file": "bin/lib/subagent-adapter/index.js",
+      "line": 33,
+      "description": "require('../content-converters/shared.js')"
+    },
+    {
+      "id": "require:bin/lib/content-converters/claude.js:./shared.js",
+      "label": "./shared.js",
+      "type": "require",
+      "source_file": "bin/lib/content-converters/claude.js",
+      "line": 22,
+      "description": "require('./shared.js')"
+    },
+    {
+      "id": "require:bin/lib/content-converters/copilot.js:./shared.js",
+      "label": "./shared.js",
+      "type": "require",
+      "source_file": "bin/lib/content-converters/copilot.js",
+      "line": 39,
+      "description": "require('./shared.js')"
+    },
+    {
+      "id": "require:bin/lib/content-converters/gemini.js:./shared.js",
+      "label": "./shared.js",
+      "type": "require",
+      "source_file": "bin/lib/content-converters/gemini.js",
+      "line": 21,
+      "description": "require('./shared.js')"
+    },
+    {
+      "id": "require:bin/lib/content-converters/codex.js:./shared.js",
+      "label": "./shared.js",
+      "type": "require",
+      "source_file": "bin/lib/content-converters/codex.js",
+      "line": 26,
+      "description": "require('./shared.js')"
+    },
+    {
+      "id": "require:bin/lib/content-converters/hermes.js:./shared.js",
+      "label": "./shared.js",
+      "type": "require",
+      "source_file": "bin/lib/content-converters/hermes.js",
+      "line": 27,
+      "description": "require('./shared.js')"
+    }
+  ],
+  "edges": [],
+  "stats": {
+    "nodeCount": 107,
+    "edgeCount": 0,
+    "filesScanned": 67,
+    "elapsedMs": 30
+  },
+  "byType": {
+    "require": 86,
+    "import": 9,
+    "function": 12
+  }
+}

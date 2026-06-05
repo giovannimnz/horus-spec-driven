@@ -1,34 +1,60 @@
 {
-  "name": "gsd-hermes-caveman",
-  "version": "1.0.0",
-  "description": "GSD Hermes + Caveman - Spec-driven development with compressed communication. Inspired by get-shit-done (TÂCHES) and caveman (JuliusBrussee). ~75% token reduction + phase-based planning.",
+  "name": "horus-spec-driven",
+  "version": "3.0.0",
+  "description": "Horus Spec Driven — multi-CLI wrapper around @opengsd/gsd-core with role-based unified commands (67→17) and horus-sdk-adapter. Supports Hermes, Claude Code, Codex, Gemini CLI, and GitHub Copilot.",
   "bin": {
-    "gsd-caveman-hermes": "./bin/install.js"
+    "hsd": "bin/install.js"
   },
   "scripts": {
-    "postinstall": "node bin/install.js",
-    "list-skills": "ls -1 skills/",
-    "list-agents": "ls -1 agents/",
-    "setup": "node bin/install.js"
+    "detect": "node bin/install.js detect",
+    "wordlist": "node bin/install.js wordlist",
+    "install": "node bin/install.js install --all --global",
+    "sync": "node bin/install.js sync",
+    "unified": "node bin/rebrand.js vendor/unified-wordlist.json && node bin/build-unified-skills.cjs",
+    "install:hermes": "node bin/install.js install --runtime=hermes --global",
+    "install:claude": "node bin/install.js install --runtime=claude --global",
+    "install:codex": "node bin/install.js install --runtime=codex --global",
+    "install:gemini": "node bin/install.js install --runtime=gemini --global",
+    "install:copilot": "node bin/install.js install --runtime=copilot --local"
   },
-  "keywords": [
-    "gsd",
-    "caveman",
-    "hermes",
-    "meta-prompting",
-    "spec-driven",
-    "development",
-    "workflow",
-    "tokens",
-    "compression"
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "files": [
+    "bin",
+    "runtimes",
+    "docs",
+    "spec-horus.json",
+    "README.md",
+    "SETUP.md",
+    "CHANGELOG.md",
+    "LICENSE"
   ],
-  "author": "",
+  "keywords": [
+    "hsd",
+    "horus-spec-driven",
+    "gsd-core",
+    "opengsd",
+    "spec-driven",
+    "hermes",
+    "claude-code",
+    "codex",
+    "gemini-cli",
+    "github-copilot",
+    "multi-runtime",
+    "slash-commands",
+    "spec-driven-development",
+    "context-engineering",
+    "knowledge-graph"
+  ],
+  "author": "Giovanni Muniz <munizgiovanni@hotmail.com>",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/SEU_USER/gsd-caveman-hermes.git"
+    "url": "git+https://github.com/giovannimnz/horus-spec-driven.git"
   },
   "bugs": {
-    "url": "https://github.com/SEU_USER/gsd-caveman-hermes/issues"
-  }
+    "url": "https://github.com/giovannimnz/horus-spec-driven/issues"
+  },
+  "homepage": "https://github.com/giovannimnz/horus-spec-driven"
 }

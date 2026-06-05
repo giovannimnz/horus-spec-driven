@@ -1,107 +1,124 @@
-# Setup Guide - gsd-caveman-hermes
+# Horus Spec Driven — Quick Setup
 
-## Opção 1: Link Simbólico (Recomendado)
-
-```bash
-# Clone o repo no host (ou copie a pasta)
-git clone https://github.com/giovannimnz/gsd-caveman-hermes.git ~/gsd-caveman-hermes
-
-# Crie link simbólico para a pasta de skills do Hermes
-ln -s ~/gsd-caveman-hermes/skills ~/./skills/gsd-caveman-hermes
-
-# Crie link simbólico para agents (se Hermes suportar)
-ln -s ~/gsd-caveman-hermes/agents ~/./agents/gsd-caveman-hermes
-```
-
-## Opção 2: Copiar Pasta Inteira
+## 1. Clone & Install
 
 ```bash
-# Copie a pasta skills para o diretório de skills do Hermes
-cp -r ~/gsd-caveman-hermes/skills/* ~/./skills/
+git clone https://github.com/giovannimnz/horus-spec-driven.git ~/GitHub/horus-spec-driven
+cd ~/GitHub/horus-spec-driven
 
-# Copie agents também
-cp -r ~/gsd-caveman-hermes/agents ~/./agents/
+# Build unified skills
+node bin/rebrand.js vendor/unified-wordlist.json
+node bin/build-unified-skills.cjs
+
+# Install all runtimes
+node bin/install.js install --all --global
 ```
 
-## Opção 3: Git Submodule (para usar em projetos)
+## 2. Verify
 
 ```bash
-# No diretório do projeto
-git submodule add https://github.com/giovannimnz/gsd-caveman-hermes.git .gsd-caveman-hermes
+node bin/install.js detect
+# → hermes claude codex gemini
 
-# Os skills ficam em .gsd-caveman-hermes/skills/
+ls ~/.hermes/skills/hsd/
+# → hsd-po-discover  hsd-po-new  hsd-po-define  hsd-po-inbox
+# → hsd-pm-plan      hsd-pm-exec hsd-pm-track   hsd-pm-config
+# → hsd-pm-ship      hsd-pm-manage
+# → hsd-front-ui
+# → hsd-back-debug   hsd-back-maintain  hsd-back-context
+# → hsd-qa-validate  hsd-qa-audit  hsd-qa-review
+# → horus-sdk-adapter
 ```
 
-## Verificar Instalação
+## 3. Daily Sync
 
-No Hermes, teste:
+```bash
+# Manual
+node bin/install.js sync --all --global
 
-```
-skill_view(name="gsd")
-skill_view(name="caveman")
-skill_view(name="gsd-do")
-skill_view(name="caveman-commit")
-```
-
-## Estrutura de Diretórios Esperada
-
-Após instalação:
-
-```
-~/./skills/
-├── gsd/                    # Entry point GSD
-├── gsd-do/
-├── gsd-new-project/
-├── gsd-plan-phase/
-├── gsd-execute-phase/
-├── gsd-debug/
-├── gsd-spike/
-├── gsd-sketch/
-├── gsd-research-phase/
-├── gsd-verify-work/
-├── gsd-validate-phase/
-├── gsd-code-review/
-├── gsd-progress/
-├── gsd-add-todo/
-├── gsd-add-phase/
-├── gsd-discuss-phase/
-├── gsd-map-codebase/
-├── gsd-list-phase/
-├── gsd-help/
-├── gsd-index/
-├── caveman/               # Entry point Caveman (~75% tokens)
-├── caveman-commit/        # Commit messages terse
-├── caveman-review/        # One-line code review
-├── caveman-help/         # Help card
-└── compress/             # Compression tool
+# Auto (PM2)
+pm2 start ecosystem.daily-sync.cron.json
+pm2 save
 ```
 
-## Quick Start
+## 4. Test
 
-### Ativar Caveman (comunicação compressa)
-```
-/caveman
-/caveman ultra    # Para compressão máxima
-/caveman lite     # Para modo menos agressivo
-```
+```bash
+# Test adapter
+node ~/.hermes/skills/hsd/horus-sdk-adapter/index.cjs state load --cwd /path/to/project
 
-### Iniciar Projeto GSD
-```
-/gsd-new-project
-/gsd-plan-phase 1
-/gsd-execute-phase 1
+# Test graphify (code-aware knowledge graph)
+node ~/.hermes/skills/hsd/horus-sdk-adapter/index.cjs graphify build --cwd /path/to/project
+node ~/.hermes/skills/hsd/horus-sdk-adapter/index.cjs graphify query "function" --cwd /path/to/project
 ```
 
-## Desativar
+## Requirements
 
+| Dependency | Why |
+|---|---|
+| **Node.js ≥ 22** | Core engine — install.js, rebrand.js, horus-sdk-adapter |
+| **Python 3.8+** | graphifyy.py — code-aware scanning (auto-installs if missing) |
+| **Git** | Vendor pull from open-gsd/gsd-core |
+| **PM2** | Auto-sync cron (optional) |
+
+## Layout
+
+### Hermes
 ```
-stop caveman  # Sai do modo caveman
+~/.hermes/skills/hsd/
+├── hsd-po-discover/SKILL.md
+├── hsd-po-new/SKILL.md
+├── hsd-po-define/SKILL.md
+├── hsd-po-inbox/SKILL.md
+├── hsd-pm-plan/SKILL.md
+├── hsd-pm-exec/SKILL.md
+├── hsd-pm-track/SKILL.md
+├── hsd-pm-config/SKILL.md
+├── hsd-pm-ship/SKILL.md
+├── hsd-pm-manage/SKILL.md
+├── hsd-front-ui/SKILL.md
+├── hsd-back-debug/SKILL.md
+├── hsd-back-maintain/SKILL.md
+├── hsd-back-context/SKILL.md
+├── hsd-qa-validate/SKILL.md
+├── hsd-qa-audit/SKILL.md
+├── hsd-qa-review/SKILL.md
+└── horus-sdk-adapter/
+    ├── index.cjs
+    ├── state.cjs
+    ├── graphify.cjs
+    ├── graphifyy.py
+    └── ...
 ```
 
-## Notas
+### Claude Code
+```
+~/.claude/skills/
+├── hsd-po-discover/SKILL.md
+├── hsd-pm-plan/SKILL.md
+└── ...
+```
 
-- `/caveman` e `/gsd` são entry points curtos
-- Skills GSD são prefixed com `gsd-` (ex: `gsd-do`, `gsd-new-project`)
-- Skills Caveman são prefixed com `caveman-` (ex: `caveman-commit`, `caveman-review`)
-- Caveman NÃO altera a funcionalidade GSD, só comprime a comunicação
-- Você pode usar GSD normalmente E ativar caveman para economizar tokens
+### Codex
+```
+~/.codex/prompts/
+├── hsd-po-discover.md
+├── hsd-pm-plan.md
+└── ...
+```
+
+### Gemini
+```
+~/.gemini/commands/hsd/
+├── hsd-po-discover.toml
+├── hsd-pm-plan.toml
+└── ...
+```
+
+### Copilot
+```
+.github/prompts/
+├── hsd-po-discover.md
+├── hsd-pm-plan.md
+└── ...
+```

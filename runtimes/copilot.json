@@ -1,0 +1,26 @@
+{
+  "id": "copilot",
+  "label": "GitHub Copilot",
+  "home": null,
+  "homeEnv": null,
+  "local": ".github",
+  "modes": ["local"],
+  "layout": {
+    "local": {
+      "kinds": [
+        {
+          "kind": "skills",
+          "destSubpath": "skills",
+          "prefix": "",
+          "format": "markdown",
+          "notes": "Copilot: .github/skills/<shd-foo>/SKILL.md. allowed-tools must be comma-separated string (not YAML list)."
+        }
+      ]
+    }
+  },
+  "content_converter": "copilot",
+  "frontmatter_converter": "copilot",
+  "subagent_adapter": "neutralize",
+  "detect_command": "test -d ./.github",
+  "invocation": "/shd-foo (slash from frontmatter name) — VS Code Copilot chat"
+}

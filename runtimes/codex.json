@@ -1,0 +1,36 @@
+{
+  "id": "codex",
+  "label": "OpenAI Codex CLI",
+  "home": "~/.codex",
+  "homeEnv": "CODEX_HOME",
+  "local": ".codex",
+  "modes": ["global", "local"],
+  "layout": {
+    "global": {
+      "kinds": [
+        {
+          "kind": "skills",
+          "destSubpath": "skills",
+          "prefix": "",
+          "format": "markdown",
+          "notes": "Skills are ~/.codex/skills/<shd-foo>/SKILL.md. Codex has no /slash form; reference by path or attach to agent."
+        }
+      ]
+    },
+    "local": {
+      "kinds": [
+        {
+          "kind": "skills",
+          "destSubpath": "skills",
+          "prefix": "",
+          "format": "markdown"
+        }
+      ]
+    }
+  },
+  "content_converter": "codex",
+  "frontmatter_converter": "codex",
+  "subagent_adapter": "neutralize",
+  "detect_command": "test -d ~/.codex || test -d ./.codex",
+  "invocation": "Codex references skills by path or by attaching to the agent session (no /slash form)"
+}

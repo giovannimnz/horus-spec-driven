@@ -1,0 +1,36 @@
+{
+  "id": "gemini",
+  "label": "Gemini CLI",
+  "home": "~/.gemini",
+  "homeEnv": "GEMINI_CONFIG_DIR",
+  "local": ".gemini",
+  "modes": ["global", "local"],
+  "layout": {
+    "global": {
+      "kinds": [
+        {
+          "kind": "commands",
+          "destSubpath": "commands/hsd",
+          "prefix": "",
+          "format": "toml",
+          "notes": "Gemini commands are TOML. Output: <base>/commands/hsd/<shd-foo>.toml. Slash from [command].name."
+        }
+      ]
+    },
+    "local": {
+      "kinds": [
+        {
+          "kind": "commands",
+          "destSubpath": "commands/hsd",
+          "prefix": "",
+          "format": "toml"
+        }
+      ]
+    }
+  },
+  "content_converter": "gemini",
+  "frontmatter_converter": "gemini",
+  "subagent_adapter": "neutralize",
+  "detect_command": "test -d ~/.gemini || test -d ./.gemini",
+  "invocation": "/shd-foo (slash from [command].name in TOML)"
+}
