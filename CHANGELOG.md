@@ -1,5 +1,30 @@
 # Changelog
 
+## v4.1.0 — 2026-06-05
+
+### Auto-Detect + Agents + Compression
+
+- `/hsd-pm`: se `.planning/` não existir, faz `map-codebase` → `new-project` automaticamente
+- `/hsd-config compression`: Lite, Full, Ultra (caveman mode) com descrições localizadas
+- `/hsd-config agents`: cavecrew-investigator, builder, reviewer com toggle
+- Agentes especializados por role: `hsd-pm-agent`, `hsd-dev-agent`, `hsd-qa-agent`
+- Roteamento inteligente de agente baseado no comando/skill usado
+- Filtro upstream automático: remove comandos com níveis > ultra (wenyan-*, extreme-*, etc.)
+- Locale `pt.json` atualizado com todas as novas strings
+- Exibição completa em português quando `locale=pt`
+- Ordem lógica dos comandos na documentação: PM → DEV → QA → Config
+
+## v4.0.0 — 2026-06-05
+
+### Compactação Máxima: 67→3 (BREAKING)
+
+- PO eliminado → atividades movidas para PM (new, track) e DEV (discover, define)
+- Frontend + Backend eliminados → fundidos no DEV (ui, debug, maintain)
+- 3 papéis + config: DEV (7 subcomandos), PM (5), QA (3)
+- 4 arquivos (Hermes/Claude) vs 16 (Codex/Gemini/Copilot)
+- rebrand.js: 67→3 mapping
+- Gemini CLI: formato `role:subcommand` (/hsd-dev:discover, /hsd-pm:track)
+
 ## v3.0.0 — 2026-06-05
 
 ### Unified Slash Commands (BREAKING)
