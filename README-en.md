@@ -3,7 +3,8 @@
 ```
 ╔══════════════════════════════════════════════════════════════╗
 ║   HORUS SPEC DRIVEN — v4.0                                     ║
-║   67 commands → 3 roles + config. 4 slash commands.          ║
+║   67 commands → 3 unified roles + config                       ║
+║   4 files on Hermes, up to 16 on other runtimes                ║
 ╚══════════════════════════════════════════════════════════════╝
 ```
 
@@ -51,6 +52,20 @@
 
 `/hsd-config language pt` — Portuguese  
 `/hsd-config language en` — English
+
+---
+
+## Layout per Platform
+
+The same 3 roles + config adapt to each runtime's format:
+
+| Runtime | Slash Commands | Format | Routing |
+|---|---|---|---|
+| **Hermes** | `/hsd-dev` `/hsd-pm` `/hsd-qa` `/hsd-config` (4) | SKILL.md nested | `$ARGUMENTS[0]` in body |
+| **Claude Code** | `/hsd-dev` `/hsd-pm` `/hsd-qa` `/hsd-config` (4) | SKILL.md flat | `$ARGUMENTS[0]` in body |
+| **Codex CLI** | `hsd-dev-discover` ... `hsd-config` (16) | prompt.md | 1 file per subcommand |
+| **Gemini CLI** | `/hsd:dev-discover` ... `/hsd:config-language` (16) | .toml | 1 file per subcommand |
+| **GitHub Copilot** | `hsd-dev-discover` ... `hsd-config` (16) | copilot-instructions.md | 1 file per subcommand |
 
 ---
 

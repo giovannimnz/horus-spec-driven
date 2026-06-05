@@ -29,7 +29,7 @@
 
 ### Desenvolvimento Guiado por Especificações — Para Todo CLI
 
-**67 comandos → 3 papéis + config. 4 comandos unificados. 5 plataformas.**
+**67 comandos gsd-core → 4 skills unificadas no Hermes (com roteamento interno), 15+ comandos planos nos outros runtimes. 5 plataformas.**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Hermes](https://img.shields.io/badge/Hermes-Agent-7c3aed)](https://github.com/NousResearch/hermes-agent)
@@ -156,6 +156,22 @@ node bin/install.js install --runtime=hermes --global
 
 ---
 
+## Layout por Plataforma
+
+A mesma unificação (3 papéis + config) se adapta ao formato de cada runtime:
+
+| Runtime | Slash Commands | Formato | Roteamento |
+|---|---|---|---|
+| **Hermes** | `/hsd-dev` `/hsd-pm` `/hsd-qa` `/hsd-config` (4) | SKILL.md nested | `$ARGUMENTS[0]` no body |
+| **Claude Code** | `/hsd-dev` `/hsd-pm` `/hsd-qa` `/hsd-config` (4) | SKILL.md flat | `$ARGUMENTS[0]` no body |
+| **Codex CLI** | `hsd-dev-discover` ... `hsd-config` (16) | prompt.md | 1 arquivo por subcomando |
+| **Gemini CLI** | `/hsd:dev-discover` ... `/hsd:config-language` (16) | .toml | 1 arquivo por subcomando |
+| **GitHub Copilot** | `hsd-dev-discover` ... `hsd-config` (16) | copilot-instructions.md | 1 arquivo por subcomando |
+
+**Hermes e Claude** usam 4 arquivos com roteamento inteligente. **Codex, Gemini e Copilot** precisam de 1 arquivo por subcomando (16 no total) — pois não suportam `$ARGUMENTS[0]`.
+
+---
+
 ## Documentação
 
 | Doc | Descrição |
@@ -168,6 +184,6 @@ node bin/install.js install --runtime=hermes --global
 
 ---
 
-**Horus Spec Driven v4.0 — 4 comandos, 5 plataformas, 67 skills unificados.**
+**Horus Spec Driven v4.0 — 3 papéis, 4~16 comandos conforme o runtime, 5 plataformas.**
 
 </div>

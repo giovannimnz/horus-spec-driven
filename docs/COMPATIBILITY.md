@@ -1,75 +1,68 @@
-# HSD v4 — CLI Compatibility Matrix
+# HSD — Compatibility Matrix per Runtime
 
-**67 upstream commands → 3 roles + config = 4 slash commands.**
+**67 upstream commands → 3 roles + config. Runtime adapts the layout.**
 
 ---
 
-## Slash Commands
+## Unified Roles (4)
 
-| Comando | Subcomandos | Hermes | Claude | Codex | Gemini | Copilot |
+| Role | Prefix | Subcommands | Maps from |
+|---|---|---|---|
+| **DEV** | `hsd-dev` | discover, define, plan, build, debug, maintain, ui | 27 commands |
+| **PM** | `hsd-pm` | new, track, ship, config, manage | 27 commands |
+| **QA** | `hsd-qa` | validate, audit, review | 13 commands |
+| **CONFIG** | `hsd-config` | language | — |
+
+---
+
+## Actual Slash Commands per Platform
+
+| Role | Subcommand | Hermes | Claude Code | Codex | Gemini CLI | Copilot |
 |---|---|---|---|---|---|---|
-| `/hsd-dev` | discover, define, plan, build, debug, maintain, ui | ✅ | ✅ | ✅ | ✅ | ✅ |
-| `/hsd-pm` | new, track, ship, config, manage | ✅ | ✅ | ✅ | ✅ | ✅ |
-| `/hsd-qa` | validate, audit, review | ✅ | ✅ | ✅ | ✅ | ✅ |
-| `/hsd-config` | language | ✅ | ⬜ | ⬜ | ⬜ | ⬜ |
+| DEV | discover | `/hsd-dev` (via `$ARGUMENTS[0]`) | `/hsd-dev` (flat SKILL.md) | `hsd-dev.md` | `/hsd:dev-discover` (.toml) | `hsd-dev.md` |
+| DEV | define | mesmo | mesmo | hsd-dev.md | `/hsd:dev-define` | hsd-dev.md |
+| DEV | plan | mesmo | mesmo | hsd-dev.md | `/hsd:dev-plan` | hsd-dev.md |
+| DEV | build | mesmo | mesmo | hsd-dev.md | `/hsd:dev-build` | hsd-dev.md |
+| DEV | debug | mesmo | mesmo | hsd-dev.md | `/hsd:dev-debug` | hsd-dev.md |
+| DEV | maintain | mesmo | mesmo | hsd-dev.md | `/hsd:dev-maintain` | hsd-dev.md |
+| DEV | ui | mesmo | mesmo | hsd-dev.md | `/hsd:dev-ui` | hsd-dev.md |
+| PM | new | `/hsd-pm` | `/hsd-pm` | hsd-pm.md | `/hsd:pm-new` | hsd-pm.md |
+| PM | track | mesmo | mesmo | hsd-pm.md | `/hsd:pm-track` | hsd-pm.md |
+| PM | ship | mesmo | mesmo | hsd-pm.md | `/hsd:pm-ship` | hsd-pm.md |
+| PM | config | mesmo | mesmo | hsd-pm.md | `/hsd:pm-config` | hsd-pm.md |
+| PM | manage | mesmo | mesmo | hsd-pm.md | `/hsd:pm-manage` | hsd-pm.md |
+| QA | validate | `/hsd-qa` | `/hsd-qa` | hsd-qa.md | `/hsd:qa-validate` | hsd-qa.md |
+| QA | audit | mesmo | mesmo | hsd-qa.md | `/hsd:qa-audit` | hsd-qa.md |
+| QA | review | mesmo | mesmo | hsd-qa.md | `/hsd:qa-review` | hsd-qa.md |
+| CONFIG | language | `/hsd-config` | `/hsd-config` | hsd-config.md | `/hsd:config-language` | hsd-config.md |
 
 ---
 
-## /hsd-dev — Developer
+## Layout por Runtime
 
-| Subcomando | Maps from (gsd-core) | Compatibilidade |
-|---|---|---|
-| `discover` | explore, spike, sketch, capture, ns-ideate, map-codebase, ns-context | ✅ Todos |
-| `define` | discuss-phase, spec-phase, mvp-phase | ✅ Todos |
-| `plan` | plan-phase, ultraplan-phase, ai-integration-phase | ✅ Todos |
-| `build` | execute-phase, autonomous, quick, fast | ✅ Todos |
-| `debug` | debug, forensics | ✅ Todos |
-| `maintain` | docs-update, extract-learnings, ingest-docs, import, cleanup | ✅ Todos |
-| `ui` | ui-phase, ui-review | ✅ Todos |
-
-## /hsd-pm — Project Manager
-
-| Subcomando | Maps from | Compatibilidade |
-|---|---|---|
-| `new` | new-project, new-milestone | ✅ Todos |
-| `track` | progress, workstreams, thread, phase, workspace, graphify, stats | ✅ Todos |
-| `ship` | ship, pr-branch, complete-milestone, milestone-summary, undo, update | ✅ Todos |
-| `config` | config, settings, profile-user | ✅ Todos |
-| `manage` | manager, surface, pause-work, resume-work, help, inbox | ✅ Todos |
-
-## /hsd-qa — Quality
-
-| Subcomando | Maps from | Compatibilidade |
-|---|---|---|
-| `validate` | validate-phase, verify-work, health, add-tests | ✅ Todos |
-| `audit` | audit-fix, audit-milestone, audit-uat | ✅ Todos |
-| `review` | code-review, eval-review, review, review-backlog, plan-review-convergence, secure-phase | ✅ Todos |
+| Runtime | Files | Slash Commands | Formato | Roteamento |
+|---|---|---|---|---|
+| **Hermes** | 4 SKILL.md (nested) | 4 | YAML frontmatter | `$ARGUMENTS[0]` dentro do body |
+| **Claude Code** | 4 SKILL.md (flat) | 4 | YAML frontmatter | `$ARGUMENTS[0]` dentro do body |
+| **Codex CLI** | 16 prompt.md (flat) | 16 | Template vars | Um arquivo por subcomando |
+| **Gemini CLI** | 16 .toml (flat) | 16 | TOML | Um arquivo por subcomando |
+| **GitHub Copilot** | 16 .md (flat) | 16 | copilot-instructions.md | Um arquivo por subcomando |
 
 ---
 
-## Funcionalidades Avançadas
+## Status de Implementação por Runtime
 
-| Funcionalidade | Hermes | Claude | Codex | Gemini | Copilot |
+| Camada | Hermes | Claude | Codex | Gemini | Copilot |
 |---|---|---|---|---|---|
-| **horus-sdk-adapter** | ✅ Nativo | ❌ | ❌ | ❌ | ❌ |
-| **graphify (Python)** | ✅ Nativo | ❌ | ❌ | ❌ | ❌ |
-| **graphify (File)** | ✅ Fallback | ⬜ | ⬜ | ⬜ | ❌ |
-| **Content converter** | ✅ | ✅ | ✅ | ✅ | ✅ |
-| **Frontmatter converter** | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Content converter | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Frontmatter converter | ✅ | ✅ | ✅ | ✅ | ✅ |
+| "Explode" subcomandos | — | — | ⬜ | ⬜ | ⬜ |
+| Install funcional | ✅ | ✅ | ⬜ | ⬜ | ⬜ |
+| horus-sdk-adapter | ✅ | ❌ | ❌ | ❌ | ❌ |
+| graphify (Python) | ✅ | ❌ | ❌ | ❌ | ❌ |
+
+**"Explode" subcomandos** é a fase que converte 1 SKILL.md com N subcomandos em N arquivos planos (`.toml`, `prompt.md`, etc.). Implementado apenas para Hermes e Claude (que suportam `$ARGUMENTS[0]`). Codex, Gemini e Copilot precisam desse passo extra.
 
 ---
 
-## Roteamento Inteligente
-
-Cada slash command recebe `$ARGUMENTS[0]` como subcomando e roteia para o skill correspondente:
-
-```
-/hsd-dev discover "auth system"
-  → $ARGUMENTS[0] = "discover"
-  → Skill: hsd-dev → Subcomando: discover
-  → Executa: explore + spike + map-codebase no contexto do projeto
-```
-
----
-
-*Horus Spec Driven v4.0 — 2026-06-05*
+*Horus Spec Driven v4.0*
