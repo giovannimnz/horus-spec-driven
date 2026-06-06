@@ -36,13 +36,12 @@ Success criteria:
 2. `frontmatter.get` e `frontmatter.validate` têm smoke tests explícitos
 3. Saídas erradas têm mensagens úteis e previsíveis
 
-### [ ] **Phase 9: Builder + install smoke tests**
+### [x] **Phase 9: Builder + install smoke tests** — ✅ COMPLETE (2026-06-06)
 
 **Goal:** Validar `bin/builder.js` e `bin/install.js` com smoke tests automatizados.
 
 Requirements: TEST-02, TEST-03
 Success criteria:
-
 1. `npm run build` valida geração de `dist/` para 5 runtimes
 2. `install.js detect` retorna runtimes suportados corretamente
 3. Tests cobrem runtime path resolution e install target shape

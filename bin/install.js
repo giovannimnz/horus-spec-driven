@@ -416,12 +416,21 @@ function cmdWordlist() {
   const agentsDir = path.join(MODULES_DIR, 'gsd-core', 'agents');
   const wl = buildWordlist(commandsDir, agentsDir);
   const rows = Array.from(wl.entries()).sort();
+
+  const obj = Object.fromEntries(rows);
+  const unifiedPath = path.join(MODULES_DIR, 'unified-wordlist.json');
+  const rebrandPath = path.join(MODULES_DIR, 'rebrand-wordlist.json');
+  fs.writeFileSync(unifiedPath, JSON.stringify(obj, null, 2) + '\n', 'utf8');
+  fs.writeFileSync(rebrandPath, JSON.stringify(obj, null, 2) + '\n', 'utf8');
+
   console.log(`\n  ${rows.length} entries (commands + agents)\n`);
   for (const [oldN, newN] of rows) {
     const cat = newN.startsWith('shq-') ? 'qa' : newN.startsWith('shp-') ? 'params' : 'dev';
     const c = cat === 'qa' ? C.yellow : cat === 'params' ? C.magenta : C.green;
     console.log(`  ${c}${cat.padEnd(6)}${C.reset}  ${oldN.padEnd(36)} -> ${newN}`);
   }
+  console.log(`\n  Rebrand wordlist: ${path.relative(ROOT, rebrandPath)}`);
+  console.log(`  Unified wordlist: ${path.relative(ROOT, unifiedPath)}`);
 }
 
 function parseArgs(argv) {
