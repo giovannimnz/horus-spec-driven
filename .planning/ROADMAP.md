@@ -1,0 +1,140 @@
+# Roadmap
+
+## Milestone v5.1.0 — Documentation & Vault Alignment
+
+**Goal:** Sincronizar documentação do repo + vault com o estado real pós-v5.0.0.
+Sem novas features — só alinhamento.
+
+### ⚡ EXECUTION ORDER (2026-06-06)
+
+🔴 1. **Phase 1 — Discard rebrand (legacy stays `horus-spec-driven`)**
+   ← FIRST (reason: define o nome canônico; tudo depois referencia "horus")
+🟡 2. **Phase 2 — SETUP.md: documentar `modules/skills/` hook v5.1**
+   ← depends on #1 (docs reference o nome final)
+🟡 3. **Phase 3 — Vault: nota atômica `osd-pi-bridge`**
+   ← independent, can run in parallel com #2
+🟢 4. **Phase 4 — Testar `osd-pi-bridge` com gsd-pi real**
+   ← depends on #3 (precisa da nota atômica criada)
+🟢 5. **Phase 5 — Vault 21.06: D-20 com `omni-sdk-hermes`**
+   ← independent, doc-only
+🟢 6. **Phase 6 — README: alinhar com v4.1.0**
+   ← LAST (precisa do badge + npm scripts consolidados)
+
+**Porquê esta ordem:** Phase 1 fixa o nome canônico antes de qualquer doc nova.
+Phase 6 (README) vem por último porque consolida tudo. Phases 2/3/5 são
+paralelas (docs); Phase 4 (teste) precisa da nota atômica pra referenciar.
+
+### Phase 1: Discard rebrand — keep horus-spec-driven canonical
+
+**Goal:** [To be planned]
+**Requirements**: TBD
+**Depends on:** Phase 0
+**Plans:** 0 plans
+
+Plans:
+
+- [ ] TBD (run /gsd-plan-phase 1 to break down)
+
+### Phase 2: SETUP.md — document modules/skills/ hook v5.1
+
+**Goal:** [To be planned]
+**Requirements**: TBD
+**Depends on:** Phase 1
+**Plans:** 0 plans
+
+Plans:
+
+- [ ] TBD (run /gsd-plan-phase 2 to break down)
+
+### Phase 3: Vault — atomic note about osd-pi-bridge
+
+**Goal:** [To be planned]
+**Requirements**: TBD
+**Depends on:** Phase 2
+**Plans:** 0 plans
+
+Plans:
+
+- [ ] TBD (run /gsd-plan-phase 3 to break down)
+
+### Phase 4: Test osd-pi-bridge with real gsd-pi install
+
+**Goal:** [To be planned]
+**Requirements**: TBD
+**Depends on:** Phase 3
+**Plans:** 0 plans
+
+Plans:
+
+- [ ] TBD (run /gsd-plan-phase 4 to break down)
+
+### Phase 5: Vault 21.06 — formalize D-20 SDK naming
+
+**Goal:** [To be planned]
+**Requirements**: TBD
+**Depends on:** Phase 4
+**Plans:** 0 plans
+
+Plans:
+
+- [ ] TBD (run /gsd-plan-phase 5 to break down)
+
+### Phase 6: README — align with v4.1.0
+
+**Goal:** [To be planned]
+**Requirements**: TBD
+**Depends on:** Phase 5
+**Plans:** 0 plans
+
+Plans:
+
+- [ ] TBD (run /gsd-plan-phase 6 to break down)
+
+---
+
+## Phase Details
+
+### [ ] **Phase 1: Discard rebrand — keep horus-spec-driven as canonical**
+
+- Confirmar decisão: `horus-spec-driven` é o nome canônico deste repo
+- Rebrand v5.1 já foi feito em repo separado (`giovannimnz/omni-spec-driven`)
+- Nenhuma mudança de código esperada — só commit de decisão
+- Verification: `git log --oneline -1` mostra commit "docs: rebrand descartado..."
+
+### [ ] **Phase 2: SETUP.md — document `modules/skills/` hook v5.1**
+
+- Adicionar seção sobre hook de auto-instalação de skills locais
+- Path: `modules/skills/<name>/SKILL.md` → `~/.hermes/skills/<prefix>/<name>/`
+- Verification: `grep -A 5 "modules/skills" SETUP.md` retorna a nova seção
+
+### [ ] **Phase 3: Vault — atomic note about `osd-pi-bridge`**
+
+- Criar `30-RECURSOS/osd-pi-bridge.md` (nota atômica Zettelkasten)
+- Conteúdo: o que faz, quando usar, fallback chain, link para log 2026-06-05
+- Vault location: `~/GitHub/obsidian-vault/ideaverse/`
+- Verification: `ls ~/GitHub/obsidian-vault/ideaverse/30-RECURSOS/osd-pi-bridge.md` existe
+
+### [ ] **Phase 4: Test `osd-pi-bridge` with real gsd-pi install**
+
+- Tentar `npm install -g @opengsd/gsd-pi` (ou `npx gsd-pi`)
+- Documentar resultado do teste (sucesso, fallback, erro)
+- Se funcionar: smoke test do bridge
+- Verification: log de teste em `60-LOGS/2026-06-06-osd-pi-bridge-test.md`
+
+### [ ] **Phase 5: Vault 21.06 — formalize D-20 with `omni-sdk-hermes`**
+
+- Atualizar `21.06-Decisoes-v5.md` → D-20: SDK personalizado
+- Trocar `horus-sdk-hermes` (que é o nome local) por `omni-sdk-hermes` (convenção)
+  — ou manter `horus-sdk-hermes` se convenção deste repo é essa
+
+- Decisão: como o repo é `horus-spec-driven` legacy, MANTER `horus-sdk-hermes`
+- Adicionar nota: "outro repo (omni-spec-driven) usa convenção `omni-sdk-<runtime>`"
+- Verification: diff mostra atualização em 21.06 + nota cross-repo
+
+### [ ] **Phase 6: README — align with v4.1.0 (badge, build script)**
+
+- Badge de versão: já diz 4.1.0 ✓
+- Build/install: README v4.1 mostra `node bin/builder.js --all` ✓
+- Adicionar `npm run build` no quick start
+- Verificar consistência com CHANGELOG v5.0.0
+- Verification: `grep -n "npm run build" README.md` retorna matches
