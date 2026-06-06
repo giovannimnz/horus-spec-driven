@@ -121,12 +121,11 @@ Plans:
 - Se funcionar: smoke test do bridge
 - Verification: log de teste em `60-LOGS/2026-06-06-osd-pi-bridge-test.md`
 
-### [ ] **Phase 5: Vault 21.06 — formalize D-20 with `omni-sdk-hermes`**
+### [x] **Phase 5: Vault 21.06 — formalize D-20 SDK naming** — ✅ COMPLETE (2026-06-06)
 
 - Atualizar `21.06-Decisoes-v5.md` → D-20: SDK personalizado
 - Trocar `horus-sdk-hermes` (que é o nome local) por `omni-sdk-hermes` (convenção)
   — ou manter `horus-sdk-hermes` se convenção deste repo é essa
-
 - Decisão: como o repo é `horus-spec-driven` legacy, MANTER `horus-sdk-hermes`
 - Adicionar nota: "outro repo (omni-spec-driven) usa convenção `omni-sdk-<runtime>`"
 - Verification: diff mostra atualização em 21.06 + nota cross-repo
