@@ -101,7 +101,7 @@ Plans:
 - Nenhuma mudança de código esperada — só commit de decisão
 - Verification: `git log --oneline -1` mostra commit "docs: rebrand descartado..."
 
-### [ ] **Phase 2: SETUP.md — document `modules/skills/` hook v5.1**
+### [x] **Phase 2: SETUP.md — document `modules/skills/` hook v5.1** — ✅ COMPLETE (2026-06-06)
 
 - Adicionar seção sobre hook de auto-instalação de skills locais
 - Path: `modules/skills/<name>/SKILL.md` → `~/.hermes/skills/<prefix>/<name>/`
