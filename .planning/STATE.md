@@ -23,8 +23,8 @@ progress:
 
 | # | Phase | Status | Commit |
 |---|-------|--------|--------|
-| 7 | Test harness + fixtures | Complete | pending commit |
-| 8 | Hermes SDK smoke tests | Not Started | — |
+| 7 | Test harness + fixtures | Complete | 98d9e19 |
+| 8 | Hermes SDK smoke tests | Complete | pending commit |
 | 9 | Builder + install smoke tests | Not Started | — |
 | 10 | Runtime validation matrix | Not Started | — |
 | 11 | Expansion guide for new CLI runtimes | Not Started | — |

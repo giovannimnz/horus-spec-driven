@@ -26,13 +26,12 @@ Success criteria:
 2. Build e SDK conseguem rodar contra fixture sem quebrar paths
 3. Docs explicam como executar a fixture localmente
 
-### [ ] **Phase 8: Hermes SDK smoke tests**
+### [x] **Phase 8: Hermes SDK smoke tests** — ✅ COMPLETE (2026-06-06)
 
 **Goal:** Cobrir os verbos críticos do `horus-sdk-hermes` e seus modos de erro.
 
 Requirements: SDK-01, SDK-02
 Success criteria:
-
 1. `state`, `config-get`, `roadmap`, `validate`, `graphify` têm smoke tests automatizados
 2. `frontmatter.get` e `frontmatter.validate` têm smoke tests explícitos
 3. Saídas erradas têm mensagens úteis e previsíveis
