@@ -1,3 +1,18 @@
+---
+gsd_state_version: 1.0
+milestone: v5.1.0
+milestone_name: — Documentation & Vault Alignment
+status: Awaiting next milestone
+last_updated: "2026-06-06T06:16:21.666Z"
+last_activity: 2026-06-06 — Milestone v5.1.0 completed and archived
+progress:
+  total_phases: 6
+  completed_phases: 6
+  total_plans: 6
+  completed_plans: 6
+  percent: 100
+---
+
 # State
 
 **Milestone:** v5.1.0
@@ -24,9 +39,21 @@ None.
 - **D-1.1 (2026-06-06, Phase 1):** `horus-spec-driven` permanece o nome canônico.
   Rebrand v5.1 vive em `giovannimnz/omni-spec-driven` (repo público separado).
   Não duplicar rebrand aqui.
+
 - **D-1.2:** SDK naming segue `horus-sdk-<runtime>` neste repo (não `omni-sdk-*`).
 - **D-1.3:** Phase 3 (vault) deve referenciar cross-repo.
 
 ## Decisions deferred
 
 None — Phase 1 unblocked.
+
+## Current Position
+
+Phase: Milestone v5.1.0 complete
+Plan: —
+Status: Awaiting next milestone
+Last activity: 2026-06-06 — Milestone v5.1.0 completed and archived
+
+## Operator Next Steps
+
+- Start the next milestone with /gsd-new-milestone
