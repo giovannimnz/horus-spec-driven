@@ -217,17 +217,22 @@ dist/
 git clone --recurse-submodules https://github.com/giovannimnz/horus-spec-driven.git
 cd horus-spec-driven
 
-# Build + Install
-node bin/builder.js --all
-bash dist/hermes/install.sh      # Hermes Agent
-bash dist/claude/install.sh      # Claude Code
-bash dist/codex/install.sh       # Codex CLI
-bash dist/gemini/install.sh      # Gemini CLI
-bash dist/copilot/install.sh     # GitHub Copilot
+# Build unificado (93 files, 5 runtimes)
+npm run build                       # ou: node bin/builder.js --all
 
-# Sync diário
-pm2 start ecosystem.daily-sync.cron.json
-node bin/install.js language en      # English
+# Build de um runtime específico
+npm run build:hermes                # ou: node bin/builder.js --runtime=hermes
+npm run build:claude                # etc.
+
+# Install em cada CLI
+bash dist/hermes/install.sh        # Hermes Agent
+bash dist/claude/install.sh        # Claude Code
+bash dist/codex/install.sh         # Codex CLI
+bash dist/gemini/install.sh        # Gemini CLI
+bash dist/copilot/install.sh       # GitHub Copilot
+
+# Alternativa: install via wrapper Node (auto-detect runtime)
+npm run install                     # ou: node bin/install.js install --all --global
 
 # Sync diário
 pm2 start ecosystem.daily-sync.cron.json

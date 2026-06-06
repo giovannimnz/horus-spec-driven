@@ -130,7 +130,7 @@ Plans:
 - Adicionar nota: "outro repo (omni-spec-driven) usa convenção `omni-sdk-<runtime>`"
 - Verification: diff mostra atualização em 21.06 + nota cross-repo
 
-### [ ] **Phase 6: README — align with v4.1.0 (badge, build script)**
+### [x] **Phase 6: README — align with v4.1.0** — ✅ COMPLETE (2026-06-06)
 
 - Badge de versão: já diz 4.1.0 ✓
 - Build/install: README v4.1 mostra `node bin/builder.js --all` ✓
