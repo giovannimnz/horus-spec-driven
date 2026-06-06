@@ -107,7 +107,7 @@ Plans:
 - Path: `modules/skills/<name>/SKILL.md` → `~/.hermes/skills/<prefix>/<name>/`
 - Verification: `grep -A 5 "modules/skills" SETUP.md` retorna a nova seção
 
-### [ ] **Phase 3: Vault — atomic note about `osd-pi-bridge`**
+### [x] **Phase 3: Vault — atomic note about osd-pi-bridge** — ✅ COMPLETE (2026-06-06)
 
 - Criar `30-RECURSOS/osd-pi-bridge.md` (nota atômica Zettelkasten)
 - Conteúdo: o que faz, quando usar, fallback chain, link para log 2026-06-05
