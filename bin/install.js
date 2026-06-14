@@ -361,6 +361,42 @@ node ~/.hermes/skills/hsd/horus-sdk-hermes/index.cjs roadmap get-phase 1 --cwd /
     info(`  adapter/: horus-sdk-hermes skill installed (${dryRun ? 'dry-run' : 'real'})`);
   }
 
+  // Also install horus-sdk-codex for Codex (global or local)
+  if (runtimeId === 'codex') {
+    const adapterDir = path.join(resolveBaseDir(runtimeId, mode), 'skills', 'horus-sdk-codex');
+    if (!dryRun) {
+      const srcAdapter = path.join(ROOT, 'bin', 'lib', 'horus-sdk-codex');
+      if (fs.existsSync(srcAdapter)) {
+        fs.mkdirSync(adapterDir, { recursive: true });
+        fs.cpSync(srcAdapter, adapterDir, { recursive: true });
+        const skillMd = `---
+name: horus-sdk-codex
+description: Codex-native SDK for Horus Spec Driven — state, config, roadmap, phase, validation, workstream, scaffold and milestone operations over .planning/
+version: ${PKG_VERSION}
+metadata:
+  codex:
+    tags: [gsd, hsd, sdk, adapter, horus-spec-driven, codex-native]
+---
+
+# horus-sdk-codex — Codex-native GSD/HSD SDK
+
+Use this from Codex prompts before falling back to gsd-tools.cjs, Hermes or Claude-specific primitives.
+
+\`\`\`bash
+node ~/.codex/skills/horus-sdk-codex/index.cjs <verb> [args] --cwd <project-path>
+\`\`\`
+
+Global install target: \`~/.codex/skills/horus-sdk-codex/\`.
+Local install target: \`./.codex/skills/horus-sdk-codex/\`.
+`;
+        fs.writeFileSync(path.join(adapterDir, 'SKILL.md'), skillMd);
+      }
+    }
+    total += 1;
+    info(`  adapter/: horus-sdk-codex skill installed (${dryRun ? 'dry-run' : 'real'})`);
+  }
+
+
   return { installed: total, skipped: 0 };
 }
 

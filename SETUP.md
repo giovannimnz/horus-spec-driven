@@ -42,8 +42,11 @@ pm2 save
 ## 4. Test
 
 ```bash
-# Test adapter
+# Test Hermes SDK
 node ~/.hermes/skills/hsd/horus-sdk-hermes/index.cjs state load --cwd /path/to/project
+
+# Test Codex SDK
+node ~/.codex/skills/horus-sdk-codex/index.cjs roadmap analyze --cwd /path/to/project
 
 # Test graphify (code-aware knowledge graph)
 node ~/.hermes/skills/hsd/horus-sdk-hermes/index.cjs graphify build --cwd /path/to/project
@@ -90,11 +93,17 @@ node ~/.hermes/skills/hsd/horus-sdk-hermes/index.cjs graphify query "function" -
 ### Codex
 
 ```
-~/.codex/prompts/
-├── hsd-pm-new.md
-├── hsd-dev-discover.md
-├── hsd-qa-validate.md
-└── ...  (15 total: 5 PM + 7 DEV + 3 QA + 1 config)
+~/.codex/
+├── prompts/
+│   ├── hsd-pm-new.md
+│   ├── hsd-dev-discover.md
+│   ├── hsd-qa-validate.md
+│   └── ...  (15 total: 5 PM + 7 DEV + 3 QA)
+├── agents/
+│   └── hsd-dev-agent.md
+└── skills/horus-sdk-codex/
+    ├── index.cjs
+    └── ...
 ```
 
 ### Gemini

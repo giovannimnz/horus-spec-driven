@@ -34,3 +34,9 @@ Fechar a lacuna principal do projeto: falta de testes e validação runtime dos 
 - Rebrand do repo
 - Portar hooks do omni-spec-driven
 - Adicionar MCP server real neste milestone
+
+
+### Codex SDK
+- [x] **SDK-CODEX-01**: Deve existir `horus-sdk-codex` separado de `horus-sdk-hermes`, seguindo o padrão `horus-sdk-<runtime>`.
+- [x] **SDK-CODEX-02**: O builder deve emitir `dist/codex/adapter/` e o install Codex deve copiar o SDK para `~/.codex/skills/horus-sdk-codex/`.
+- [x] **SDK-CODEX-03**: Deve haver smoke test real do SDK Codex e do install Codex com `CODEX_HOME` temporário.

@@ -29,6 +29,7 @@ Current coverage (Phase 7 baseline, expanded by Phase 8-10):
 - SDK `state load`
 - SDK `graphify build`
 - SDK smoke verbs (`config-get`, `roadmap`, `validate`, `frontmatter.*`, `phase.mvp-mode`)
+- Codex SDK smoke verbs (`config-get`, `roadmap`, unknown verb failure)
 - runtime install smoke (Hermes/Claude/Codex/Gemini/Copilot)
 
 ## Test runner note

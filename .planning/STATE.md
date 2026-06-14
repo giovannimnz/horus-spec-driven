@@ -2,14 +2,14 @@
 gsd_state_version: 1.0
 milestone: v5.2.0
 milestone_name: — Test Coverage & Runtime Validation
-status: Awaiting next milestone
+status: Phase 12 complete — Codex SDK added
 last_updated: "2026-06-06T09:34:30.657Z"
 last_activity: 2026-06-06 — Milestone v5.2.0 completed and archived
 progress:
-  total_phases: 5
-  completed_phases: 5
-  total_plans: 5
-  completed_plans: 5
+  total_phases: 6
+  completed_phases: 6
+  total_plans: 6
+  completed_plans: 6
   percent: 100
 ---
 
@@ -28,6 +28,7 @@ progress:
 | 9 | Builder + install smoke tests | Complete | 3cf6a2a |
 | 10 | Runtime validation matrix | Complete | 6e47938 |
 | 11 | Expansion guide for new CLI runtimes | Complete | ccf6586 |
+| 12 | horus-sdk-codex | Complete | pending |
 
 ## Blockers/Concerns
 
@@ -41,11 +42,17 @@ None.
 
 ## Current Position
 
-Phase: Milestone v5.2.0 complete
-Plan: —
-Status: Awaiting next milestone
+Phase: 12 — horus-sdk-codex
+Plan: 12-PLAN.md
+Status: Complete; awaiting commit validation
 Last activity: 2026-06-06 — Milestone v5.2.0 completed and archived
 
 ## Operator Next Steps
 
 - Start the next milestone with /gsd-new-milestone
+
+## Phase 12 Decisions
+
+- **D-12.1:** `horus-sdk-codex` separado, não adapter genérico.
+- **D-12.2:** `CODEX_HOME`/`~/.codex` como home operacional.
+- **D-12.3:** `dist/codex/install.sh` self-contained via `SCRIPT_DIR`.

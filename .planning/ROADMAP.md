@@ -120,3 +120,15 @@ Plans:
 Plans:
 
 - [ ] TBD (run /gsd-plan-phase 11 to break down)
+
+
+### [x] **Phase 12: horus-sdk-codex** — ✅ COMPLETE (2026-06-13)
+
+**Goal:** Criar SDK HSD específico para Codex, emitido no `dist/codex/adapter/` e instalado em `~/.codex/skills/horus-sdk-codex/`.
+
+Requirements: SDK-CODEX-01, SDK-CODEX-02, SDK-CODEX-03
+Success criteria:
+1. `bin/lib/horus-sdk-codex/` existe e roda verbos críticos contra fixture.
+2. `node bin/builder.js --runtime=codex` emite `dist/codex/adapter/index.cjs`.
+3. `dist/codex/install.sh` é self-contained e instala prompts, agents e SDK em `CODEX_HOME` temporário.
+4. `npm test` e `npm run build` passam.

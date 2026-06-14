@@ -34,9 +34,17 @@ function runBuilder(args = [], options = {}) {
   ], options);
 }
 
+function runCodexSdk(args, options = {}) {
+  return runNode([
+    path.join(repoRoot(), 'bin', 'lib', 'horus-sdk-codex', 'index.cjs'),
+    ...args,
+  ], options);
+}
+
 module.exports = {
   repoRoot,
   runNode,
   runSdk,
+  runCodexSdk,
   runBuilder,
 };
